@@ -9,10 +9,10 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
 
 <header
   id="header"
-  class="fixed top-0 left-0 right-0 z-50 hidden md:block transition-all duration-300 bg-white/80 backdrop-blur-sm"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-sm"
 >
-  <nav class="max-w-7xl mx-auto px-6 py-4">
-    <ul class="flex items-center gap-8 justify-center">
+  <nav class="max-w-7xl mx-auto px-4 py-3 md:px-6 md:py-4">
+    <ul class="flex items-center gap-3 md:gap-8 justify-center text-xs md:text-base flex-wrap">
       <li><a href="/cyberportfolio" class="text-gray-700 hover:text-black transition-colors font-medium">Home</a></li>
       {hasExperience && (
         <li><a href="/cyberportfolio/ctf-writeups" class="text-gray-700 hover:text-black transition-colors font-medium">CTFs</a></li>
@@ -28,47 +28,30 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
       <li><a href="/cyberportfolio/comingsoon" class="text-gray-700 hover:text-black transition-colors font-medium">Others</a></li>
     </ul>
   </nav>
-  <section class="max-w-4xl mx-auto px-4 py-3">
+  <section class="max-w-4xl mx-auto px-4 py-2 md:py-3">
     <GlobalSearch />
   </section>
 </header>
 
 <script>
-  window.addEventListener("scroll", () => {
-    const header = document.getElementById("header");
-    if (window.scrollY > 100) {
-      header?.classList.add("bg-white/80", "backdrop-blur-sm");
-    } else {
-      header?.classList.remove("bg-white/80", "backdrop-blur-sm");
-    }
-  });
-</script>
-
-<script>
   const header = document.getElementById("header");
   const globalSearch = document.getElementById("globalSearch");
   let lastScrollY = 0;
-  let hideTimeout;
 
-  // Hide header on scroll
   window.addEventListener("scroll", () => {
     const currentScrollY = window.scrollY;
     
-    // Hide header if scrolling down and search not focused
     if (currentScrollY > lastScrollY && currentScrollY > 100) {
       if (document.activeElement !== globalSearch) {
         header.style.transform = "translateY(-100%)";
       }
     } else {
-      // Show header when scrolling up or at top
-      header?.classList.add("bg-white/80", "backdrop-blur-sm");
       header.style.transform = "translateY(0)";
     }
     
     lastScrollY = currentScrollY;
   });
 
-  // Show header when search is focused
   if (globalSearch) {
     globalSearch.addEventListener("focus", () => {
       header.style.transform = "translateY(0)";
