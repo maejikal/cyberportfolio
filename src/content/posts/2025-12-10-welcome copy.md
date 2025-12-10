@@ -1,0 +1,23 @@
+---
+title: "WHATTTTT!"
+pubDate: 2025-12-11
+description: "Introducing the new blog and what to expect"
+draft: false
+tags: ["test"]
+---
+
+
+## What You'll Find
+
+- **CTF Writeups**
+- **Blog posts** about my interests
+- **NTU-related content** such as lecture notes and other materials for the modules I've taken
+- **Portfolio**
+
+I write about things I am passionate about.
+
+Stay tuned for more content!
+
+_This site is powered by Astro and Tailwind CSS._
+
+_Template by RyanFitzgerald at <span style="color: blue;">https://github.com/RyanFitzgerald/devportfolio</span>_

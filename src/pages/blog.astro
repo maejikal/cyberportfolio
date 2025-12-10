@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BlogSearch from '../components/BlogSearch.astro';
+import { siteConfig } from '../config';
+import '../styles/global.css';
+
+const allPosts = (await getCollection('posts')).filter(post => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+// Pin the welcome post
+const pinnedPost = allPosts.find(post => post.slug === '2025-12-10-welcome');
+const otherPosts = allPosts.filter(post => post.slug !== '2025-12-10-welcome');
+const posts = pinnedPost ? [pinnedPost, ...otherPosts] : allPosts;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Blog</title>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    
+    <Header />
+    <br>
+    <br>
+    <main class="flex-1 max-w-4xl mx-auto px-4 py-10 w-full mt-20">
+      <h1 class="text-4xl font-bold mb-8">Blog</h1>
+      <BlogSearch />
+      <div class="space-y-6">
+        {posts.map((post, index) => (
+  <a href={`/blog/${post.slug}/`} class="block hover:shadow-lg transition-shadow p-4 rounded-lg">
+    <article class={`blog-article border-b pb-6 ${index === 0 && pinnedPost ? 'bg-blue-50 p-4 rounded-lg border-l-4' : ''}`} 
+         style={index === 0 && pinnedPost ? `border-left-color: ${siteConfig.accentColor}` : ''}
+         data-tags={post.data.tags ? post.data.tags.join(',') : ''}>
+      {index === 0 && pinnedPost && (
+        <span class="text-sm font-semibold text-blue-600 mb-2 block">📌 Pinned</span>
+      )}
+      <h2 class="blog-title text-2xl font-semibold mb-2 hover:text-blue-600">
+        {post.data.title}
+      </h2>
+      <p class="text-sm text-gray-600 mb-3">
+        {post.data.pubDate.toLocaleDateString('en-US', { 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric' 
+        })}
+      </p>
+      {post.data.tags && post.data.tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mb-3">
+          {post.data.tags.map(tag => (
+            <span class="px-2 py-1 text-xs rounded-full bg-gray-200 text-gray-700">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+      {post.data.description && (
+        <p class="blog-description text-gray-700">{post.data.description}</p>
+      )}
+    </article>
+  </a>
+))}
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

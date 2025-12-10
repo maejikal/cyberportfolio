@@ -10,7 +10,7 @@ const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           <div class="lg:col-span-4">
             <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
-              Experience
+              Recent CTFs
             </h2>
             <div
               class="w-[75px] h-[5px] mt-2 rounded-full"
@@ -34,7 +34,10 @@ const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
                   )}
 
                   {/* Experience card */}
-                  <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow duration-300">
+                  <div
+                    class="ctf-card block bg-white rounded-lg shadow-sm border border-gray-100 p-4 sm:p-5 md:p-6 hover:shadow-md hover:border-gray-300 transition-all duration-300 cursor-pointer"
+                    data-href="/ctf-writeups"
+                  >
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
                       <div>
                         <h3 class="text-lg sm:text-xl font-semibold text-gray-900">
@@ -53,14 +56,28 @@ const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
                     </div>
 
                     <ul class="space-y-2">
-                      {exp.bullets.map((bullet) => (
-                        <li class="flex items-start">
-                          <span class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0" />
-                          <span class="text-sm sm:text-base text-gray-600">
-                            {bullet}
-                          </span>
-                        </li>
-                      ))}
+                      {exp.bullets.map((bullet) => {
+                        const isLink = bullet.startsWith('http');
+                        return (
+                          <li class="flex items-start">
+                            <span class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0" />
+                            {isLink ? (
+                              <a 
+                                href={bullet} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                class="bullet-link text-sm sm:text-base text-blue-600 hover:underline"
+                              >
+                                {bullet}
+                              </a>
+                            ) : (
+                              <span class="text-sm sm:text-base text-gray-600">
+                                {bullet}
+                              </span>
+                            )}
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 </div>
@@ -72,3 +89,16 @@ const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
     </section>
   )
 }
+
+<script>
+  document.querySelectorAll('.ctf-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Don't navigate if clicking a bullet link
+      if (e.target.closest('.bullet-link')) {
+        return;
+      }
+      const href = card.dataset.href;
+      window.location.href = href;
+    });
+  });
+</script>

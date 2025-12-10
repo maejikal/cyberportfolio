@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const projects = (await getCollection('projects')).filter(proj => !proj.data.draft);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Projects</title>
+  </head>
+  <body>
+    <Header />
+    <main class="max-w-4xl mx-auto px-4 py-10">
+      <h1 class="text-4xl font-bold mb-8">Projects</h1>
+      <div class="grid gap-6">
+        {projects.map((project) => (
+          <article class="border rounded-lg p-6 hover:shadow-lg transition">
+            <h2 class="text-2xl font-semibold mb-2">{project.data.title}</h2>
+            {project.data.description && (
+              <p class="text-gray-700 mb-4">{project.data.description}</p>
+            )}
+            {project.data.link && (
+              <a href={project.data.link} class="text-blue-600 hover:underline mb-4 block">
+                View Project →
+              </a>
+            )}
+            {project.data.skills && (
+              <p class="text-sm text-gray-600">
+                <strong>Skills:</strong> {project.data.skills.join(', ')}
+              </p>
+            )}
+          </article>
+        ))}
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,35 @@
+---
+---
+
+<div class="mb-8">
+  <input
+    type="text"
+    id="writeupSearch"
+    placeholder="Search CTF writeups, tags..."
+    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+  />
+</div>
+
+<script>
+  const searchInput = document.getElementById('writeupSearch');
+  const articles = document.querySelectorAll('.writeup-article');
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+
+      articles.forEach(article => {
+        const title = article.querySelector('.writeup-title')?.textContent.toLowerCase() || '';
+        const ctfName = article.querySelector('.writeup-ctf')?.textContent.toLowerCase() || '';
+        const description = article.querySelector('.writeup-description')?.textContent.toLowerCase() || '';
+        const tags = article.getAttribute('data-tags')?.toLowerCase() || '';
+
+        if (title.includes(query) || ctfName.includes(query) || description.includes(query) || tags.includes(query)) {
+          article.style.display = 'block';
+        } else {
+          article.style.display = 'none';
+        }
+      });
+    });
+  }
+</script>

@@ -1,0 +1,34 @@
+---
+---
+
+<div class="mb-8">
+  <input
+    type="text"
+    id="blogSearch"
+    placeholder="Search blog posts, tags..."
+    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+  />
+</div>
+
+<script>
+  const searchInput = document.getElementById('blogSearch');
+  const articles = document.querySelectorAll('.blog-article');
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+
+      articles.forEach(article => {
+        const title = article.querySelector('.blog-title')?.textContent.toLowerCase() || '';
+        const description = article.querySelector('.blog-description')?.textContent.toLowerCase() || '';
+        const tags = article.getAttribute('data-tags')?.toLowerCase() || '';
+
+        if (title.includes(query) || description.includes(query) || tags.includes(query)) {
+          article.style.display = 'block';
+        } else {
+          article.style.display = 'none';
+        }
+      });
+    });
+  }
+</script>

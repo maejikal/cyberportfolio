@@ -1,0 +1,61 @@
+---
+import { getCollection } from 'astro:content';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+
+export async function getStaticPaths() {
+  const writeups = await getCollection('writeups');
+  return writeups.map(writeup => ({
+    params: { slug: writeup.slug },
+    props: { writeup },
+  }));
+}
+
+const { writeup } = Astro.props;
+const { Content } = await writeup.render();
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{writeup.data.title}</title>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <Header />
+    <main class="flex-1 max-w-3xl mx-auto px-4 py-10 w-full pt-58">
+      <a href="/ctf-writeups" class="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Back to Writeups
+      </a>
+      <article>
+        <h1 class="text-4xl font-bold mb-2">{writeup.data.title}</h1>
+        {writeup.data.ctfName && (
+          <p class="text-lg text-blue-600 font-medium mb-4">{writeup.data.ctfName}</p>
+        )}
+        <p class="text-sm text-gray-600 mb-8">
+          {writeup.data.pubDate.toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          })}
+        </p>
+        <div class="prose max-w-none">
+          <Content />
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>

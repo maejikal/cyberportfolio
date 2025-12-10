@@ -1,13 +1,22 @@
 ---
-import Header from "../components/Header.astro";
-import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
-import Projects from "../components/Projects.astro";
-import Experience from "../components/Experience.astro";
-import Education from "../components/Education.astro";
-import Footer from "../components/Footer.astro";
-import { siteConfig } from "../config";
-import "../styles/global.css";
+import { getCollection } from 'astro:content';
+import Hero from '../components/Hero.astro';
+import Projects from '../components/Projects.astro';
+import Experience from '../components/Experience.astro';
+import Education from '../components/Education.astro';
+import About from '../components/About.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import GlobalSearch from '../components/GlobalSearch.astro';
+import { siteConfig } from '../config';
+import '../styles/global.css';
+
+
+// Get recent blog posts
+const posts = (await getCollection('posts'))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
 ---
 
 <html lang="en">
@@ -27,13 +36,60 @@ import "../styles/global.css";
   </head>
   <body>
     <Header />
-    <section>
+    
+    <main>
+      
+      
       <Hero />
-      <About />
-      <Projects />
+      
       <Experience />
+      
+      <!-- Recent Blog Posts Section -->
+      <section class="p-8 sm:p-12 md:p-16 lg:p-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+          <div class="lg:col-span-4">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
+              Latest Blog Posts
+            </h2>
+            <div
+              class="w-[75px] h-[5px] mt-2 rounded-full"
+              style={`background-color: ${siteConfig.accentColor}`}
+            ></div>
+          </div>
+
+          <div class="lg:col-span-8">
+            <div class="space-y-8">
+              {posts.map(post => (
+                <div class="border-b pb-6">
+                  <h3 class="text-2xl sm:text-3xl font-semibold mb-3">
+                    <a href={`/blog/${post.slug}/`} class="hover:text-blue-600 transition-colors">
+                      {post.data.title}
+                    </a>
+                  </h3>
+                  <p class="text-base sm:text-lg text-gray-600 mb-2">
+                    {post.data.pubDate.toLocaleDateString('en-US', { 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    })}
+                  </p>
+                  {post.data.description && (
+                    <p class="text-lg sm:text-xl text-gray-700">{post.data.description}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+            <a href="/blog" class="mt-8 inline-block text-lg sm:text-xl text-blue-600 hover:underline">
+              View all posts →
+            </a>
+          </div>
+        </div>
+      </section>
+      
+      <Projects />
+      <About />
       <Education />
-    </section>
+    </main>
     <Footer />
   </body>
 </html>

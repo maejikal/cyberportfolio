@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from "../config";
+import GlobalSearch from "./GlobalSearch.astro";
 
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
@@ -8,56 +9,28 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
 
 <header
   id="header"
-  class="fixed top-0 left-0 right-0 z-50 hidden md:block transition-all duration-300"
+  class="fixed top-0 left-0 right-0 z-50 hidden md:block transition-all duration-300 bg-white/80 backdrop-blur-sm"
 >
-  <nav class="max-w-7xl mx-auto px-8 py-4">
+  <nav class="max-w-7xl mx-auto px-6 py-4">
     <ul class="flex items-center gap-8 justify-center">
-      <li>
-        <a
-          href="#about"
-          class="text-gray-700 hover:text-black transition-colors font-medium"
-        >
-          About
-        </a>
-      </li>
-      {
-        hasProjects && (
-          <li>
-            <a
-              href="#projects"
-              class="text-gray-700 hover:text-black transition-colors font-medium"
-            >
-              Projects
-            </a>
-          </li>
-        )
-      }
-      {
-        hasExperience && (
-          <li>
-            <a
-              href="#experience"
-              class="text-gray-700 hover:text-black transition-colors font-medium"
-            >
-              Experience
-            </a>
-          </li>
-        )
-      }
-      {
-        hasEducation && (
-          <li>
-            <a
-              href="#education"
-              class="text-gray-700 hover:text-black transition-colors font-medium"
-            >
-              Education
-            </a>
-          </li>
-        )
-      }
+      <li><a href="/" class="text-gray-700 hover:text-black transition-colors font-medium">Home</a></li>
+      {hasExperience && (
+        <li><a href="/ctf-writeups" class="text-gray-700 hover:text-black transition-colors font-medium">CTFs</a></li>
+      )}
+      <li><a href="/blog" class="text-gray-700 hover:text-black transition-colors font-medium">Blog</a></li>
+      {hasProjects && (
+        <li><a href="/#projects" class="text-gray-700 hover:text-black transition-colors font-medium">Projects</a></li>
+      )}
+      <li><a href="/#about" class="text-gray-700 hover:text-black transition-colors font-medium">About</a></li>
+      {hasEducation && (
+        <li><a href="/#education" class="text-gray-700 hover:text-black transition-colors font-medium">Education</a></li>
+      )}
+      <li><a href="/comingsoon" class="text-gray-700 hover:text-black transition-colors font-medium">Others</a></li>
     </ul>
   </nav>
+  <section class="max-w-4xl mx-auto px-4 py-3">
+    <GlobalSearch />
+  </section>
 </header>
 
 <script>
@@ -71,8 +44,82 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
   });
 </script>
 
+<script>
+  const header = document.getElementById("header");
+  const globalSearch = document.getElementById("globalSearch");
+  let lastScrollY = 0;
+  let hideTimeout;
+
+  // Hide header on scroll
+  window.addEventListener("scroll", () => {
+    const currentScrollY = window.scrollY;
+    
+    // Hide header if scrolling down and search not focused
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      if (document.activeElement !== globalSearch) {
+        header.style.transform = "translateY(-100%)";
+      }
+    } else {
+      // Show header when scrolling up or at top
+      header?.classList.add("bg-white/80", "backdrop-blur-sm");
+      header.style.transform = "translateY(0)";
+    }
+    
+    lastScrollY = currentScrollY;
+  });
+
+  // Show header when search is focused
+  if (globalSearch) {
+    globalSearch.addEventListener("focus", () => {
+      header.style.transform = "translateY(0)";
+    });
+
+    globalSearch.addEventListener("blur", () => {
+      if (window.scrollY > 100) {
+        header.style.transform = "translateY(-100%)";
+      }
+    });
+  }
+</script>
+
 <style>
   html {
     scroll-behavior: smooth;
   }
+
+  #header {
+    transform: translateY(0);
+  }
 </style>
+
+<!-- <script>
+  const header = document.getElementById("header");
+  const globalSearch = document.getElementById("globalSearch");
+  let lastScrollY = 0;
+
+  window.addEventListener("scroll", () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      if (document.activeElement !== globalSearch) {
+        header.style.transform = "translateY(-100%)";
+      }
+    } else {
+      header.style.transform = "translateY(0)";
+    }
+
+    lastScrollY = currentScrollY;
+  });
+
+  if (globalSearch) {
+    globalSearch.addEventListener("focus", () => {
+      header.style.transform = "translateY(0)";
+    });
+
+    globalSearch.addEventListener("blur", () => {
+      if (window.scrollY > 100) {
+        header.style.transform = "translateY(-100%)";
+      }
+    });
+  }
+</script> -->

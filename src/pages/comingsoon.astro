@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WriteupSearch from '../components/WriteupSearch.astro';
+import '../styles/global.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <title>CTF Writeups</title>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <Header />
+    <br>
+    <br>
+    <main class="flex-1 max-w-4xl mx-auto px-4 py-10 w-full mt-20">
+      <h1 class="text-4xl font-bold mb-8">Others</h1>
+        <p class="text-lg text-gray-700">Coming soon...</p>
+    </main>
+    <Footer />
+    </body>
+</html>
