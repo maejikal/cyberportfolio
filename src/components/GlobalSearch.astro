@@ -12,7 +12,7 @@ const searchIndex = [
     title: post.data.title,
     description: post.data.description || '',
     tags: post.data.tags || [],
-    url: `/blog/${post.slug}/`,
+    url: `/cyberportfolio/blog/${post.slug}/`,
     date: post.data.pubDate
   })),
   ...writeups.map(writeup => ({
@@ -20,7 +20,7 @@ const searchIndex = [
     title: writeup.data.title,
     description: writeup.data.description || '',
     tags: writeup.data.tags || [writeup.data.ctfName] || [],
-    url: `/ctf-writeups/${writeup.slug}/`,
+    url: `/cyberportfolio/ctf-writeups/${writeup.slug}/`,
     date: writeup.data.pubDate
   })),
   ...projects.map(project => ({

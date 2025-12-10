@@ -5,4 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site: "https://maejikal.github.io",
   base: '/cyberportfolio',
+  vite: {
+    plugins: [tailwindcss()],
+  },
 })
