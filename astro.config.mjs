@@ -4,4 +4,5 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   site: "https://maejikal.github.io/cyberportfolio/",
+  base: '/cyberportfolio',
 })
