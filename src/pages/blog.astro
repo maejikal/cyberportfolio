@@ -38,7 +38,7 @@ const posts = pinnedPost ? [pinnedPost, ...otherPosts] : allPosts;
       <BlogSearch />
       <div class="space-y-6">
         {posts.map((post, index) => (
-  <a href={`/blog/${post.slug}/`} class="block hover:shadow-lg transition-shadow p-4 rounded-lg">
+  <a href={`/cyberportfolio/blog/${post.slug}/`} class="block hover:shadow-lg transition-shadow p-4 rounded-lg">
     <article class={`blog-article border-b pb-6 ${index === 0 && pinnedPost ? 'bg-blue-50 p-4 rounded-lg border-l-4' : ''}`} 
          style={index === 0 && pinnedPost ? `border-left-color: ${siteConfig.accentColor}` : ''}
          data-tags={post.data.tags ? post.data.tags.join(',') : ''}>

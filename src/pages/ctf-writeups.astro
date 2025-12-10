@@ -40,7 +40,7 @@ const writeups = pinnedWriteup ? [pinnedWriteup, ...otherWriteups] : allWriteups
       ) : (
         <div class="space-y-6">
           {writeups.map((writeup, index) => (
-  <a href={`/ctf-writeups/${writeup.slug}/`} class="block hover:shadow-lg transition-shadow p-4 rounded-lg">
+  <a href={`/cyberportfolio/ctf-writeups/${writeup.slug}/`} class="block hover:shadow-lg transition-shadow p-4 rounded-lg">
     <article class={`writeup-article border-b pb-6 ${index === 0 && pinnedWriteup ? 'bg-blue-50 p-4 rounded-lg border-l-4' : ''}`} 
          style={index === 0 && pinnedWriteup ? 'border-left-color: #e275dbff' : ''}
          data-tags={writeup.data.tags ? writeup.data.tags.join(',') : ''}>
