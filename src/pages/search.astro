@@ -1,0 +1,219 @@
+---
+import { getCollection } from 'astro:content';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import ThemeProvider from "../components/ThemeProvider.astro";
+import { siteConfig } from "../config";
+
+const posts = (await getCollection('posts')).filter(p => !p.data.draft);
+const writeups = (await getCollection('writeups')).filter(w => !w.data.draft);
+const projects = (await getCollection('projects')).filter(p => !p.data.draft);
+
+// Build searchable index
+const allItems = [
+  ...posts.map(post => ({
+    type: 'post',
+    title: post.data.title,
+    description: post.data.description || '',
+    tags: post.data.tags || [],
+    url: `/cyberportfolio/blog/${post.slug}/`,
+    date: post.data.pubDate.toISOString()
+  })),
+  ...writeups.map(writeup => ({
+    type: 'writeup',
+    title: writeup.data.title,
+    description: writeup.data.description || '',
+    tags: [...(writeup.data.tags || []), writeup.data.ctfName].filter(Boolean),
+    url: `/cyberportfolio/ctf-writeups/${writeup.slug}/`,
+    date: writeup.data.pubDate.toISOString()
+  })),
+  ...projects.map(project => ({
+    type: 'project',
+    title: project.data.title,
+    description: project.data.description || '',
+    tags: project.data.skills || [],
+    url: project.data.link || '#',
+    date: new Date().toISOString()
+  }))
+];
+---
+
+<html lang="en">
+  <head>
+    <ThemeProvider themeName={siteConfig.theme} />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="/cyberportfolio/favicon.ico" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Search Results</title>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <Header />
+    <br>
+    <br>
+    <main class="flex-1 max-w-4xl mx-auto px-4 py-10 w-full mt-20">
+      <a href="/cyberportfolio/" class="inline-flex items-center mb-6 text-[var(--accent-color)] hover:text-[var(--accent-dark)]">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Back to Home
+      </a>
+      
+      <h1 class="text-4xl font-bold mb-4 text-[var(--text-primary)]">Search Results</h1>
+
+      <p id="resultsCount" class="text-lg mb-8 text-[var(--text-secondary)]"></p>
+
+      <div id="resultsContainer"></div>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<script define:vars={{ allItems }}>
+  // Client-side search with XSS protection
+  const resultsCount = document.getElementById('resultsCount');
+  const resultsContainer = document.getElementById('resultsContainer');
+  
+  // Get query from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const query = urlParams.get('q') || '';
+  
+  console.log('Query from URL:', query);
+  console.log('All items:', allItems);
+  
+  if (query) {
+    performSearch(query);
+  } else {
+    resultsCount.textContent = 'Please enter a search query.';
+  }
+  
+  function performSearch(searchQuery) {
+    const query = searchQuery.toLowerCase().trim();
+    
+    console.log('Searching for:', query);
+    
+    const results = allItems.filter(item => {
+      const titleMatch = item.title.toLowerCase().includes(query);
+      const descriptionMatch = item.description.toLowerCase().includes(query);
+      const tagsMatch = item.tags && item.tags.length > 0 ? 
+        item.tags.some(tag => tag && tag.toLowerCase().includes(query)) : false;
+      
+      return titleMatch || descriptionMatch || tagsMatch;
+    });
+    
+    console.log('Results:', results.length);
+    
+    // Update count using textContent (safe)
+    resultsCount.innerHTML = '';
+    const countText = document.createTextNode('Found ');
+    const countSpan = document.createElement('span');
+    countSpan.className = 'font-semibold';
+    countSpan.style.cssText = 'color: var(--accent-color);';
+    countSpan.textContent = results.length;
+    const restText = document.createTextNode(` result${results.length !== 1 ? 's' : ''} for "`);
+    const querySpan = document.createElement('span');
+    querySpan.className = 'font-semibold';
+    querySpan.textContent = searchQuery;
+    const endText = document.createTextNode('"');
+    
+    resultsCount.appendChild(countText);
+    resultsCount.appendChild(countSpan);
+    resultsCount.appendChild(restText);
+    resultsCount.appendChild(querySpan);
+    resultsCount.appendChild(endText);
+    
+    // Clear container
+    resultsContainer.innerHTML = '';
+    
+    // Display results using DOM methods (XSS-safe)
+    if (results.length === 0) {
+      const noResultsDiv = document.createElement('div');
+      noResultsDiv.className = 'text-center py-12';
+      
+      const noResultsText = document.createElement('p');
+      noResultsText.className = 'text-lg mb-4';
+      noResultsText.style.cssText = 'color: var(--text-secondary);';
+      noResultsText.textContent = `No results found for "${searchQuery}"`;
+      
+      const suggestionText = document.createElement('p');
+      suggestionText.className = 'text-sm';
+      suggestionText.style.cssText = 'color: var(--text-secondary);';
+      suggestionText.textContent = 'Try different keywords or check your spelling.';
+      
+      noResultsDiv.appendChild(noResultsText);
+      noResultsDiv.appendChild(suggestionText);
+      resultsContainer.appendChild(noResultsDiv);
+    } else {
+      results.forEach(item => {
+        const link = document.createElement('a');
+        link.href = item.url;
+        link.className = 'block hover:shadow-lg transition-shadow p-6 rounded-lg mb-6';
+        link.style.cssText = 'background-color: var(--bg-secondary); border: 1px solid var(--border-primary);';
+        
+        // Header with type and date
+        const header = document.createElement('div');
+        header.className = 'flex items-center justify-between mb-2';
+        
+        const typeSpan = document.createElement('span');
+        typeSpan.className = 'text-xs font-semibold uppercase px-2 py-1 rounded';
+        typeSpan.style.cssText = 'background-color: var(--accent-light); color: var(--accent-color);';
+        typeSpan.textContent = item.type;
+        header.appendChild(typeSpan);
+        
+        if (item.date) {
+          const dateSpan = document.createElement('span');
+          dateSpan.className = 'text-sm';
+          dateSpan.style.cssText = 'color: var(--text-secondary);';
+          dateSpan.textContent = new Date(item.date).toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          });
+          header.appendChild(dateSpan);
+        }
+        
+        link.appendChild(header);
+        
+        // Title
+        const title = document.createElement('h2');
+        title.className = 'text-2xl font-semibold mb-2';
+        title.style.cssText = 'color: var(--text-primary);';
+        title.textContent = item.title;
+        link.appendChild(title);
+        
+        // Description
+        if (item.description) {
+          const desc = document.createElement('p');
+          desc.className = 'mb-3';
+          desc.style.cssText = 'color: var(--text-secondary);';
+          desc.textContent = item.description;
+          link.appendChild(desc);
+        }
+        
+        // Tags
+        if (item.tags.length > 0) {
+          const tagsDiv = document.createElement('div');
+          tagsDiv.className = 'flex flex-wrap gap-2';
+          
+          item.tags.forEach(tag => {
+            const tagSpan = document.createElement('span');
+            tagSpan.className = 'px-2 py-1 text-xs rounded-full';
+            tagSpan.style.cssText = 'background-color: var(--accent-light); color: var(--text-primary);';
+            tagSpan.textContent = tag;
+            tagsDiv.appendChild(tagSpan);
+          });
+          
+          link.appendChild(tagsDiv);
+        }
+        
+        resultsContainer.appendChild(link);
+      });
+    }
+  }
+</script>

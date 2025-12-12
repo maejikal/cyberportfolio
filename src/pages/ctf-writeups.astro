@@ -4,6 +4,8 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WriteupSearch from '../components/WriteupSearch.astro';
 import '../styles/global.css';
+import ThemeProvider from "../components/ThemeProvider.astro";
+import { siteConfig } from "../config";
 
 const allWriteups = (await getCollection('writeups'))
   .filter(writeup => !writeup.data.draft)
@@ -14,11 +16,11 @@ const pinnedWriteup = allWriteups.find(writeup => writeup.data.title === 'CTF Co
 const otherWriteups = allWriteups.filter(writeup => writeup.data.title !== 'CTF Collection');
 const writeups = pinnedWriteup ? [pinnedWriteup, ...otherWriteups] : allWriteups;
 ---
-
 <html lang="en">
   <head>
+    <ThemeProvider themeName={siteConfig.theme} />
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/cyberportfolio/favicon.ico" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,44 +35,55 @@ const writeups = pinnedWriteup ? [pinnedWriteup, ...otherWriteups] : allWriteups
     <br>
     <br>
     <main class="flex-1 max-w-4xl mx-auto px-4 py-10 w-full mt-20">
-      <h1 class="text-4xl font-bold mb-8">CTF Writeups</h1>
+      <h1 class="text-4xl font-bold mb-8 text-[var(--text-primary)]">CTF Writeups</h1>
       <WriteupSearch />
       {writeups.length === 0 ? (
-        <p class="text-lg text-gray-700">Coming soon...</p>
+        <p class="text-lg text-[var(--text-secondary)]">Coming soon...</p>
       ) : (
         <div class="space-y-6">
           {writeups.map((writeup, index) => (
   <a href={`/cyberportfolio/ctf-writeups/${writeup.slug}/`} class="block hover:shadow-lg transition-shadow p-4 rounded-lg">
-    <article class={`writeup-article border-b pb-6 ${index === 0 && pinnedWriteup ? 'bg-blue-50 p-4 rounded-lg border-l-4' : ''}`} 
-         style={index === 0 && pinnedWriteup ? 'border-left-color: #e275dbff' : ''}
+    <article class={`writeup-article pb-6 ${index === 0 && pinnedWriteup ? 'p-4 rounded-lg border-l-4' : 'border-b'}`} 
+         style={index === 0 && pinnedWriteup ? 'background-color: var(--accent-light); border-left-color: var(--accent-color); border-bottom-color: var(--border-primary);' : 'border-bottom-color: var(--border-primary);'}
          data-tags={writeup.data.tags ? writeup.data.tags.join(',') : ''}>
       {index === 0 && pinnedWriteup && (
-        <span class="text-sm font-semibold text-blue-600 mb-2 block">📌 Pinned</span>
+        <span class="text-sm font-semibold mb-2 block" style="color: var(--accent-color);">📌 Pinned</span>
       )}
-      <h2 class="writeup-title text-2xl font-semibold mb-2 hover:text-blue-600">
+      <h2 class="writeup-title text-2xl font-semibold mb-2 text-[var(--text-primary)] hover:text-[var(--accent-color)]">
         {writeup.data.title}
       </h2>
       {writeup.data.ctfName && (
-        <p class="writeup-ctf text-sm text-blue-600 font-medium mb-2">{writeup.data.ctfName}</p>
+        <p class="writeup-ctf text-sm font-medium mb-2 text-[var(--accent-color)]">{writeup.data.ctfName}</p>
       )}
-      <p class="text-sm text-gray-600 mb-3">
-        {writeup.data.pubDate.toLocaleDateString('en-US', { 
-          year: 'numeric', 
-          month: 'long', 
-          day: 'numeric' 
-        })}
-      </p>
+      <div class="text-sm mb-3 text-[var(--text-secondary)]">
+        <p>
+          Published: {writeup.data.pubDate.toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          })}
+        </p>
+        {writeup.data.lastUpdated && (
+          <p class="mt-1">
+            Last Updated: {writeup.data.lastUpdated.toLocaleDateString('en-US', { 
+              year: 'numeric', 
+              month: 'long', 
+              day: 'numeric' 
+            })}
+          </p>
+        )}
+      </div>
       {writeup.data.tags && writeup.data.tags.length > 0 && (
         <div class="flex flex-wrap gap-2 mb-3">
           {writeup.data.tags.map(tag => (
-            <span class="px-2 py-1 text-xs rounded-full bg-gray-200 text-gray-700">
+            <span class="px-2 py-1 text-xs rounded-full text-[var(--text-primary)]" style="background-color: var(--accent-light);">
               {tag}
             </span>
           ))}
         </div>
       )}
       {writeup.data.description && (
-        <p class="writeup-description text-gray-700">{writeup.data.description}</p>
+        <p class="writeup-description text-[var(--text-secondary)]">{writeup.data.description}</p>
       )}
     </article>
   </a>

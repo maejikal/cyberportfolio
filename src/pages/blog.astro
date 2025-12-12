@@ -5,6 +5,8 @@ import Footer from '../components/Footer.astro';
 import BlogSearch from '../components/BlogSearch.astro';
 import { siteConfig } from '../config';
 import '../styles/global.css';
+import ThemeProvider from "../components/ThemeProvider.astro";
+
 
 const allPosts = (await getCollection('posts')).filter(post => !post.data.draft)
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
@@ -17,9 +19,10 @@ const posts = pinnedPost ? [pinnedPost, ...otherPosts] : allPosts;
 
 <html lang="en">
   <head>
+    <ThemeProvider themeName={siteConfig.theme}/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/cyberportfolio/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -34,38 +37,49 @@ const posts = pinnedPost ? [pinnedPost, ...otherPosts] : allPosts;
     <br>
     <br>
     <main class="flex-1 max-w-4xl mx-auto px-4 py-10 w-full mt-20">
-      <h1 class="text-4xl font-bold mb-8">Blog</h1>
+      <h1 class="text-4xl font-bold mb-8 text-[var(--text-primary)]">Blog</h1>
       <BlogSearch />
       <div class="space-y-6">
         {posts.map((post, index) => (
   <a href={`/cyberportfolio/blog/${post.slug}/`} class="block hover:shadow-lg transition-shadow p-4 rounded-lg">
-    <article class={`blog-article border-b pb-6 ${index === 0 && pinnedPost ? 'bg-blue-50 p-4 rounded-lg border-l-4' : ''}`} 
-         style={index === 0 && pinnedPost ? `border-left-color: ${siteConfig.accentColor}` : ''}
+    <article class={`blog-article border-b pb-6 ${index === 0 && pinnedPost ? 'p-4 rounded-lg border-l-4' : ''}`} 
+         style={index === 0 && pinnedPost ? `background-color: var(--accent-light); border-left-color: var(--accent-color); border-bottom-color: var(--border-primary)` : 'border-color: var(--border-primary)'}
          data-tags={post.data.tags ? post.data.tags.join(',') : ''}>
       {index === 0 && pinnedPost && (
-        <span class="text-sm font-semibold text-blue-600 mb-2 block">📌 Pinned</span>
+        <span class="text-sm font-semibold mb-2 block" style="color: var(--accent-color)">📌 Pinned</span>
       )}
-      <h2 class="blog-title text-2xl font-semibold mb-2 hover:text-blue-600">
+      <h2 class="blog-title text-2xl font-semibold mb-2 hover:text-[var(--accent-color)] text-[var(--text-primary)]">
         {post.data.title}
       </h2>
-      <p class="text-sm text-gray-600 mb-3">
-        {post.data.pubDate.toLocaleDateString('en-US', { 
-          year: 'numeric', 
-          month: 'long', 
-          day: 'numeric' 
-        })}
-      </p>
+      <div class="text-sm text-[var(--text-secondary)] mb-3">
+        <p>
+          Published: {post.data.pubDate.toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          })}
+        </p>
+        {post.data.lastUpdated && (
+          <p class="mt-1">
+            Last Updated: {post.data.lastUpdated.toLocaleDateString('en-US', { 
+              year: 'numeric', 
+              month: 'long', 
+              day: 'numeric' 
+            })}
+          </p>
+        )}
+      </div>
       {post.data.tags && post.data.tags.length > 0 && (
         <div class="flex flex-wrap gap-2 mb-3">
           {post.data.tags.map(tag => (
-            <span class="px-2 py-1 text-xs rounded-full bg-gray-200 text-gray-700">
+            <span class="px-2 py-1 text-xs rounded-full" style="background-color: var(--accent-light); color: var(--text-primary)">
               {tag}
             </span>
           ))}
         </div>
       )}
       {post.data.description && (
-        <p class="blog-description text-gray-700">{post.data.description}</p>
+        <p class="blog-description text-[var(--text-secondary)]">{post.data.description}</p>
       )}
     </article>
   </a>

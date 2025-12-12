@@ -10,6 +10,7 @@ import Footer from '../components/Footer.astro';
 import GlobalSearch from '../components/GlobalSearch.astro';
 import { siteConfig } from '../config';
 import '../styles/global.css';
+import ThemeProvider from "../components/ThemeProvider.astro";
 
 
 // Get recent blog posts
@@ -21,8 +22,9 @@ const posts = (await getCollection('posts'))
 
 <html lang="en">
   <head>
+    <ThemeProvider themeName={siteConfig.theme}/>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/cyberportfolio/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={siteConfig.description} />
@@ -48,25 +50,25 @@ const posts = (await getCollection('posts'))
       <section class="p-8 sm:p-12 md:p-16 lg:p-24">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           <div class="lg:col-span-4">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-[var(--text-primary)]">
               Latest Blog Posts
             </h2>
             <div
               class="w-[75px] h-[5px] mt-2 rounded-full"
-              style={`background-color: ${siteConfig.accentColor}`}
+              style="background-color: var(--accent-color)"
             ></div>
           </div>
 
           <div class="lg:col-span-8">
             <div class="space-y-8">
               {posts.map(post => (
-                <div class="border-b pb-6">
+                <div class="border-b pb-6" style="border-color: var(--border-primary)">
                   <h3 class="text-2xl sm:text-3xl font-semibold mb-3">
-                    <a href={`/cyberportfolio/blog/${post.slug}/`} class="hover:text-blue-600 transition-colors">
+                    <a href={`/cyberportfolio/blog/${post.slug}/`} class="hover:text-[var(--accent-color)] transition-colors text-[var(--text-primary)]">
                       {post.data.title}
                     </a>
                   </h3>
-                  <p class="text-base sm:text-lg text-gray-600 mb-2">
+                  <p class="text-base sm:text-lg text-[var(--text-secondary)] mb-2">
                     {post.data.pubDate.toLocaleDateString('en-US', { 
                       year: 'numeric', 
                       month: 'long', 
@@ -74,12 +76,12 @@ const posts = (await getCollection('posts'))
                     })}
                   </p>
                   {post.data.description && (
-                    <p class="text-lg sm:text-xl text-gray-700">{post.data.description}</p>
+                    <p class="text-lg sm:text-xl text-[var(--text-secondary)]">{post.data.description}</p>
                   )}
                 </div>
               ))}
             </div>
-            <a href="/cyberportfolio/blog" class="mt-8 inline-block text-lg sm:text-xl text-blue-600 hover:underline">
+            <a href="/cyberportfolio/blog" class="mt-8 inline-block text-lg sm:text-xl text-[var(--accent-color)] hover:underline">
               View all posts →
             </a>
           </div>

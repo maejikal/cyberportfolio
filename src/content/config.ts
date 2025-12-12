@@ -5,6 +5,7 @@ const postsCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     pubDate: z.date(),
+    lastUpdated: z.date().optional(),
     description: z.string().optional(),
     tags: z.array(z.string()).optional(),
     draft: z.boolean().default(false),
@@ -27,6 +28,7 @@ const writeupCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     pubDate: z.date(),
+    lastUpdated: z.date().optional(),
     description: z.string().optional(),
     ctfName: z.string().optional(),
     tags: z.array(z.string()).optional(),

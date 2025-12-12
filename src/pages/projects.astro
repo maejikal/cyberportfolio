@@ -2,10 +2,12 @@
 import { getCollection } from 'astro:content';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ThemeProvider from "../components/ThemeProvider.astro";
+import { siteConfig } from "../config";
 
 const projects = (await getCollection('projects')).filter(proj => !proj.data.draft);
 ---
-
+<ThemeProvider themeName={siteConfig.theme}>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -40,3 +42,5 @@ const projects = (await getCollection('projects')).filter(proj => !proj.data.dra
     <Footer />
   </body>
 </html>
+
+</ThemeProvider>

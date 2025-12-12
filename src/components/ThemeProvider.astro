@@ -1,0 +1,40 @@
+---
+import { themes } from "../theme";
+import type { ThemeName } from "../theme";
+
+interface Props { themeName?: ThemeName; }
+
+const { themeName = "cyberpunk" } = Astro.props;
+const theme = themes[themeName] ?? themes.cyberpunk;
+const { colors } = theme;
+
+// Build translucent variant for the header
+const hex = colors.background.secondary.replace("#", "");
+const r = parseInt(hex.slice(0, 2), 16);
+const g = parseInt(hex.slice(2, 4), 16);
+const b = parseInt(hex.slice(4, 6), 16);
+const bgSecondaryTranslucent = `rgba(${r}, ${g}, ${b}, 0.75)`;
+
+const cssVariables = `
+  :root {
+    --accent-color: ${colors.accent};
+    --accent-light: ${colors.accentLight};
+    --accent-dark: ${colors.accentDark};
+    --accent-link: ${colors.accentLink};
+    --accent-number: ${colors.accentNumber};
+    --bg-primary: ${colors.background.primary};
+    --bg-secondary: ${colors.background.secondary};
+    --bg-secondary-translucent: ${bgSecondaryTranslucent};
+    --bg-code: ${colors.background.code};
+    --bg-code-border: ${colors.background.codeBorder};
+    --text-primary: ${colors.text.primary};
+    --text-secondary: ${colors.text.secondary};
+    --text-code: ${colors.text.code};
+    --border-primary: ${colors.borders.primary};
+    --border-code: ${colors.borders.code};
+  }
+`;
+---
+
+<style is:global set:html={cssVariables}></style>
+<slot />

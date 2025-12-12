@@ -6,7 +6,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "new:writeup": "pwsh scripts/new-writeup.ps1",
+    "new:post": "pwsh scripts/new-post.ps1",
+    "publish": "git add . && git commit -m 'Update content' && git push",
+    "draft:list": "grep -r 'draft: true' src/content/",
+    "draft:publish": "find src/content -name '*.md' -exec sed -i 's/draft: true/draft: false/' {} +"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",

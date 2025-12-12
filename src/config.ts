@@ -1,11 +1,17 @@
+import { themes } from "./theme";
+
+export type ThemeName = "cyberpunk" | "dark" | "ocean" | "forest" | "minimal";
 export const siteConfig = {
   name: "maejikal",
   title: "cybersecurity enthusiast, certified nerd. welcome to my cozy corner.",
   description: "i write about things that interest me",
-  accentColor: "#e275dbff",
+  theme: "dark" as ThemeName,
+  get accentColor() {
+    return themes[this.theme].colors.accent;
+  },
   social: {
     // email: "your-email@example.com",
-    linkedin: "/",
+    // linkedin: "/",
     // twitter: "https://x.com/rfitzio",
     github: "https://github.com/maejikal",
   },
@@ -68,7 +74,7 @@ export const siteConfig = {
   //   },
   ],
   education: [
-  //   {
+    // {
   //     school: "University Name",
   //     degree: "Bachelor of Science in Computer Science",
   //     dateRange: "2014 - 2018",
@@ -87,6 +93,6 @@ export const siteConfig = {
   //       "Built 10+ portfolio projects",
   //       "Specialized in React and Node.js",
   //     ],
-  //   },
+    // },
   ],
 };

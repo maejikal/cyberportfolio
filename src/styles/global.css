@@ -1,22 +1,40 @@
 @import "tailwindcss";
+
+/* Force specific element transparent - highest specificity
+#globalSearch {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  background-image: none !important;
+}
+
+#globalSearch:focus {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+} */
+
 html {
   scroll-padding-top: 2rem;
   scroll-behavior: smooth;
+  background-color: var(--bg-primary);
 }
+
 body {
   font-family: 'IBM Plex Mono', monospace;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .prose {
   line-height: 1.75;
+  color: var(--text-primary);
 }
+
+
 .prose h1 {
   font-size: 2.25rem;
   font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  color: #e275db;
-  /* scroll-margin-top: 6rem; */
+  color: var(--accent-dark);
 }
 
 .prose h2 {
@@ -24,7 +42,7 @@ body {
   font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
-  /* scroll-margin-top: 6rem; */
+  color: var(--accent-number);
 }
 
 .prose h3 {
@@ -32,11 +50,12 @@ body {
   font-weight: 600;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
-  /* scroll-margin-top: 6rem; */
+  color: var(--accent-color);
 }
 
 .prose p {
   margin-bottom: 1rem;
+  color: var(--text-primary);
 }
 
 .prose ul, .prose ol {
@@ -46,26 +65,58 @@ body {
 
 .prose li {
   margin-bottom: 0.5rem;
+  color: var(--text-primary);
 }
 
 .prose strong {
   font-weight: 600;
+  color: var(--text-primary);
+}
+.prose a {
+  color: var(--text-code);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.prose a:hover {
+  color: var(--accent-link);
 }
 
 .prose code {
-  background-color: #f3f4f6;
+  background-color: var(--accent-light);
+  color: var(--accent-color);
   padding: 0.2rem 0.4rem;
   border-radius: 0.25rem;
   font-size: 0.875em;
+  border: 1px solid var(--text-primary);
 }
 
 .prose pre {
-  background-color: #1f2937;
-  color: #f3f4f6;
-  padding: 1rem;
+  background-color: var(--bg-code);
+  border: 1px solid var(--bg-code-border);
   border-radius: 0.5rem;
+  padding: 1.5rem;
+  color: var(--text-code);
   overflow-x: auto;
   margin: 1rem 0;
+  position: relative;
+}
+.prose pre::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--accent-color), transparent);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.prose pre code {
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  padding: 0;
 }
 
 .prose ul {
@@ -77,3 +128,21 @@ body {
 .prose ul li {
   margin-bottom: 0.5rem;
 }
+
+.prose ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+  color: var(--accent-light);
+}
+
+.prose ol li {
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+/* Section backgrounds
+section {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+} */
