@@ -1,0 +1,58 @@
+/* Sidebar and TOC shared styles */
+
+.tag-link:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+#backToTop:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+#sidebarChevron,
+#tocChevron {
+  transition: transform 0.3s ease;
+}
+
+/* TOC link styles */
+#sidebarTOC a,
+#mobileTOC a {
+  display: block;
+  padding: 0.25rem 0.25rem;
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text-secondary);
+}
+
+#sidebarTOC a:hover,
+#mobileTOC a:hover {
+  color: var(--accent-link);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* Scrollbar styling for TOC container */
+#sidebarTOC {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-light) transparent;
+  padding-right: 0.5rem;
+}
+
+#sidebarTOC::-webkit-scrollbar {
+  width: 8px;
+}
+
+#sidebarTOC::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#sidebarTOC::-webkit-scrollbar-thumb {
+  background-color: var(--accent-light);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+#sidebarTOC::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent-color);
+}

@@ -5,28 +5,20 @@ This is my personal cybersecurity portfolio and blog. I'm documenting my journey
 ## What You'll Find Here
 
 ### CTF Writeups
-Detailed solutions to Capture The Flag challenges I've solved. Each writeup includes my approach, tools used, and lessons learned. Check out the [CTF Collection](/cyberportfolio/ctf-writeups/2025-12-10-CTF-collection/) for a complete guide on navigating CTF content.
+Detailed solutions to Capture The Flag challenges I've solved. Each writeup includes my approach, tools used, and lessons learned. Check out the [CTF Collection](/cyberportfolio/ctf-writeups/2025-12-10-ctf-collection/) for a complete guide on navigating CTF content.
 
 ### Blog Posts
 Personal thoughts, tutorials, and explorations on:
 - Cybersecurity concepts and techniques
 - Learning experiences and challenges
-- Tool reviews and workflows
-- Industry insights
 
 ### NTU-Related Content
-Study materials, lecture notes, and resources for modules I've taken at Nanyang Technological University. Topics include:
-- Computer Science fundamentals
-- Security-related coursework
-- Project documentation
+Study materials, lecture notes, and resources for modules I've taken at Nanyang Technological University
 
 ### Portfolio
 Showcasing my projects, skills, and experience in cybersecurity and software development.
 
 ## Site Features
-
-### Theme
-The site uses a customizable dark theme optimized for reading technical content. The current theme is **Dark** with accent colors for better visibility.
 
 ### Responsive Design
 Fully responsive - works seamlessly on desktop, tablet, and mobile devices.
@@ -63,5 +55,3 @@ This site is:
 ---
 
 Stay tuned for more content! I regularly update this site with new writeups, blog posts, and resources.
-
-_Template by <span style="color: var(--accent-color);">[RyanFitzgerald](https://github.com/RyanFitzgerald/devportfolio)</span>_

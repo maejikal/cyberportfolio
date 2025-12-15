@@ -2,7 +2,13 @@
 import { getCollection } from 'astro:content';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import MobileTOC from '../../components/MobileTOC.astro';
+import Disclaimer from '../../components/Disclaimer.astro';
+import ArticleStats from '../../components/ArticleStats.astro';
+import RelatedPosts from '../../components/RelatedPosts.astro';
 import '../../styles/global.css';
+import '../../styles/sidebar.css';
 import ThemeProvider from "../../components/ThemeProvider.astro";
 import { siteConfig } from "../../config";
 
@@ -21,6 +27,9 @@ const { Content } = await writeup.render();
 <html lang="en">
   <head>
     <ThemeProvider themeName={siteConfig.theme}></ThemeProvider>
+    <script src="../../scripts/sidebarLogic.js"></script>
+    <script src="../../scripts/codeBlockCopy.js"></script>
+    <script src="../../scripts/rightSidebarToggle.js"></script>
     <meta charset="utf-8" />
     <link rel="icon" type="image/x-icon" href="/cyberportfolio/favicon.ico" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -35,7 +44,7 @@ const { Content } = await writeup.render();
   </head>
   <body class="flex flex-col min-h-screen">
     <Header />
-    <main class="flex-1 w-full px-4 py-10 pt-58">
+    <main class="flex-1 w-full px-4 py-10 pt-40">
       <div class="max-w-7xl mx-auto">
         <a href="/cyberportfolio/ctf-writeups" class="inline-flex items-center mb-6 text-[var(--accent-color)] hover:text-[var(--accent-dark)]">
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,41 +55,53 @@ const { Content } = await writeup.render();
 
         <div class="flex gap-8 lg:gap-12 relative">
           <!-- Sticky Sidebar (Desktop) -->
-          {writeup.data.tags && writeup.data.tags.length > 0 && (
-            <aside class="hidden lg:block w-48 flex-shrink-0">
-              <div class="sticky top-24 space-y-4">
-                <!-- Back to Top Button -->
-                <button 
-                  id="backToTop" 
-                  class="flex items-center gap-2 text-sm font-medium transition-all w-full px-3 py-2 rounded-md hover:shadow-md"
-                  style="background-color: var(--accent-light); color: var(--text-primary);"
-                >
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-                  </svg>
-                  Back to Top
-                </button>
+          <Sidebar tags={writeup.data.tags} />
 
-                <!-- Tags Section -->
-                <div>
+          <!-- Main Article Content + Right Sidebar -->
+          <div class="article-and-sidebar">
+            <!-- Article -->
+            <article class="flex-1 min-w-0 max-w-4xl">
+              <h1 class="text-4xl font-bold mb-2 text-[var(--text-primary)]">{writeup.data.title}</h1>
+              {writeup.data.ctfName && (
+                <p class="text-lg font-medium mb-4 text-[var(--accent-color)]">{writeup.data.ctfName}</p>
+              )}
+              <div class="text-sm mb-4 text-[var(--text-secondary)]">
+                <p>
+                  Published: {writeup.data.pubDate.toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                  })}
+                </p>
+                {writeup.data.lastUpdated && (
+                  <p class="mt-1">
+                    Last Updated: {writeup.data.lastUpdated.toLocaleDateString('en-US', { 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    })}
+                  </p>
+                )}
+              </div>
+
+              {/* Mobile Tags Toggle */}
+              {writeup.data.tags && writeup.data.tags.length > 0 && (
+                <div class="mb-6 lg:hidden">
                   <button 
-                    id="sidebarToggle" 
-                    class="flex items-center gap-2 text-sm font-semibold mb-3 transition-colors w-full"
+                    id="mobileToggle" 
+                    class="flex items-center gap-2 text-sm font-medium transition-colors"
                     style="color: var(--accent-color);"
                   >
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
                     </svg>
-                    <span id="sidebarToggleText">Tags ({writeup.data.tags.length})</span>
-                    <svg id="sidebarChevron" class="w-4 h-4 ml-auto transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
+                    <span id="mobileToggleText">Show Tags ({writeup.data.tags.length})</span>
                   </button>
-                  <div id="sidebarTags" class="flex flex-col gap-2">
+                  <div id="mobileTags" class="hidden mt-3 flex flex-wrap gap-2">
                     {writeup.data.tags.map(tag => (
                       <a 
                         href={`/cyberportfolio/search?q=${encodeURIComponent(tag)}`}
-                        class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center"
+                        class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md"
                         style="background-color: var(--accent-light); color: var(--text-primary);"
                       >
                         {tag}
@@ -88,136 +109,38 @@ const { Content } = await writeup.render();
                     ))}
                   </div>
                 </div>
-              </div>
-            </aside>
-          )}
-
-          <!-- Main Article Content -->
-          <article class="flex-1 min-w-0 max-w-3xl">
-            <h1 class="text-4xl font-bold mb-2 text-[var(--text-primary)]">{writeup.data.title}</h1>
-            {writeup.data.ctfName && (
-              <p class="text-lg font-medium mb-4 text-[var(--accent-color)]">{writeup.data.ctfName}</p>
-            )}
-            <div class="text-sm mb-4 text-[var(--text-secondary)]">
-              <p>
-                Published: {writeup.data.pubDate.toLocaleDateString('en-US', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
-                })}
-              </p>
-              {writeup.data.lastUpdated && (
-                <p class="mt-1">
-                  Last Updated: {writeup.data.lastUpdated.toLocaleDateString('en-US', { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                  })}
-                </p>
               )}
-            </div>
 
-            {/* Mobile Tags Toggle */}
-            {writeup.data.tags && writeup.data.tags.length > 0 && (
-              <div class="mb-6 lg:hidden">
-                <button 
-                  id="mobileToggle" 
-                  class="flex items-center gap-2 text-sm font-medium transition-colors"
-                  style="color: var(--accent-color);"
-                >
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
-                  </svg>
-                  <span id="mobileToggleText">Show Tags ({writeup.data.tags.length})</span>
-                </button>
-                <div id="mobileTags" class="hidden mt-3 flex flex-wrap gap-2">
-                  {writeup.data.tags.map(tag => (
-                    <a 
-                      href={`/cyberportfolio/search?q=${encodeURIComponent(tag)}`}
-                      class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md"
-                      style="background-color: var(--accent-light); color: var(--text-primary);"
-                    >
-                      {tag}
-                    </a>
-                  ))}
-                </div>
+              <MobileTOC />
+
+              <div class="prose max-w-none">
+                <Content />
               </div>
-            )}
+            </article>
 
-            <div class="prose max-w-none">
-              <Content />
+            <!-- Right Sidebar: Stacked Stats and Related Posts with Toggle -->
+            <div class="flex flex-col gap-6 relative">
+              <button
+                id="rightSidebarToggle"
+                aria-label="Toggle article info sidebar"
+                title="Toggle article info"
+                class="self-end"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+                </svg>
+              </button>
+              <div id="rightSidebar" class="flex flex-col gap-6 w-80">
+                <Disclaimer type="writeup" customDisclaimer={writeup.data.disclaimer} />
+                <ArticleStats pubDate={writeup.data.pubDate} lastUpdated={writeup.data.lastUpdated} />
+                <RelatedPosts currentSlug={writeup.slug} tags={writeup.data.tags} type="writeup" />
+              </div>
             </div>
-          </article>
+          </div>
+        </div>
         </div>
       </div>
     </main>
     <Footer />
   </body>
 </html>
-
-<script>
-  // Back to Top functionality
-  const backToTopBtn = document.getElementById('backToTop');
-  if (backToTopBtn) {
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-  }
-
-  // Desktop sidebar toggle
-  const sidebarToggle = document.getElementById('sidebarToggle');
-  const sidebarTags = document.getElementById('sidebarTags');
-  const sidebarChevron = document.getElementById('sidebarChevron');
-  let sidebarVisible = true;
-
-  if (sidebarToggle && sidebarTags && sidebarChevron) {
-    sidebarToggle.addEventListener('click', () => {
-      sidebarVisible = !sidebarVisible;
-      if (sidebarVisible) {
-        sidebarTags.classList.remove('hidden');
-        sidebarChevron.style.transform = 'rotate(0deg)';
-      } else {
-        sidebarTags.classList.add('hidden');
-        sidebarChevron.style.transform = 'rotate(-90deg)';
-      }
-    });
-  }
-
-  // Mobile toggle
-  const mobileToggle = document.getElementById('mobileToggle');
-  const mobileTags = document.getElementById('mobileTags');
-  const mobileToggleText = document.getElementById('mobileToggleText');
-  let mobileVisible = false;
-
-  if (mobileToggle && mobileTags && mobileToggleText) {
-    mobileToggle.addEventListener('click', () => {
-      mobileVisible = !mobileVisible;
-      if (mobileVisible) {
-        mobileTags.classList.remove('hidden');
-        mobileToggleText.textContent = mobileToggleText.textContent.replace('Show', 'Hide');
-      } else {
-        mobileTags.classList.add('hidden');
-        mobileToggleText.textContent = mobileToggleText.textContent.replace('Hide', 'Show');
-      }
-    });
-  }
-</script>
-
-<style>
-  .tag-link:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.1);
-  }
-  
-  #backToTop:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.1);
-  }
-  
-  #sidebarChevron {
-    transition: transform 0.3s ease;
-  }
-</style>

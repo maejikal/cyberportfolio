@@ -1,0 +1,94 @@
+---
+interface Props {
+  type?: 'post' | 'writeup';
+  customDisclaimer?: string;
+}
+
+const { type = 'post', customDisclaimer } = Astro.props;
+
+// Only render if custom disclaimer is provided
+if (!customDisclaimer) {
+  null;
+}
+
+const titleMap = {
+  post: 'Side Note',
+  writeup: 'Side Note'
+};
+---
+
+{customDisclaimer && (
+  <div class="disclaimer-box">
+    <div class="disclaimer-icon">
+      <div class="disclaimer-icon-mark" aria-hidden="true">!</div>
+    </div>
+    <div class="disclaimer-content">
+      <h3 class="disclaimer-title">{titleMap[type]}</h3>
+      <p class="disclaimer-text">{customDisclaimer}</p>
+    </div>
+  </div>
+)}
+
+<style>
+  .disclaimer-box {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-left: 4px solid rgba(245, 158, 11, 0.6);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .disclaimer-icon {
+    flex: 0 0 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    color: #f59e0b;
+    margin-top: 0.125rem;
+  }
+
+  .disclaimer-icon-mark {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.05rem;
+    line-height: 1;
+  }
+
+  .disclaimer-content {
+    flex: 1;
+  }
+
+  .disclaimer-title {
+    margin: 0 0 0.25rem 0;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+  }
+
+  .disclaimer-text {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .disclaimer-box {
+      background-color: rgba(245, 158, 11, 0.12);
+      border-color: rgba(245, 158, 11, 0.4);
+      border-left-color: rgba(245, 158, 11, 0.7);
+    }
+
+    .disclaimer-icon {
+      color: #fbbf24;
+    }
+  }
+</style>

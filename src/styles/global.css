@@ -73,7 +73,7 @@ body {
   color: var(--text-primary);
 }
 .prose a {
-  color: var(--text-code);
+  color: rgb(24, 189, 249);
   text-decoration: underline;
   transition: color 0.2s ease;
 }
@@ -119,6 +119,69 @@ body {
   padding: 0;
 }
 
+/* Code block container */
+.code-block-container {
+  position: relative;
+  margin: 1rem 0;
+}
+
+/* Code block copy button */
+.code-copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-secondary);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  flex-shrink: 0;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.code-block-container:hover .code-copy-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.code-copy-btn:hover {
+  background-color: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--text-primary);
+}
+
+.code-copy-btn:active {
+  transform: scale(0.9);
+}
+
+.code-copy-btn.copied {
+  background-color: rgba(34, 197, 94, 0.25);
+  border-color: rgba(34, 197, 94, 0.4);
+  color: #22c55e;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.code-copy-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.5;
+}
+
+.code-copy-btn .copy-text {
+  display: none;
+}
+
 .prose ul {
   list-style: disc;
   padding-left: 1.5rem;
@@ -141,8 +204,254 @@ body {
   color: var(--text-secondary);
 }
 
-/* Section backgrounds
-section {
-  background-color: var(--bg-primary);
+/* Image Styling */
+.prose img {
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+  border: 1px solid rgba(128, 128, 128, 0.1);
+  transition: all 0.3s ease;
+}
+
+.prose img:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  border-color: rgba(128, 128, 128, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Callout styles for notes, tips, warnings, and errors */
+.prose blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem 1rem 1rem;
+  border-radius: 0.5rem;
+  background-color: rgba(59, 130, 246, 0.08);
+  border-left: 4px solid var(--accent-color);
+  border-top: 1px solid rgba(59, 130, 246, 0.15);
+  border-right: 1px solid rgba(59, 130, 246, 0.15);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.15);
   color: var(--text-primary);
-} */
+}
+
+.prose blockquote p {
+  margin: 0;
+  font-style: italic;
+  opacity: 0.95;
+}
+
+.prose blockquote strong {
+  font-style: normal;
+}
+
+/* Callout component with icon support */
+.prose .callout {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid;
+  border-top: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  color: var(--text-primary);
+  margin: 1.5rem 0;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.prose .callout .callout-icon {
+  flex: 0 0 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin-top: 0.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prose .callout .callout-body {
+  flex: 1 1 auto;
+}
+
+.prose .callout .callout-body p {
+  margin: 0;
+}
+
+.prose .callout .callout-body p:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+/* Info Callout */
+.prose .callout-info {
+  background-color: rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.prose .callout-info .callout-icon {
+  color: #3b82f6;
+}
+
+/* Tip Callout */
+.prose .callout-tip {
+  background-color: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.prose .callout-tip .callout-icon {
+  color: #10b981;
+}
+
+/* Warning Callout */
+.prose .callout-warning {
+  background-color: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.prose .callout-warning .callout-icon {
+  color: #f59e0b;
+}
+
+/* Danger/Error Callout */
+.prose .callout-danger,
+.prose .callout-error {
+  background-color: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.prose .callout-danger .callout-icon,
+.prose .callout-error .callout-icon {
+  color: #ef4444;
+}
+
+/* Success Callout */
+.prose .callout-success {
+  background-color: rgba(34, 197, 94, 0.08);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.prose .callout-success .callout-icon {
+  color: #22c55e;
+}
+
+/* Code inside callouts */
+.prose .callout code {
+  background-color: rgba(0, 0, 0, 0.08);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .prose blockquote {
+    background-color: rgba(59, 130, 246, 0.12);
+    border-left-color: rgba(59, 130, 246, 0.6);
+    border-top-color: rgba(59, 130, 246, 0.25);
+    border-right-color: rgba(59, 130, 246, 0.25);
+    border-bottom-color: rgba(59, 130, 246, 0.25);
+  }
+
+  .prose .callout {
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+
+  .prose .callout-info {
+    background-color: rgba(59, 130, 246, 0.12);
+    border-color: rgba(59, 130, 246, 0.4);
+  }
+
+  .prose .callout-tip {
+    background-color: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.4);
+  }
+
+  .prose .callout-warning {
+    background-color: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.4);
+  }
+
+  .prose .callout-danger,
+  .prose .callout-error {
+    background-color: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.4);
+  }
+
+  .prose .callout-success {
+    background-color: rgba(34, 197, 94, 0.12);
+    border-color: rgba(34, 197, 94, 0.4);
+  }
+
+  .prose .callout code {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
+/* Right sidebar toggle */
+#rightSidebarToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.375rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+#rightSidebarToggle:hover {
+  color: var(--accent-color);
+  background-color: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+#rightSidebarToggle svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
+  transition: transform 0.2s ease;
+}
+
+#rightSidebarToggle.toggled svg {
+  transform: scaleX(-1);
+}
+
+/* Right sidebar container */
+#rightSidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 20rem;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+#rightSidebar.hidden {
+  display: none;
+}
+
+/* Article and sidebar container */
+.article-and-sidebar {
+  display: flex;
+  gap: 2rem;
+  flex: 1;
+  min-width: 0;
+  position: relative;
+}
+
+.article-and-sidebar.sidebar-hidden {
+  justify-content: flex-start;
+}
+
+.article-and-sidebar.sidebar-hidden article {
+  max-width: none;
+  width: 100%;
+}

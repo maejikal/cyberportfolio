@@ -1,0 +1,92 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  currentSlug: string;
+  tags?: string[];
+  type: 'writeup' | 'post';
+}
+
+const { currentSlug, tags = [], type } = Astro.props;
+
+// Get all posts/writeups from the same collection
+const collection = type === 'writeup' 
+  ? await getCollection('writeups')
+  : await getCollection('posts');
+
+// Filter related items by tags and exclude drafts
+let relatedItems = collection.filter(item => {
+  if (item.slug === currentSlug) return false;
+  if (item.data.draft) return false; // Exclude drafts
+  if (!item.data.tags) return false;
+  
+  const itemTags = item.data.tags.map(t => t.toLowerCase());
+  const currentTags = tags.map(t => t.toLowerCase());
+  
+  // Find common tags
+  const commonTags = itemTags.filter(tag => currentTags.includes(tag));
+  return commonTags.length > 0;
+});
+
+// Sort by number of common tags and by date
+relatedItems = relatedItems
+  .sort((a, b) => {
+    const aCommon = (a.data.tags || []).filter(tag => 
+      tags.some(t => t.toLowerCase() === tag.toLowerCase())
+    ).length;
+    const bCommon = (b.data.tags || []).filter(tag => 
+      tags.some(t => t.toLowerCase() === tag.toLowerCase())
+    ).length;
+    
+    if (bCommon !== aCommon) return bCommon - aCommon;
+    return b.data.pubDate.getTime() - a.data.pubDate.getTime();
+  })
+  .slice(0, 4); // Limit to 4 related items
+
+const baseUrl = type === 'writeup' ? '/cyberportfolio/ctf-writeups' : '/cyberportfolio/blog';
+---
+
+<aside class="hidden lg:block w-full">
+  <div class="rounded-lg p-4 border border-[var(--accent-light)]" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.05);">
+    <h3 class="text-lg font-bold mb-4 text-[var(--text-primary)]">Related {type === 'writeup' ? 'Writeups' : 'Posts'}</h3>
+    
+    {relatedItems.length > 0 ? (
+      <div class="space-y-3">
+        {relatedItems.map(item => (
+          <a
+            href={`${baseUrl}/${item.slug}`}
+            class="group block p-3 rounded-lg transition-all duration-200"
+            style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.08);"
+          >
+            <p class="font-medium text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors line-clamp-2">
+              {item.data.title}
+            </p>
+            <p class="text-xs text-[var(--text-secondary)] mt-1">
+              {item.data.pubDate.toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric',
+                year: '2-digit'
+              })}
+            </p>
+            {item.data.tags && item.data.tags.length > 0 && (
+              <div class="flex flex-wrap gap-1 mt-2">
+                {item.data.tags.slice(0, 2).map(tag => (
+                  <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);">
+                    {tag}
+                  </span>
+                ))}
+                {item.data.tags.length > 2 && (
+                  <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-secondary);">
+                    +{item.data.tags.length - 2}
+                  </span>
+                )}
+              </div>
+            )}
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="text-sm text-[var(--text-secondary)]">No related {type === 'writeup' ? 'writeups' : 'posts'} found.</p>
+    )}
+  </div>
+</aside>

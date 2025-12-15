@@ -8,6 +8,7 @@ const postsCollection = defineCollection({
     lastUpdated: z.date().optional(),
     description: z.string().optional(),
     tags: z.array(z.string()).optional(),
+    disclaimer: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });
@@ -32,6 +33,7 @@ const writeupCollection = defineCollection({
     description: z.string().optional(),
     ctfName: z.string().optional(),
     tags: z.array(z.string()).optional(),
+    disclaimer: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });

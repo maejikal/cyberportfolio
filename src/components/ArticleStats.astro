@@ -1,0 +1,113 @@
+---
+interface Props {
+  pubDate: Date;
+  lastUpdated?: Date;
+}
+
+const { pubDate, lastUpdated } = Astro.props;
+
+// Format date
+const formattedPubDate = pubDate.toLocaleDateString('en-US', { 
+  year: 'numeric', 
+  month: 'short', 
+  day: 'numeric' 
+});
+
+const formattedLastUpdated = lastUpdated?.toLocaleDateString('en-US', { 
+  year: 'numeric', 
+  month: 'short', 
+  day: 'numeric' 
+});
+---
+
+<aside class="hidden lg:block w-full">
+  <div class="rounded-lg p-4 border border-[var(--accent-light)]" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.05);">
+    <h3 class="text-lg font-bold mb-4 text-[var(--text-primary)]">Article Stats</h3>
+    
+    <div class="space-y-4" id="articleStats">
+      {/* Reading Time - Calculated by script */}
+      <div class="flex items-start gap-3" id="readingTimeContainer" style="display: none;">
+        <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <div>
+          <p class="text-sm text-[var(--text-secondary)]">Reading Time</p>
+          <p class="font-semibold text-[var(--text-primary)]" id="readingTimeValue">- min read</p>
+        </div>
+      </div>
+
+      {/* Word Count - Calculated by script */}
+      <div class="flex items-start gap-3" id="wordCountContainer" style="display: none;">
+        <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+        </svg>
+        <div>
+          <p class="text-sm text-[var(--text-secondary)]">Word Count</p>
+          <p class="font-semibold text-[var(--text-primary)]" id="wordCountValue">0</p>
+        </div>
+      </div>
+
+      {/* Published Date */}
+      <div class="flex items-start gap-3">
+        <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+        </svg>
+        <div>
+          <p class="text-sm text-[var(--text-secondary)]">Published</p>
+          <p class="font-semibold text-[var(--text-primary)]">{formattedPubDate}</p>
+        </div>
+      </div>
+
+      {/* Last Updated */}
+      {lastUpdated && (
+        <div class="flex items-start gap-3 pt-2 border-t border-[var(--accent-light)]">
+          <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+          </svg>
+          <div>
+            <p class="text-sm text-[var(--text-secondary)]">Last Updated</p>
+            <p class="font-semibold text-[var(--text-primary)]">{formattedLastUpdated}</p>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</aside>
+
+<script>
+  // Calculate word count and reading time
+  function updateArticleStats() {
+    const article = document.querySelector('article .prose');
+    if (!article) return;
+
+    // Get text content and count words
+    const text = article.textContent || '';
+    const wordCount = text.split(/\s+/).filter((word: string) => word.length > 0).length;
+
+    // Calculate reading time (200 words per minute)
+    const readingTime = Math.ceil(wordCount / 200);
+
+    // Update the display
+    const readingTimeContainer = document.getElementById('readingTimeContainer');
+    const wordCountContainer = document.getElementById('wordCountContainer');
+    const readingTimeValue = document.getElementById('readingTimeValue');
+    const wordCountValue = document.getElementById('wordCountValue');
+
+    if (readingTimeValue) {
+      readingTimeValue.textContent = `${readingTime} min read`;
+      readingTimeContainer?.style.removeProperty('display');
+    }
+
+    if (wordCountValue) {
+      wordCountValue.textContent = wordCount.toLocaleString();
+      wordCountContainer?.style.removeProperty('display');
+    }
+  }
+
+  // Run on page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateArticleStats);
+  } else {
+    updateArticleStats();
+  }
+</script>

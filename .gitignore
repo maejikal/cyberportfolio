@@ -23,7 +23,7 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-scripts/
+./scripts/
 .vscode/markdown.code-snippets
 templates/
 site-maintenance.md
