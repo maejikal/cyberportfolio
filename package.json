@@ -16,7 +16,6 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.16.5",
-    "tailwindcss": "^4.1.11",
-    "@rollup/rollup-linux-x64-gnu": "^4.x"
+    "tailwindcss": "^4.1.11"
   }
 }
