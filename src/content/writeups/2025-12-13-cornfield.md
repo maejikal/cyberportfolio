@@ -1,6 +1,7 @@
 ---
 title: "Cornfield Chase"
 pubDate: 2025-12-13
+lastUpdated: 2025-12-16
 description: "geoguessr"
 ctfName: "niteCTF 2025"
 draft: false
@@ -18,11 +19,11 @@ Then, I found this reddit post,  ["A map I made to help with Taiwan power pole c
 
 Using this, the label I found must be in the N section, **4% eastward and 89% northward**.
 However,  since the CTF requires the location to be within 250m of the actual place, I needed to be more precise. The above article had a link to another [website](https://wiki.osgeo.org/wiki/Taiwan_Power_Company_grid#.E8.A1.97.E6.99.AF.E4.BE.8B_Street_View_Examples) with a script to convert Taiwan power pole labels to the exact (almost) coordinates. 
-![Taiwan power company grid](../../assets/images/cornfield-screenshot-3.png)
+![Taiwan power company grid](../../assets/images/cornfield-screenshot-4.png)
 
 Being the script kiddie I am, I downloaded the file and ran the script on the target label, getting the coordinates of **23.4535, 120.2579**
 ![Script output coordinates](../../assets/images/cornfield-coordinates.png)
-![Final location verification](../../assets/images/cornfield-screenshot-4.png)
+![Final location verification](../../assets/images/cornfield-screenshot-3.png)
 Flag: `nite{1'v3_b33n_w41t1ng_f0r_y0u_4t_cape_no._7}`
 
 
