@@ -1,7 +1,7 @@
 ---
 title: "Cornfield Chase"
 pubDate: 2025-12-13
-lastUpdated: 2025-12-16
+lastUpdated: 2025-12-17
 description: "geoguessr"
 ctfName: "niteCTF 2025"
 draft: false
