@@ -37,17 +37,19 @@ export const themes: Record<ThemeName, Theme> = {
     colors: {
       accent: "#e275db",
       accentLight: "rgba(226, 117, 219, 0.1)",
-      accentDark: "rgba(226, 117, 219, 0.2)",
+      accentDark: "rgba(24, 128, 255, 1)",
+      accentLink: "#fb3fdbff",
+      accentNumber: "#f651aeff",
       background: {
         primary: "#ffffff",
         secondary: "#f9f9f9",
-        code: "#0f172a",
-        codeBorder: "rgba(226, 117, 219, 0.2)",
+        code: "#fcc0eaff",
+        codeBorder: "rgba(255, 0, 238, 0.2)",
       },
       text: {
         primary: "#1a1a1a",
         secondary: "#666666",
-        code: "#f3f4f6",
+        code: "#030a16ff",
       },
       borders: {
         primary: "#e275db",
@@ -87,9 +89,9 @@ export const themes: Record<ThemeName, Theme> = {
     colors: {
       accent: "#0ea5e9",
       accentLight: "rgba(14, 165, 233, 0.1)",
-      accentDark: "rgba(14, 165, 233, 0.2)",
+      accentDark: "rgba(14, 164, 233, 1)",
       background: {
-        primary: "#f0f9ff",
+        primary: "#d9effdff",
         secondary: "#e0f2fe",
         code: "#082f49",
         codeBorder: "rgba(14, 165, 233, 0.2)",

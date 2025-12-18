@@ -62,13 +62,13 @@ body {
   color: var(--text-primary);
 }
 .prose a {
-  color: rgb(24, 189, 249);
+  color: var(--accent-link, var(--accent-color));
   text-decoration: underline;
   transition: color 0.2s ease;
 }
 
 .prose a:hover {
-  color: var(--accent-link);
+  color: var(--accent-dark);
 }
 
 .prose code {
@@ -125,8 +125,8 @@ body {
   width: 2rem;
   height: 2rem;
   padding: 0;
-  background-color: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: var(--accent-light);
+  border: 1px solid var(--border-code);
   color: var(--text-secondary);
   border-radius: 0.375rem;
   cursor: pointer;
@@ -144,8 +144,8 @@ body {
 }
 
 .code-copy-btn:hover {
-  background-color: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--accent-dark);
+  border-color: var(--accent-color);
   color: var(--text-primary);
 }
 
@@ -154,9 +154,9 @@ body {
 }
 
 .code-copy-btn.copied {
-  background-color: rgba(34, 197, 94, 0.25);
-  border-color: rgba(34, 197, 94, 0.4);
-  color: #22c55e;
+  background-color: var(--accent-dark);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
   opacity: 1;
   pointer-events: auto;
 }
@@ -183,7 +183,8 @@ body {
 
 .prose ol {
   list-style: decimal;
-  padding-left: 1.5rem;
+  list-style-position: inside;
+  padding-left: 0;
   margin: 1rem 0;
   color: var(--accent-light);
 }
@@ -191,24 +192,133 @@ body {
 .prose ol li {
   margin-bottom: 0.5rem;
   color: var(--text-secondary);
+  padding-left: 0.5rem;
 }
 
 /* Image Styling */
 .prose img {
   border-radius: 0.75rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px var(--accent-light);
   max-width: 100%;
   height: auto;
   display: block;
   margin: 1.5rem auto;
-  border: 1px solid rgba(128, 128, 128, 0.1);
   transition: all 0.3s ease;
 }
 
 .prose img:hover {
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
-  border-color: rgba(128, 128, 128, 0.2);
   transform: translateY(-2px);
+}
+
+/* Table Styling */
+.prose table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--accent-light);
+  border: 1px solid var(--border-primary);
+  font-size: 0.95rem;
+}
+
+.prose thead th:first-child {
+  border-top-left-radius: 0.5rem;
+}
+
+.prose thead th:last-child {
+  border-top-right-radius: 0.5rem;
+}
+
+.prose tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 0.5rem;
+}
+
+.prose tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 0.5rem;
+}
+
+.prose thead {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.prose thead th {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--accent-dark);
+}
+
+.prose tbody tr {
+  border-bottom: 1px solid var(--border-primary);
+  transition: background-color 0.2s ease;
+}
+
+.prose tbody tr:last-child {
+  border-bottom: none;
+}
+
+.prose tbody tr:nth-child(even) {
+  background-color: var(--accent-light);
+}
+
+.prose tbody td {
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
+  vertical-align: top;
+}
+
+.prose th:first-child,
+.prose td:first-child {
+  padding-left: 1.25rem;
+}
+
+.prose th:last-child,
+.prose td:last-child {
+  padding-right: 1.25rem;
+}
+
+/* Table with code elements */
+.prose table code {
+  background-color: var(--bg-code);
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.25rem;
+  font-size: 0.85em;
+  border: 1px solid var(--border-code);
+  white-space: nowrap;
+  color: var(--text-code);
+}
+
+/* Responsive table wrapper */
+.prose table {
+  display: table;
+  overflow-x: auto;
+  word-break: keep-all;
+}
+
+.prose tbody td {
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
+  vertical-align: top;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .prose table {
+    font-size: 0.85rem;
+  }
+  
+  .prose thead th,
+  .prose tbody td {
+    padding: 0.6rem 0.75rem;
+  }
 }
 
 /* Callout styles for notes, tips, warnings, and errors */
@@ -216,11 +326,11 @@ body {
   margin: 1.5rem 0;
   padding: 1rem 1.25rem 1rem 1rem;
   border-radius: 0.5rem;
-  background-color: rgba(59, 130, 246, 0.08);
+  background-color: var(--accent-light);
   border-left: 4px solid var(--accent-color);
-  border-top: 1px solid rgba(59, 130, 246, 0.15);
-  border-right: 1px solid rgba(59, 130, 246, 0.15);
-  border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+  border-top: 1px solid var(--border-primary);
+  border-right: 1px solid var(--border-primary);
+  border-bottom: 1px solid var(--border-primary);
   color: var(--text-primary);
 }
 
@@ -247,7 +357,7 @@ body {
   border-bottom: 1px solid;
   color: var(--text-primary);
   margin: 1.5rem 0;
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: var(--accent-light);
 }
 
 .prose .callout .callout-icon {
@@ -326,57 +436,181 @@ body {
 
 /* Code inside callouts */
 .prose .callout code {
-  background-color: rgba(0, 0, 0, 0.08);
+  background-color: var(--bg-code);
   padding: 0.2rem 0.4rem;
   border-radius: 0.25rem;
   font-size: 0.9em;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--border-code);
+  color: var(--text-code);
 }
 
-/* Dark mode adjustments */
-@media (prefers-color-scheme: dark) {
-  .prose blockquote {
-    background-color: rgba(59, 130, 246, 0.12);
-    border-left-color: rgba(59, 130, 246, 0.6);
-    border-top-color: rgba(59, 130, 246, 0.25);
-    border-right-color: rgba(59, 130, 246, 0.25);
-    border-bottom-color: rgba(59, 130, 246, 0.25);
-  }
+/* Obsidian-style Callouts */
+.prose .callout {
+  display: block;
+  margin: 1.5rem 0;
+  border-radius: 0.5rem;
+  border: 1px solid;
+  overflow: hidden;
+  background-color: var(--bg-secondary);
+}
 
-  .prose .callout {
-    background-color: rgba(255, 255, 255, 0.04);
-  }
+.prose .callout-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  background-color: var(--accent-light);
+  border-bottom: 1px solid var(--border-primary);
+}
 
-  .prose .callout-info {
-    background-color: rgba(59, 130, 246, 0.12);
-    border-color: rgba(59, 130, 246, 0.4);
-  }
+.prose .callout-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
 
-  .prose .callout-tip {
-    background-color: rgba(16, 185, 129, 0.12);
-    border-color: rgba(16, 185, 129, 0.4);
-  }
+.prose .callout-title-text {
+  flex: 1;
+  font-size: 0.95rem;
+}
 
-  .prose .callout-warning {
-    background-color: rgba(245, 158, 11, 0.12);
-    border-color: rgba(245, 158, 11, 0.4);
-  }
+.prose .callout-content {
+  padding: 1rem;
+}
 
-  .prose .callout-danger,
-  .prose .callout-error {
-    background-color: rgba(239, 68, 68, 0.12);
-    border-color: rgba(239, 68, 68, 0.4);
-  }
+.prose .callout-content > *:first-child {
+  margin-top: 0;
+}
 
-  .prose .callout-success {
-    background-color: rgba(34, 197, 94, 0.12);
-    border-color: rgba(34, 197, 94, 0.4);
-  }
+.prose .callout-content > *:last-child {
+  margin-bottom: 0;
+}
 
-  .prose .callout code {
-    background-color: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.12);
-  }
+/* Collapsible callouts */
+.prose .callout-collapsible .callout-title {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+
+/* .prose .callout-collapsible .callout-title:hover {
+  background-color: var(--accent-dark);
+} */
+
+.prose .callout-toggle {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: auto;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.prose .callout-collapsible[data-expanded="false"] .callout-toggle {
+  transform: rotate(-90deg);
+}
+
+.prose .callout-collapsible[data-expanded="false"] .callout-content {
+  display: none;
+}
+
+/* Callout color variants */
+.prose .callout-blue {
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.prose .callout-blue .callout-title {
+  background-color: rgba(59, 130, 246, 0.08);
+  border-bottom-color: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
+}
+
+.prose .callout-blue .callout-content {
+  background-color: rgba(59, 130, 246, 0.05);
+}
+
+.prose .callout-green {
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.prose .callout-green .callout-title {
+  background-color: rgba(34, 197, 94, 0.08);
+  border-bottom-color: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.prose .callout-green .callout-content {
+  background-color: rgba(34, 197, 94, 0.05);
+}
+
+.prose .callout-yellow {
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.prose .callout-yellow .callout-title {
+  background-color: rgba(245, 158, 11, 0.08);
+  border-bottom-color: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+}
+
+.prose .callout-yellow .callout-content {
+  background-color: rgba(245, 158, 11, 0.05);
+}
+
+.prose .callout-red {
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.prose .callout-red .callout-title {
+  background-color: rgba(239, 68, 68, 0.08);
+  border-bottom-color: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.prose .callout-red .callout-content {
+  background-color: rgba(239, 68, 68, 0.05);
+}
+
+.prose .callout-purple {
+  border-color: rgba(168, 85, 247, 0.3);
+}
+
+.prose .callout-purple .callout-title {
+  background-color: rgba(168, 85, 247, 0.08);
+  border-bottom-color: rgba(168, 85, 247, 0.15);
+  color: #a855f7;
+}
+
+.prose .callout-purple .callout-content {
+  background-color: rgba(168, 85, 247, 0.05);
+}
+
+.prose .callout-cyan {
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+.prose .callout-cyan .callout-title {
+  background-color: rgba(6, 182, 212, 0.08);
+  border-bottom-color: rgba(6, 182, 212, 0.15);
+  color: #06b6d4;
+}
+
+.prose .callout-cyan .callout-content {
+  background-color: rgba(6, 182, 212, 0.05);
+}
+
+.prose .callout-gray {
+  border-color: rgba(107, 114, 128, 0.3);
+}
+
+.prose .callout-gray .callout-title {
+  background-color: rgba(107, 114, 128, 0.08);
+  border-bottom-color: rgba(107, 114, 128, 0.15);
+  color: #6b7280;
+}
+
+.prose .callout-gray .callout-content {
+  background-color: rgba(107, 114, 128, 0.05);
 }
 
 /* Right sidebar toggle */
@@ -388,7 +622,7 @@ body {
   height: 2rem;
   padding: 0;
   background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--border-primary);
   border-radius: 0.375rem;
   color: var(--text-secondary);
   cursor: pointer;
@@ -398,8 +632,8 @@ body {
 
 #rightSidebarToggle:hover {
   color: var(--accent-color);
-  background-color: rgba(59, 130, 246, 0.1);
-  border-color: rgba(59, 130, 246, 0.3);
+  background-color: var(--accent-light);
+  border-color: var(--accent-color);
 }
 
 #rightSidebarToggle svg {

@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
+import remarkCallouts from './src/lib/remarkCallouts.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -25,6 +26,9 @@ if (!existsSync(contentAssetsPath)) {
 export default defineConfig({
   site: "https://maejikal.github.io",
   base: '/cyberportfolio',
+  markdown: {
+    remarkPlugins: [remarkCallouts],
+  },
   vite: {
     plugins: [tailwindcss()],
   },
