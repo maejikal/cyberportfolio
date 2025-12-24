@@ -24,7 +24,7 @@ const allItems = [
     type: 'writeup',
     title: writeup.data.title,
     description: writeup.data.description || '',
-    tags: [...(writeup.data.tags || []), writeup.data.ctfName].filter(Boolean),
+    tags: writeup.data.tags || [],
     url: `/cyberportfolio/ctf-writeups/${writeup.slug}/`,
     date: writeup.data.pubDate.toISOString()
   })),
