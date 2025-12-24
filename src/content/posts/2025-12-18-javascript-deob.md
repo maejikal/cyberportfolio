@@ -7,6 +7,9 @@ tags:
   - javascript
   - web-exploit
   - obfuscation
+  - encode
+  - decode
+  - cipher
 description: basics of deobfuscation and decoding JavaScript code
 disclaimer: This article contains exact quotes from HTB's module. There will be minimal walkthrough for the questions. You are highly encouraged to try them yourself.
 draft: false

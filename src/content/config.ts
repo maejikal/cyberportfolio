@@ -13,13 +13,19 @@ const postsCollection = defineCollection({
   }),
 });
 
-const projectsCollection = defineCollection({
+const reviewsCollection = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
+    pubDate: z.date(),
+    lastUpdated: z.date().optional(),
     description: z.string().optional(),
-    link: z.string().optional(),
-    skills: z.array(z.string()).optional(),
+    category: z.enum(['module', 'book', 'tool', 'resource', 'other']),
+    moduleCode: z.string().optional(),
+    semester: z.string().optional(),
+    rating: z.number().min(1).max(5).optional(),
+    tags: z.array(z.string()).optional(),
+    disclaimer: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });
@@ -40,6 +46,6 @@ const writeupCollection = defineCollection({
 
 export const collections = {
   posts: postsCollection,
-  projects: projectsCollection,
+  reviews: reviewsCollection,
   writeups: writeupCollection,
 };

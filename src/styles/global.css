@@ -337,7 +337,7 @@ body {
 .prose blockquote p {
   margin: 0;
   font-style: italic;
-  opacity: 0.95;
+  opacity: 1;
 }
 
 .prose blockquote strong {

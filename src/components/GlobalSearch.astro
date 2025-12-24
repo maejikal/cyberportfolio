@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('posts')).filter(p => !p.data.draft);
 const writeups = (await getCollection('writeups')).filter(w => !w.data.draft);
-const projects = (await getCollection('projects')).filter(p => !p.data.draft);
+const reviews = (await getCollection('reviews')).filter(r => !r.data.draft);
 
 // Build searchable index
 const searchIndex = [
@@ -23,13 +23,15 @@ const searchIndex = [
     url: `/cyberportfolio/ctf-writeups/${writeup.slug}/`,
     date: writeup.data.pubDate
   })),
-  ...projects.map(project => ({
-    type: 'project',
-    title: project.data.title,
-    description: project.data.description || '',
-    tags: project.data.skills || [],
-    url: project.data.link || '#',
-    date: new Date()
+  ...reviews.map(review => ({
+    type: 'review',
+    title: review.data.title,
+    description: review.data.description || '',
+    tags: review.data.tags || [],
+    category: review.data.category,
+    moduleCode: review.data.moduleCode || '',
+    url: `/cyberportfolio/reviews/${review.slug}/`,
+    date: review.data.pubDate
   }))
 ];
 ---
@@ -40,7 +42,7 @@ const searchIndex = [
       type="text"
       id="globalSearch"
       name="q"
-      placeholder="Search posts, writeups, projects, tags..."
+      placeholder="Search posts, writeups, reviews, tags..."
       class="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2"
       style="border: 1px solid var(--border-primary); background-color: var(--bg-secondary-translucent); color: var(--text-primary); backdrop-filter: blur(8px);"
     />
