@@ -1,5 +1,5 @@
 ---
-title: "Data Structures and Algorithms"
+title: "SC2001 - Algorithm Design and Analysis"
 pubDate: 2025-12-24
 lastUpdated: 2025-12-24
 description: "greedy, dp and other graph algorithms"
