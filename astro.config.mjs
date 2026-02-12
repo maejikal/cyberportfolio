@@ -6,6 +6,8 @@ import { dirname, join } from 'path';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import remarkCallouts from './src/lib/remarkCallouts.js';
 
+import sitemap from '@astrojs/sitemap';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -26,10 +28,14 @@ if (!existsSync(contentAssetsPath)) {
 export default defineConfig({
   site: "https://maejikal.github.io",
   base: '/cyberportfolio',
+
   markdown: {
     remarkPlugins: [remarkCallouts],
   },
+
   vite: {
     plugins: [tailwindcss()],
   },
+
+  integrations: [sitemap()]
 })
