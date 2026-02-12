@@ -11,7 +11,7 @@ export const siteConfig = {
   },
   social: {
     // email: "your-email@example.com",
-    // linkedin: "/",
+    linkedin: "linkedin.com/in/meyling-taing-bab5ab139",
     // twitter: "https://x.com/rfitzio",
     github: "https://github.com/maejikal",
   },
