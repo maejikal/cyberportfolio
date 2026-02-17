@@ -1,7 +1,7 @@
 ---
 title: "SC2001 - Algorithm Design and Analysis"
 pubDate: 2025-12-24
-lastUpdated: 2025-12-24
+lastUpdated: 2025-02-10
 description: "greedy, dp and other graph algorithms"
 category: module
 moduleCode: "SC2001"
