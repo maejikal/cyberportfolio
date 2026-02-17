@@ -1,0 +1,282 @@
+<!DOCTYPE html><html lang="en"> <head><style is:global>
+  :root {
+    --accent-color: #60a5fa;
+    --accent-light: rgba(193, 219, 251, 0.1);
+    --accent-dark: rgba(251, 121, 117, 1);
+    --accent-link: #bbff7cff;
+    --accent-number: #ffc36aff;
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --bg-secondary-translucent: rgba(26, 26, 26, 0.75);
+    --bg-code: #000000;
+    --bg-code-border: rgba(96, 165, 250, 0.2);
+    --text-primary: #e5e5e5;
+    --text-secondary: #a3a3a3;
+    --text-code: #d4d4d4;
+    --border-primary: #60a5fa;
+    --border-code: #60a5fa;
+  }
+</style><meta charset="utf-8"><script type="module" src="/cyberportfolio/_astro/_slug_.astro_astro_type_script_index_0_lang.DL7JLXz2.js"></script><script type="module" src="/cyberportfolio/_astro/_slug_.astro_astro_type_script_index_1_lang.5d8QzmEz.js"></script><script type="module" src="/cyberportfolio/_astro/_slug_.astro_astro_type_script_index_2_lang.T3-5GIcd.js"></script><script type="module" src="/cyberportfolio/_astro/_slug_.astro_astro_type_script_index_3_lang.B-GXHydZ.js"></script><link rel="icon" type="image/x-icon" href="/cyberportfolio/favicon.ico"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Astro v5.16.6"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"><title>Attacking Web Applications With Ffuf - HTB Academy</title><style>html{scroll-behavior:smooth}#header[data-astro-cid-3ef6ksr2]{transform:translateY(0)}
+.disclaimer-box[data-astro-cid-cukr4w5s]{display:flex;gap:.75rem;padding:1rem;border-radius:.5rem;background-color:#f59e0b14;border:1px solid rgba(245,158,11,.3);border-left:4px solid rgba(245,158,11,.6);color:var(--text-primary);font-size:.875rem;line-height:1.5}.disclaimer-icon[data-astro-cid-cukr4w5s]{flex:0 0 1.25rem;display:flex;align-items:flex-start;justify-content:center;color:#f59e0b;margin-top:.125rem}.disclaimer-icon-mark[data-astro-cid-cukr4w5s]{width:1.25rem;height:1.25rem;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.05rem;line-height:1}.disclaimer-content[data-astro-cid-cukr4w5s]{flex:1}.disclaimer-title[data-astro-cid-cukr4w5s]{margin:0 0 .25rem;font-weight:600;font-size:.875rem;color:var(--text-primary)}.disclaimer-text[data-astro-cid-cukr4w5s]{margin:0;color:var(--text-secondary);font-size:.8rem}@media(prefers-color-scheme:dark){.disclaimer-box[data-astro-cid-cukr4w5s]{background-color:#f59e0b1f;border-color:#f59e0b66;border-left-color:#f59e0bb3}.disclaimer-icon[data-astro-cid-cukr4w5s]{color:#fbbf24}}.tag-link:hover,#backToTop:hover{transform:translateY(-2px);filter:brightness(1.1)}#sidebarChevron,#tocChevron{transition:transform .3s ease}#sidebarTOC a,#mobileTOC a{display:block;padding:.25rem;border-radius:4px;text-decoration:none;color:var(--text-secondary)}#sidebarTOC a:hover,#mobileTOC a:hover{color:var(--accent-link);background:#00000008}#sidebarTOC{scrollbar-width:thin;scrollbar-color:var(--accent-light) transparent;padding-right:.5rem}#sidebarTOC::-webkit-scrollbar{width:8px}#sidebarTOC::-webkit-scrollbar-track{background:transparent}#sidebarTOC::-webkit-scrollbar-thumb{background-color:var(--accent-light);border-radius:4px;border:2px solid transparent;background-clip:padding-box}#sidebarTOC::-webkit-scrollbar-thumb:hover{background-color:var(--accent-color)}
+</style>
+<link rel="stylesheet" href="/cyberportfolio/_astro/blog.CBlC4rlS.css"></head> <body class="flex flex-col min-h-screen"> <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-sm" style="background-color: var(--bg-secondary-translucent)" data-astro-cid-3ef6ksr2> <nav class="max-w-7xl mx-auto px-4 py-3 md:px-6 md:py-4" data-astro-cid-3ef6ksr2> <ul class="flex items-center gap-3 md:gap-8 justify-center text-xs md:text-base flex-wrap" data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>Home</a></li> <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio/ctf-writeups" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>CTFs</a></li> <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio/blog" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>Blog</a></li>  <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio/#about" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>About</a></li>  <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio/reviews" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>Reviews</a></li> </ul> </nav> <section class="max-w-4xl mx-auto px-4 py-1 md:py-3" data-astro-cid-3ef6ksr2> <div class="mb-8 relative"> <form id="searchForm" class="w-full"> <input type="text" id="globalSearch" name="q" placeholder="Search posts, writeups, reviews, tags..." class="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2" style="border: 1px solid var(--border-primary); background-color: var(--bg-secondary-translucent); color: var(--text-primary); backdrop-filter: blur(8px);"> </form> <div id="searchResults" class="mt-2 hidden absolute rounded-lg shadow-lg w-full z-50 max-h-96 overflow-y-auto" style="background-color: var(--bg-secondary); border: 1px solid var(--border-primary);"></div> </div> <script>(function(){const searchIndex = [{"type":"post","title":"Welcome to My Website!","description":"Site overview and navigation guide","tags":["intro-blog","guide"],"url":"/cyberportfolio/blog/2025-12-10-welcome/","date":"2025-12-10T00:00:00.000Z"},{"type":"post","title":"JavaScript Deobfuscation - HTB Academy","description":"basics of deobfuscation and decoding JavaScript code","tags":["basics","htb-academy","javascript","web-exploit","obfuscation","encode","decode","cipher"],"url":"/cyberportfolio/blog/2025-12-18-javascript-deob/","date":"2025-12-18T00:00:00.000Z"},{"type":"post","title":"Attacking Web Applications With Ffuf - HTB Academy","description":"my notes for ffuf htb academy","tags":["basics","web-exploit","ffuf","fuzzing","directory","htb-academy","learn","dns"],"url":"/cyberportfolio/blog/2025-12-15-awawfuff/","date":"2025-12-15T00:00:00.000Z"},{"type":"post","title":"Network Enumeration with Nmap - HTB Academy","description":"notes for nmap enumeration","tags":["htb-academy","enumeration","nmap","basics","firewall"],"url":"/cyberportfolio/blog/2025-12-17-htb-nmap/","date":"2025-12-17T00:00:00.000Z"},{"type":"post","title":"Using the Metasploit Framework - HTB Academy","description":"metasploit","tags":["htb-academy","basics","metasploit","firewall","apache","msfvenom","firewall-evasion","priv-escalation"],"url":"/cyberportfolio/blog/2025-12-24-msf/","date":"2025-12-24T00:00:00.000Z"},{"type":"writeup","title":"Cornfield Chase","description":"geoguessr","tags":["niteCTF","osint","taiwan","power pole","easy"],"url":"/cyberportfolio/ctf-writeups/2025-12-13-cornfield/","date":"2025-12-13T00:00:00.000Z"},{"type":"writeup","title":"Eazy Network Analysis","description":"Writeup for Eazy Network Analysis from BrainHack 2023","tags":["wireshark","network","medium","brainhack"],"url":"/cyberportfolio/ctf-writeups/2025-12-30-brainhack-2023-eazy-network-analysis/","date":"2025-12-30T00:00:00.000Z"},{"type":"writeup","title":"CTF Collection","description":"CTF writeups collection and navigation guide","tags":["intro","guide"],"url":"/cyberportfolio/ctf-writeups/2025-12-10-ctf-collection/","date":"2025-12-10T00:00:00.000Z"},{"type":"writeup","title":"Crack the Gate 1","description":"Writeup for Crack the Gate 1 from picoCTF","tags":["web-exploit","easy","picoCTF"],"url":"/cyberportfolio/ctf-writeups/2025-12-24-picoctf-crack-the-gate-1/","date":"2025-12-24T00:00:00.000Z"},{"type":"writeup","title":"Permissions","description":"linux priv escalation chal","tags":["linux","priv-escalation","picoCTF"],"url":"/cyberportfolio/ctf-writeups/2025-12-24-perms/","date":"2025-12-24T00:00:00.000Z"},{"type":"writeup","title":"OverTheWire - Bandit","description":"All level solutions","tags":["linux","general","basics","OTW","easy","walkthrough","collection"],"url":"/cyberportfolio/ctf-writeups/2024-03-10-bandit/","date":"2024-03-10T00:00:00.000Z"},{"type":"review","title":"SC2001 - Algorithm Design and Analysis","description":"greedy, dp and other graph algorithms","tags":["algorithms","python","dp","sc2001"],"category":"module","moduleCode":"SC2001","url":"/cyberportfolio/reviews/2025-12-24-data-structures-and-algorithms/","date":"2025-12-24T00:00:00.000Z"}];
+
+  const searchInput = document.getElementById('globalSearch');
+  const searchForm = document.getElementById('searchForm');
+  const resultsContainer = document.getElementById('searchResults');
+
+  // HTML escape function to prevent XSS
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // Handle form submission (Enter key)
+  searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const query = searchInput.value.trim();
+    if (query) {
+      window.location.href = `/cyberportfolio/search?q=${encodeURIComponent(query)}`;
+    }
+  });
+
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+
+    if (query.length === 0) {
+      resultsContainer.classList.add('hidden');
+      return;
+    }
+
+    const results = searchIndex.filter(item => {
+      const titleMatch = item.title.toLowerCase().includes(query);
+      const descriptionMatch = item.description.toLowerCase().includes(query);
+      const tagsMatch = item.tags.some(tag => tag.toLowerCase().includes(query));
+
+      return titleMatch || descriptionMatch || tagsMatch;
+    });
+
+    if (results.length === 0) {
+      resultsContainer.textContent = 'No results found. Press Enter to see all results.';
+      resultsContainer.className = 'mt-2 absolute rounded-lg shadow-lg w-full z-50 max-h-96 overflow-y-auto p-4';
+      resultsContainer.style.cssText = 'background-color: var(--bg-secondary); border: 1px solid var(--border-primary); color: var(--text-secondary);';
+      return;
+    }
+
+    // Clear and build results using DOM methods instead of innerHTML
+    resultsContainer.innerHTML = '';
+    resultsContainer.className = 'mt-2 absolute rounded-lg shadow-lg w-full z-50 max-h-96 overflow-y-auto';
+    resultsContainer.style.cssText = 'background-color: var(--bg-secondary); border: 1px solid var(--border-primary);';
+
+    results.slice(0, 8).forEach(item => {
+      const link = document.createElement('a');
+      link.href = item.url;
+      link.className = 'block p-4 transition-colors';
+      link.style.cssText = 'border-bottom: 1px solid var(--border-primary);';
+      link.onmouseover = () => link.style.backgroundColor = 'var(--accent-light)';
+      link.onmouseout = () => link.style.backgroundColor = 'transparent';
+
+      const header = document.createElement('div');
+      header.className = 'flex items-center justify-between';
+      
+      const typeSpan = document.createElement('span');
+      typeSpan.className = 'text-xs font-semibold uppercase';
+      typeSpan.style.cssText = 'color: var(--accent-color);';
+      typeSpan.textContent = item.type;
+      header.appendChild(typeSpan);
+
+      if (item.date) {
+        const dateSpan = document.createElement('span');
+        dateSpan.className = 'text-xs';
+        dateSpan.style.cssText = 'color: var(--text-secondary);';
+        dateSpan.textContent = new Date(item.date).toLocaleDateString();
+        header.appendChild(dateSpan);
+      }
+
+      const title = document.createElement('h3');
+      title.className = 'font-semibold mt-1';
+      title.style.cssText = 'color: var(--text-primary);';
+      title.textContent = item.title;
+
+      link.appendChild(header);
+      link.appendChild(title);
+
+      if (item.description) {
+        const desc = document.createElement('p');
+        desc.className = 'text-sm mt-1';
+        desc.style.cssText = 'color: var(--text-secondary);';
+        desc.textContent = item.description.substring(0, 100) + '...';
+        link.appendChild(desc);
+      }
+
+      if (item.tags.length > 0) {
+        const tagsDiv = document.createElement('div');
+        tagsDiv.className = 'flex gap-2 mt-2 flex-wrap';
+        item.tags.slice(0, 3).forEach(tag => {
+          const tagSpan = document.createElement('span');
+          tagSpan.className = 'text-xs px-2 py-1 rounded';
+          tagSpan.style.cssText = 'background-color: var(--accent-light); color: var(--text-primary);';
+          tagSpan.textContent = tag;
+          tagsDiv.appendChild(tagSpan);
+        });
+        link.appendChild(tagsDiv);
+      }
+
+      resultsContainer.appendChild(link);
+    });
+
+    // Add footer
+    const footer = document.createElement('div');
+    footer.className = 'p-2 text-center text-xs';
+    footer.style.cssText = 'color: var(--text-secondary); border-top: 1px solid var(--border-primary);';
+    footer.textContent = 'Press Enter to see all results';
+    resultsContainer.appendChild(footer);
+
+    resultsContainer.classList.remove('hidden');
+  });
+
+  // Close results when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('#globalSearch') && !e.target.closest('#searchResults')) {
+      resultsContainer.classList.add('hidden');
+    }
+  });
+})();</script> </section> </header> <script type="module">const t=document.getElementById("header"),n=document.getElementById("globalSearch");let r=0;window.addEventListener("scroll",()=>{const e=window.scrollY;e>r&&e>100?document.activeElement!==n&&(t.style.transform="translateY(-100%)"):t.style.transform="translateY(0)",r=e});n&&(n.addEventListener("focus",()=>{t.style.transform="translateY(0)"}),n.addEventListener("blur",()=>{window.scrollY>100&&(t.style.transform="translateY(-100%)")}));document.addEventListener("click",e=>{const l=e.target;t&&!t.contains(l)&&window.scrollY>100&&(t.style.transform="translateY(-100%)")});t&&t.addEventListener("click",e=>{e.stopPropagation(),t.style.transform="translateY(0)"});</script>  <main class="flex-1 w-full px-4 py-10 pt-40"> <div class="max-w-7xl mx-auto"> <a href="/cyberportfolio/blog" class="inline-flex items-center mb-6 text-[var(--accent-color)] hover:text-[var(--accent-dark)]"> <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path> </svg>
+Back to Blog
+</a> <div class="flex gap-8 lg:gap-12 relative"> <!-- Sticky Sidebar (Desktop) --> <aside class="hidden lg:block w-48 flex-shrink-0"> <div class="sticky top-15 space-y-4 max-h-[calc(100vh-5rem)] overflow-hidden flex flex-col"> <!-- Back to Top Button --> <button id="backToTop" class="flex items-center gap-2 text-sm font-medium transition-all w-full px-3 py-2 rounded-md hover:shadow-md flex-shrink-0" style="background-color: var(--accent-light); color: var(--text-primary);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path> </svg>
+Back to Top
+</button> <!-- Tags Section (only show if tags exist) --> <div class="flex-shrink-0"> <button id="sidebarToggle" class="flex items-center gap-2 text-sm font-semibold mb-3 transition-colors w-full" style="color: var(--accent-color);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path> </svg> <span id="sidebarToggleText">Tags (8)</span> <svg id="sidebarChevron" class="w-4 h-4 ml-auto transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> </svg> </button> <div id="sidebarTags" class="flex flex-col gap-2"> <a href="/cyberportfolio/search?q=basics" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> basics </a><a href="/cyberportfolio/search?q=web-exploit" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> web-exploit </a><a href="/cyberportfolio/search?q=ffuf" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> ffuf </a><a href="/cyberportfolio/search?q=fuzzing" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> fuzzing </a><a href="/cyberportfolio/search?q=directory" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> directory </a><a href="/cyberportfolio/search?q=htb-academy" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> htb-academy </a><a href="/cyberportfolio/search?q=learn" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> learn </a><a href="/cyberportfolio/search?q=dns" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> dns </a> </div> </div> <!-- Table of Contents Toggle (Desktop) --> <button id="tocToggle" class="flex items-center gap-2 text-sm font-semibold mb-3 transition-colors w-full flex-shrink-0" style="color: var(--accent-color);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> <span id="tocToggleText">Contents</span> <svg id="tocChevron" class="w-4 h-4 ml-auto transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> </svg> </button> <div id="sidebarTOC" class="flex flex-col gap-2 overflow-y-auto pr-2 flex-1 min-h-0"></div> </div> </aside> <!-- Main Article Content + Right Sidebar --> <div class="article-and-sidebar"> <!-- Article --> <article class="flex-1 min-w-0 max-w-4xl"> <h1 class="text-4xl font-bold mb-2 text-[var(--text-primary)]">Attacking Web Applications With Ffuf - HTB Academy</h1> <div class="text-sm mb-4 text-[var(--text-secondary)]"> <p>
+Published: December 15, 2025 </p> <p class="mt-1">
+Last Updated: December 17, 2025 </p> </div>  <div class="mb-6 lg:hidden"> <button id="mobileToggle" class="flex items-center gap-2 text-sm font-medium transition-colors" style="color: var(--accent-color);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path> </svg> <span id="mobileToggleText">Show Tags (8)</span> </button> <div id="mobileTags" class="hidden mt-3 flex flex-wrap gap-2"> <a href="/cyberportfolio/search?q=basics" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> basics </a><a href="/cyberportfolio/search?q=web-exploit" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> web-exploit </a><a href="/cyberportfolio/search?q=ffuf" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> ffuf </a><a href="/cyberportfolio/search?q=fuzzing" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> fuzzing </a><a href="/cyberportfolio/search?q=directory" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> directory </a><a href="/cyberportfolio/search?q=htb-academy" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> htb-academy </a><a href="/cyberportfolio/search?q=learn" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> learn </a><a href="/cyberportfolio/search?q=dns" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> dns </a> </div> </div> <!-- Mobile TOC Toggle (always available on small screens) --><div class="mb-6 lg:hidden"> <button id="mobileTOCToggle" class="flex items-center gap-2 text-sm font-medium transition-colors mb-3" style="color: var(--accent-color);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> <span id="mobileTOCToggleText">Show Contents</span> </button> <div id="mobileTOC" class="hidden mt-3 flex flex-col gap-2"></div> </div> <div class="prose max-w-none"> <p>Download Ffuf Cheatsheet <a href="https://academy.hackthebox.com/module/cheatsheet/54">here</a></p>
+<p><code>Ffuf</code> is used for web fuzzing/directory brute-forcing</p>
+<ul>
+<li>fuzzing for directories</li>
+<li>fuzzing for files and extensions</li>
+<li>identifying hidden vhosts</li>
+<li>fuzzing for PHP parameters</li>
+<li>fuzzing for parameter values</li>
+</ul>
+<p>Basically, we send bulk requests to the webserver and check for various response codes to determine if a page exists and/or whether a parameter/value is valid.</p>
+<p>Wordlists: <a href="https://github.com/danielmiessler/SecLists">SecLists</a></p>
+<h2 id="directory-fuzzing">Directory Fuzzing</h2>
+<div class="callout callout-green callout-collapsible" data-expanded="false">
+  <div class="callout-title">
+    <span class="callout-icon">💡</span>
+    <span class="callout-title-text">Tip for locating files</span>
+    <svg class="callout-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+  <div class="callout-content">
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">locate</span><span style="color:#9ECBFF"> directory-list-2.3-small.txt</span></span></code></pre>
+<p>Taking a look at this wordlist we will notice that it contains copyright comments at the beginning, which can be considered as part of the wordlist and clutter the results. We can use the following in <code>ffuf</code> to get rid of these lines with the <code>-ic</code> flag.</p>
+</div></div>
+<ul>
+<li><code>-w</code> for wordlist</li>
+<li><code>-u</code> for url</li>
+<li>Assign a wordlist to the keyword <code>FUZZ</code> to refer it to where we want to fuzz.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ffuf</span><span style="color:#79B8FF"> -w</span><span style="color:#9ECBFF"> /opt/useful/seclists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ</span><span style="color:#79B8FF"> -u</span><span style="color:#9ECBFF"> http://SERVER_IP:PORT/FUZZ</span></span></code></pre>
+<p>We can also increase the number of threads with <code>-t 200</code></p>
+<h2 id="extension-fuzzing">Extension Fuzzing</h2>
+<p>Common file almost always found in any website:
+<code>index.*</code>
+If the wordlist already contains a dot (.), don’t add the dot after “index” in the fuzzing command.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ffuf</span><span style="color:#79B8FF"> -w</span><span style="color:#9ECBFF"> /opt/useful/seclists/Discovery/Web-Content/web-extensions.txt:FUZZ</span><span style="color:#79B8FF"> -u</span><span style="color:#9ECBFF"> http://SERVER_IP:PORT/blog/indexFUZZ</span></span></code></pre>
+<h2 id="recursive-fuzzing">Recursive Fuzzing</h2>
+<p>To start fuzzing for directories within directories, we can automatically start another scan under any newly identified directory.</p>
+<p><code>-recursion</code> to enable <strong>recursive</strong> scanning
+<code>-reursion-depth</code> to specify <strong>recursion depth</strong>
+<code>-e</code> to specify <strong>extension</strong>
+<code>-v</code> to output <strong>full URLs</strong> so it’s easier to tell which file is under which directory</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ffuf</span><span style="color:#79B8FF"> -w</span><span style="color:#9ECBFF"> /opt/useful/seclists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ</span><span style="color:#79B8FF"> -u</span><span style="color:#9ECBFF"> http://SERVER_IP:PORT/FUZZ</span><span style="color:#79B8FF"> -recursion</span><span style="color:#79B8FF"> -recursion-depth</span><span style="color:#79B8FF"> 1</span><span style="color:#79B8FF"> -e</span><span style="color:#9ECBFF"> .php</span><span style="color:#79B8FF"> -v</span></span></code></pre>
+<h2 id="dns-records">DNS Records</h2>
+<p>Browsers map URL to an IP by looking into the local <code>/etc/hosts</code> file and the DNS.</p>
+<p>To connect to a private website (one that cannot be found in the public DNS) like <code>academy.htb</code> we add it to our <code>/etc/hosts</code> file.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> sh</span><span style="color:#79B8FF"> -c</span><span style="color:#9ECBFF"> 'echo "SERVER_IP  academy.htb" >> /etc/hosts'</span></span></code></pre>
+<h2 id="sub-domain-fuzzing">Sub-domain Fuzzing</h2>
+<p>A sub-domain is any website underlying another domain.</p>
+<p>eg. <code>https://academy.hackthebox.com</code> is the academy sub-domain of hackthebox.com</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ffuf</span><span style="color:#79B8FF"> -w</span><span style="color:#9ECBFF"> /opt/useful/seclists/Discovery/DNS/subdomains-top1million-5000.txt:FUZZ</span><span style="color:#79B8FF"> -u</span><span style="color:#9ECBFF"> https://FUZZ.inlanefreight.com/</span></span></code></pre>
+<p>If we run the above on <code>academy.htb</code>, which is a private domain, we will not get any hits back. This means that there are no <strong>public</strong> sub-domains under <code>academy.htb</code> because it does not have a public DNS record.</p>
+<h2 id="vhost-fuzzing">Vhost Fuzzing</h2>
+<p>Allows us to fuzz non-public sub-domains by using HTTP headers</p>
+<blockquote>
+<p>Vhost is basically a sub-domain served on the same server and has the same IP, such that a single IP could be serving two or more different websites</p>
+</blockquote>
+<p><code>-H</code> to specify a header</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ffuf</span><span style="color:#79B8FF"> -w</span><span style="color:#9ECBFF"> /opt/useful/seclists/Discovery/DNS/subdomains-top1million-5000.txt:FUZZ</span><span style="color:#79B8FF"> -u</span><span style="color:#9ECBFF"> http://academy.htb:PORT/</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> 'Host: FUZZ.academy.htb'</span></span></code></pre>
+<p>If the Vhost exists, we should get a different response size.</p>
+<h2 id="filtering-results">Filtering Results</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ffuf</span><span style="color:#79B8FF"> -h</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">..</span><span style="color:#9ECBFF">.SNIP.</span><span style="color:#79B8FF">..</span></span>
+<span class="line"><span style="color:#B392F0">MATCHER</span><span style="color:#9ECBFF"> OPTIONS:</span></span>
+<span class="line"><span style="color:#B392F0">  -mc</span><span style="color:#9ECBFF">              Match</span><span style="color:#9ECBFF"> HTTP</span><span style="color:#9ECBFF"> status</span><span style="color:#9ECBFF"> codes,</span><span style="color:#9ECBFF"> or</span><span style="color:#9ECBFF"> "all"</span><span style="color:#9ECBFF"> for</span><span style="color:#9ECBFF"> everything.</span><span style="color:#E1E4E8"> (default: </span><span style="color:#9ECBFF">200,204,301,302,307,401,403</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0">  -ml</span><span style="color:#9ECBFF">              Match</span><span style="color:#9ECBFF"> amount</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> lines</span><span style="color:#9ECBFF"> in</span><span style="color:#9ECBFF"> response</span></span>
+<span class="line"><span style="color:#B392F0">  -mr</span><span style="color:#9ECBFF">              Match</span><span style="color:#9ECBFF"> regexp</span></span>
+<span class="line"><span style="color:#B392F0">  -ms</span><span style="color:#9ECBFF">              Match</span><span style="color:#9ECBFF"> HTTP</span><span style="color:#9ECBFF"> response</span><span style="color:#9ECBFF"> size</span></span>
+<span class="line"><span style="color:#B392F0">  -mw</span><span style="color:#9ECBFF">              Match</span><span style="color:#9ECBFF"> amount</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> words</span><span style="color:#9ECBFF"> in</span><span style="color:#9ECBFF"> response</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">FILTER</span><span style="color:#9ECBFF"> OPTIONS:</span></span>
+<span class="line"><span style="color:#B392F0">  -fc</span><span style="color:#9ECBFF">              Filter</span><span style="color:#9ECBFF"> HTTP</span><span style="color:#9ECBFF"> status</span><span style="color:#9ECBFF"> codes</span><span style="color:#9ECBFF"> from</span><span style="color:#9ECBFF"> response.</span><span style="color:#9ECBFF"> Comma</span><span style="color:#9ECBFF"> separated</span><span style="color:#9ECBFF"> list</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> codes</span><span style="color:#9ECBFF"> and</span><span style="color:#9ECBFF"> ranges</span></span>
+<span class="line"><span style="color:#B392F0">  -fl</span><span style="color:#9ECBFF">              Filter</span><span style="color:#9ECBFF"> by</span><span style="color:#9ECBFF"> amount</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> lines</span><span style="color:#9ECBFF"> in</span><span style="color:#9ECBFF"> response.</span><span style="color:#9ECBFF"> Comma</span><span style="color:#9ECBFF"> separated</span><span style="color:#9ECBFF"> list</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> line</span><span style="color:#9ECBFF"> counts</span><span style="color:#9ECBFF"> and</span><span style="color:#9ECBFF"> ranges</span></span>
+<span class="line"><span style="color:#B392F0">  -fr</span><span style="color:#9ECBFF">              Filter</span><span style="color:#9ECBFF"> regexp</span></span>
+<span class="line"><span style="color:#B392F0">  -fs</span><span style="color:#9ECBFF">              Filter</span><span style="color:#9ECBFF"> HTTP</span><span style="color:#9ECBFF"> response</span><span style="color:#9ECBFF"> size.</span><span style="color:#9ECBFF"> Comma</span><span style="color:#9ECBFF"> separated</span><span style="color:#9ECBFF"> list</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> sizes</span><span style="color:#9ECBFF"> and</span><span style="color:#9ECBFF"> ranges</span></span>
+<span class="line"><span style="color:#B392F0">  -fw</span><span style="color:#9ECBFF">              Filter</span><span style="color:#9ECBFF"> by</span><span style="color:#9ECBFF"> amount</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> words</span><span style="color:#9ECBFF"> in</span><span style="color:#9ECBFF"> response.</span><span style="color:#9ECBFF"> Comma</span><span style="color:#9ECBFF"> separated</span><span style="color:#9ECBFF"> list</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> word</span><span style="color:#9ECBFF"> counts</span><span style="color:#9ECBFF"> and</span><span style="color:#9ECBFF"> ranges</span></span>
+<span class="line"><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8">...SNIP...</span><span style="color:#F97583">></span></span></code></pre>
+<p>If we know the response size of the incorrect results is, say, 900, we can filter it out using <code>-fs 900</code>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ffuf</span><span style="color:#79B8FF"> -w</span><span style="color:#9ECBFF"> /opt/useful/seclists/Discovery/DNS/subdomains-top1million-5000.txt:FUZZ</span><span style="color:#79B8FF"> -u</span><span style="color:#9ECBFF"> http://academy.htb:PORT/</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> 'Host: FUZZ.academy.htb'</span><span style="color:#79B8FF"> -fs</span><span style="color:#79B8FF"> 900</span></span></code></pre>
+<h2 id="parameter-fuzzing---get">Parameter Fuzzing - GET</h2>
+<blockquote>
+<p>GET requests are usually passed right after the URL, with a <code>?</code> symbol</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ffuf</span><span style="color:#79B8FF"> -w</span><span style="color:#9ECBFF"> /opt/useful/seclists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ</span><span style="color:#79B8FF"> -u</span><span style="color:#9ECBFF"> http://admin.academy.htb:PORT/admin/admin.php?FUZZ=key</span><span style="color:#79B8FF"> -fs</span><span style="color:#9ECBFF"> xxx</span></span></code></pre>
+<ol>
+<li>fuzz for subdomains</li>
+<li>add found subdomains to /etc/hosts</li>
+<li>fuzz subdomains recursively to find possible extensions</li>
+<li>parameter fuzzing on the results of step 3</li>
+</ol>
+<h2 id="parameter-fuzzing---post">Parameter Fuzzing - POST</h2>
+<blockquote>
+<p>POST requests are not passed with the URL and cannot simply be appended after a <code>?</code> symbol</p>
+</blockquote>
+<p>In PHP, <code>POST</code> data <code>content-type</code> can only accept <code>application/x-www-form-urlencoded</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ffuf</span><span style="color:#79B8FF"> -w</span><span style="color:#9ECBFF"> /opt/useful/seclists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ</span><span style="color:#79B8FF"> -u</span><span style="color:#9ECBFF"> http://admin.academy.htb:PORT/admin/admin.php</span><span style="color:#79B8FF"> -X</span><span style="color:#9ECBFF"> POST</span><span style="color:#79B8FF"> -d</span><span style="color:#9ECBFF"> 'FUZZ=key'</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> 'Content-Type: application/x-www-form-urlencoded'</span><span style="color:#79B8FF"> -fs</span><span style="color:#9ECBFF"> xxx</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">curl</span><span style="color:#9ECBFF"> http://admin.academy.htb:PORT/admin/admin.php</span><span style="color:#79B8FF"> -X</span><span style="color:#9ECBFF"> POST</span><span style="color:#79B8FF"> -d</span><span style="color:#9ECBFF"> 'id=key'</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> 'Content-Type: application/x-www-form-urlencoded'</span></span></code></pre>
+<h2 id="value-fuzzing">Value Fuzzing</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> $(</span><span style="color:#B392F0">seq</span><span style="color:#79B8FF"> 1</span><span style="color:#79B8FF"> 1000</span><span style="color:#E1E4E8">); </span><span style="color:#F97583">do</span><span style="color:#79B8FF"> echo</span><span style="color:#E1E4E8"> $i </span><span style="color:#F97583">>></span><span style="color:#9ECBFF"> ids.txt</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">done</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ffuf</span><span style="color:#79B8FF"> -w</span><span style="color:#9ECBFF"> ids.txt:FUZZ</span><span style="color:#79B8FF"> -u</span><span style="color:#9ECBFF"> http://admin.academy.htb:PORT/admin/admin.php</span><span style="color:#79B8FF"> -X</span><span style="color:#9ECBFF"> POST</span><span style="color:#79B8FF"> -d</span><span style="color:#9ECBFF"> 'id=FUZZ'</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> 'Content-Type: application/x-www-form-urlencoded'</span><span style="color:#79B8FF"> -fs</span><span style="color:#9ECBFF"> xxx</span></span></code></pre>
+<h2 id="skills-assessment---web-fuzzing">Skills Assessment - Web Fuzzing</h2>
+<p>Commands I ran in order:</p>
+<ol>
+<li><strong>fuzz subdomains</strong></li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ffuf</span><span style="color:#79B8FF"> -w</span><span style="color:#9ECBFF"> /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt:FUZZ</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> "Host: FUZZ.academy.htb"</span><span style="color:#79B8FF"> -u</span><span style="color:#9ECBFF"> http://94.237.50.128:43758/</span><span style="color:#79B8FF"> -fs</span><span style="color:#79B8FF"> 985</span></span></code></pre>
+<p>→ test, archive, faculty</p>
+<ol start="2">
+<li><strong>add all of these to <code>/etc/hosts</code></strong></li>
+<li><strong>extension fuzzing</strong></li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ffuf</span><span style="color:#79B8FF"> -w</span><span style="color:#9ECBFF"> /usr/share/seclists/Discovery/Web-Content/web-extensions.txt:FUZZ</span><span style="color:#79B8FF"> -u</span><span style="color:#9ECBFF"> http://archive.academy.htb:43758/indexFUZZ</span></span></code></pre>
+<p>→ repeat for all the subdomains found</p>
+<ol start="4">
+<li><strong>start page fuzzing</strong></li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ffuf</span><span style="color:#79B8FF"> -w</span><span style="color:#9ECBFF"> /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ</span><span style="color:#79B8FF"> -u</span><span style="color:#9ECBFF"> http://faculty.academy.htb:43758/FUZZ</span><span style="color:#79B8FF"> -recursion</span><span style="color:#79B8FF"> -recursion-depth</span><span style="color:#79B8FF"> 1</span><span style="color:#79B8FF"> -e</span><span style="color:#9ECBFF"> .php,.phps,.php7</span><span style="color:#79B8FF"> -v</span><span style="color:#79B8FF"> -ic</span><span style="color:#79B8FF"> -mr</span><span style="color:#9ECBFF"> "You don't have access"</span></span></code></pre>
+<p>→ repeat for all the subdomains found</p>
+<ol start="5">
+<li><strong>Only prints the output if the page contains “HTB”</strong></li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ffuf</span><span style="color:#79B8FF"> -w</span><span style="color:#9ECBFF"> /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt:FUZZ</span><span style="color:#79B8FF"> -u</span><span style="color:#9ECBFF"> http://faculty.academy.htb:51841/courses/linux-security.php7</span><span style="color:#79B8FF"> -X</span><span style="color:#9ECBFF"> POST</span><span style="color:#79B8FF"> -d</span><span style="color:#9ECBFF"> "username=FUZZ"</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> "Content-Type: application/x-www-form-urlencoded"</span><span style="color:#79B8FF"> -fs</span><span style="color:#79B8FF"> 781</span><span style="color:#79B8FF"> -mr</span><span style="color:#9ECBFF"> "HTB"</span></span></code></pre>
+<ol start="6">
+<li><strong>curl to get flag</strong></li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">curl</span><span style="color:#9ECBFF"> http://faculty.academy.htb:51841/courses/linux-security.php7</span><span style="color:#79B8FF"> -X</span><span style="color:#9ECBFF"> POST</span><span style="color:#79B8FF"> -d</span><span style="color:#9ECBFF"> 'username=harry'</span><span style="color:#79B8FF"> -H</span><span style="color:#9ECBFF"> 'Content-Type: application/x-www-form-urlencoded'</span></span></code></pre> </div> </article> <!-- Right Sidebar: Stacked Stats and Related Posts with Toggle --> <div class="hidden lg:flex flex-col gap-6 relative"> <button id="rightSidebarToggle" aria-label="Toggle article info sidebar" title="Toggle article info" class="self-end"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path> </svg> </button> <div id="rightSidebar" class="flex flex-col gap-6 w-80"> <div class="disclaimer-box" data-astro-cid-cukr4w5s><div class="disclaimer-icon" data-astro-cid-cukr4w5s><div class="disclaimer-icon-mark" aria-hidden="true" data-astro-cid-cukr4w5s>!</div></div><div class="disclaimer-content" data-astro-cid-cukr4w5s><h3 class="disclaimer-title" data-astro-cid-cukr4w5s>Side Note</h3><p class="disclaimer-text" data-astro-cid-cukr4w5s>This article contains exact quotes from HTB&#39;s module on ffuf. There will be minimal walkthrough for the questions. You are highly encouraged to try them yourself.</p></div></div> <aside class="hidden lg:block w-full"> <div class="rounded-lg p-4 border border-[var(--accent-light)]" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.05);"> <h3 class="text-lg font-bold mb-4 text-[var(--text-primary)]">Article Stats</h3> <div class="space-y-4" id="articleStats">  <div class="flex items-start gap-3" id="readingTimeContainer" style="display: none;"> <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path> </svg> <div> <p class="text-sm text-[var(--text-secondary)]">Reading Time</p> <p class="font-semibold text-[var(--text-primary)]" id="readingTimeValue">- min read</p> </div> </div>  <div class="flex items-start gap-3" id="wordCountContainer" style="display: none;"> <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path> </svg> <div> <p class="text-sm text-[var(--text-secondary)]">Word Count</p> <p class="font-semibold text-[var(--text-primary)]" id="wordCountValue">0</p> </div> </div>  <div class="flex items-start gap-3"> <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path> </svg> <div> <p class="text-sm text-[var(--text-secondary)]">Published</p> <p class="font-semibold text-[var(--text-primary)]">Dec 15, 2025</p> </div> </div>  <div class="flex items-start gap-3 pt-2 border-t border-[var(--accent-light)]"> <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path> </svg> <div> <p class="text-sm text-[var(--text-secondary)]">Last Updated</p> <p class="font-semibold text-[var(--text-primary)]">Dec 17, 2025</p> </div> </div> </div> </div> </aside> <script type="module">function r(){const e=document.querySelector("article .prose");if(!e)return;const t=(e.textContent||"").split(/\s+/).filter(l=>l.length>0).length,d=Math.ceil(t/200),i=document.getElementById("readingTimeContainer"),a=document.getElementById("wordCountContainer"),n=document.getElementById("readingTimeValue"),o=document.getElementById("wordCountValue");n&&(n.textContent=`${d} min read`,i?.style.removeProperty("display")),o&&(o.textContent=t.toLocaleString(),a?.style.removeProperty("display"))}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();</script> <aside class="hidden lg:block w-full"> <div class="rounded-lg p-4 border border-[var(--accent-light)]" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.05);"> <h3 class="text-lg font-bold mb-4 text-[var(--text-primary)]">Related Posts</h3> <div class="space-y-3"> <a href="/cyberportfolio/blog/2025-12-18-javascript-deob" class="group block p-3 rounded-lg transition-all duration-200" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.08);"> <p class="font-medium text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors line-clamp-2"> JavaScript Deobfuscation - HTB Academy </p> <p class="text-xs text-[var(--text-secondary)] mt-1"> Dec 18, 25 </p> <div class="flex flex-wrap gap-1 mt-2"> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> basics </span><span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> htb-academy </span> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-secondary);">
++6 </span> </div> </a><a href="/cyberportfolio/blog/2025-12-24-msf" class="group block p-3 rounded-lg transition-all duration-200" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.08);"> <p class="font-medium text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors line-clamp-2"> Using the Metasploit Framework - HTB Academy </p> <p class="text-xs text-[var(--text-secondary)] mt-1"> Dec 24, 25 </p> <div class="flex flex-wrap gap-1 mt-2"> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> htb-academy </span><span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> basics </span> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-secondary);">
++6 </span> </div> </a><a href="/cyberportfolio/blog/2025-12-17-htb-nmap" class="group block p-3 rounded-lg transition-all duration-200" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.08);"> <p class="font-medium text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors line-clamp-2"> Network Enumeration with Nmap - HTB Academy </p> <p class="text-xs text-[var(--text-secondary)] mt-1"> Dec 17, 25 </p> <div class="flex flex-wrap gap-1 mt-2"> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> htb-academy </span><span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> enumeration </span> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-secondary);">
++3 </span> </div> </a> </div> </div> </aside> </div> </div> </div> </div> </div> </main> <footer class="relative border-t" style="background-color: var(--bg-secondary); border-color: var(--border-primary)"> <div class="mx-auto max-w-6xl px-6 py-12 lg:px-8"> <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8"> <div class="flex flex-col gap-4"> <h3 class="text-2xl font-bold text-[var(--text-primary)]"> maejikal </h3> <p class="text-base text-[var(--text-secondary)]"> cybersecurity enthusiast, certified nerd. welcome to my cozy corner. </p> <div class="flex gap-x-6"> <a href="mailto:undefined" aria-label="Email" class="transition-colors duration-300 text-[var(--text-secondary)] hover:text-[var(--accent-color)]"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path> <path d="M3 7l9 6l9 -6"></path> </svg> </a> <a href="linkedin.com/in/meyling-taing-bab5ab139" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="transition-colors duration-300 text-[var(--text-secondary)] hover:text-[var(--accent-color)]"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M8 11v5"></path><path d="M8 8v.01"></path><path d="M12 16v-5"></path> <path d="M16 16v-3a2 2 0 1 0 -4 0"></path> <path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"></path> </svg> </a> <a target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="transition-colors duration-300 text-[var(--text-secondary)] hover:text-[var(--accent-color)]"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path> <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path> </svg> </a> <a href="https://github.com/maejikal" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="transition-colors duration-300 text-[var(--text-secondary)] hover:text-[var(--accent-color)]"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path> </svg> </a> </div> </div> <div class="hidden md:block flex flex-col md:items-end gap-4"> <nav class="flex gap-x-8"> <a href="/cyberportfolio/#about" class="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">About</a> <a href="/cyberportfolio/blog" class="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Blog</a> <a href="/cyberportfolio/ctf-writeups" class="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">CTFs</a>  <a href="/cyberportfolio/reviews" class="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Reviews</a> </nav> <p class="text-sm text-[var(--text-secondary)]">
+© 2026 maejikal. All rights reserved.
+</p> </div> </div> </div> <div class="absolute inset-0 -z-10 overflow-hidden text-[var(--border-primary)] opacity-20"> <svg aria-hidden="true" class="absolute bottom-0 left-0 w-full h-24"> <pattern id="footer-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"> <path d="M0 50 Q 25 40, 50 50 T 100 50" stroke="currentColor" stroke-width="0.5" fill="none"></path> </pattern> <rect width="100%" height="100%" fill="url(#footer-pattern)"></rect> </svg> </div> </footer> </body></html>

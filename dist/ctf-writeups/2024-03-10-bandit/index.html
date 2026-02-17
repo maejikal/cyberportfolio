@@ -1,0 +1,1099 @@
+<!DOCTYPE html><html lang="en"> <head><style is:global>
+  :root {
+    --accent-color: #60a5fa;
+    --accent-light: rgba(193, 219, 251, 0.1);
+    --accent-dark: rgba(251, 121, 117, 1);
+    --accent-link: #bbff7cff;
+    --accent-number: #ffc36aff;
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --bg-secondary-translucent: rgba(26, 26, 26, 0.75);
+    --bg-code: #000000;
+    --bg-code-border: rgba(96, 165, 250, 0.2);
+    --text-primary: #e5e5e5;
+    --text-secondary: #a3a3a3;
+    --text-code: #d4d4d4;
+    --border-primary: #60a5fa;
+    --border-code: #60a5fa;
+  }
+</style><script type="module" src="/cyberportfolio/_astro/_slug_.astro_astro_type_script_index_0_lang.BWNxxKQy.js"></script><script type="module" src="/cyberportfolio/_astro/_slug_.astro_astro_type_script_index_1_lang.Cf-mi7sF.js"></script><script type="module" src="/cyberportfolio/_astro/_slug_.astro_astro_type_script_index_2_lang.B5JyFba2.js"></script><script type="module" src="/cyberportfolio/_astro/_slug_.astro_astro_type_script_index_3_lang.VDP6jJN4.js"></script><meta charset="utf-8"><link rel="icon" type="image/x-icon" href="/cyberportfolio/favicon.ico"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Astro v5.16.6"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"><title>OverTheWire - Bandit</title><style>html{scroll-behavior:smooth}#header[data-astro-cid-3ef6ksr2]{transform:translateY(0)}
+.disclaimer-box[data-astro-cid-cukr4w5s]{display:flex;gap:.75rem;padding:1rem;border-radius:.5rem;background-color:#f59e0b14;border:1px solid rgba(245,158,11,.3);border-left:4px solid rgba(245,158,11,.6);color:var(--text-primary);font-size:.875rem;line-height:1.5}.disclaimer-icon[data-astro-cid-cukr4w5s]{flex:0 0 1.25rem;display:flex;align-items:flex-start;justify-content:center;color:#f59e0b;margin-top:.125rem}.disclaimer-icon-mark[data-astro-cid-cukr4w5s]{width:1.25rem;height:1.25rem;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.05rem;line-height:1}.disclaimer-content[data-astro-cid-cukr4w5s]{flex:1}.disclaimer-title[data-astro-cid-cukr4w5s]{margin:0 0 .25rem;font-weight:600;font-size:.875rem;color:var(--text-primary)}.disclaimer-text[data-astro-cid-cukr4w5s]{margin:0;color:var(--text-secondary);font-size:.8rem}@media(prefers-color-scheme:dark){.disclaimer-box[data-astro-cid-cukr4w5s]{background-color:#f59e0b1f;border-color:#f59e0b66;border-left-color:#f59e0bb3}.disclaimer-icon[data-astro-cid-cukr4w5s]{color:#fbbf24}}.tag-link:hover,#backToTop:hover{transform:translateY(-2px);filter:brightness(1.1)}#sidebarChevron,#tocChevron{transition:transform .3s ease}#sidebarTOC a,#mobileTOC a{display:block;padding:.25rem;border-radius:4px;text-decoration:none;color:var(--text-secondary)}#sidebarTOC a:hover,#mobileTOC a:hover{color:var(--accent-link);background:#00000008}#sidebarTOC{scrollbar-width:thin;scrollbar-color:var(--accent-light) transparent;padding-right:.5rem}#sidebarTOC::-webkit-scrollbar{width:8px}#sidebarTOC::-webkit-scrollbar-track{background:transparent}#sidebarTOC::-webkit-scrollbar-thumb{background-color:var(--accent-light);border-radius:4px;border:2px solid transparent;background-clip:padding-box}#sidebarTOC::-webkit-scrollbar-thumb:hover{background-color:var(--accent-color)}
+</style>
+<link rel="stylesheet" href="/cyberportfolio/_astro/blog.CBlC4rlS.css"></head> <body class="flex flex-col min-h-screen"> <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-sm" style="background-color: var(--bg-secondary-translucent)" data-astro-cid-3ef6ksr2> <nav class="max-w-7xl mx-auto px-4 py-3 md:px-6 md:py-4" data-astro-cid-3ef6ksr2> <ul class="flex items-center gap-3 md:gap-8 justify-center text-xs md:text-base flex-wrap" data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>Home</a></li> <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio/ctf-writeups" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>CTFs</a></li> <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio/blog" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>Blog</a></li>  <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio/#about" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>About</a></li>  <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio/reviews" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>Reviews</a></li> </ul> </nav> <section class="max-w-4xl mx-auto px-4 py-1 md:py-3" data-astro-cid-3ef6ksr2> <div class="mb-8 relative"> <form id="searchForm" class="w-full"> <input type="text" id="globalSearch" name="q" placeholder="Search posts, writeups, reviews, tags..." class="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2" style="border: 1px solid var(--border-primary); background-color: var(--bg-secondary-translucent); color: var(--text-primary); backdrop-filter: blur(8px);"> </form> <div id="searchResults" class="mt-2 hidden absolute rounded-lg shadow-lg w-full z-50 max-h-96 overflow-y-auto" style="background-color: var(--bg-secondary); border: 1px solid var(--border-primary);"></div> </div> <script>(function(){const searchIndex = [{"type":"post","title":"Welcome to My Website!","description":"Site overview and navigation guide","tags":["intro-blog","guide"],"url":"/cyberportfolio/blog/2025-12-10-welcome/","date":"2025-12-10T00:00:00.000Z"},{"type":"post","title":"JavaScript Deobfuscation - HTB Academy","description":"basics of deobfuscation and decoding JavaScript code","tags":["basics","htb-academy","javascript","web-exploit","obfuscation","encode","decode","cipher"],"url":"/cyberportfolio/blog/2025-12-18-javascript-deob/","date":"2025-12-18T00:00:00.000Z"},{"type":"post","title":"Attacking Web Applications With Ffuf - HTB Academy","description":"my notes for ffuf htb academy","tags":["basics","web-exploit","ffuf","fuzzing","directory","htb-academy","learn","dns"],"url":"/cyberportfolio/blog/2025-12-15-awawfuff/","date":"2025-12-15T00:00:00.000Z"},{"type":"post","title":"Network Enumeration with Nmap - HTB Academy","description":"notes for nmap enumeration","tags":["htb-academy","enumeration","nmap","basics","firewall"],"url":"/cyberportfolio/blog/2025-12-17-htb-nmap/","date":"2025-12-17T00:00:00.000Z"},{"type":"post","title":"Using the Metasploit Framework - HTB Academy","description":"metasploit","tags":["htb-academy","basics","metasploit","firewall","apache","msfvenom","firewall-evasion","priv-escalation"],"url":"/cyberportfolio/blog/2025-12-24-msf/","date":"2025-12-24T00:00:00.000Z"},{"type":"writeup","title":"Cornfield Chase","description":"geoguessr","tags":["niteCTF","osint","taiwan","power pole","easy"],"url":"/cyberportfolio/ctf-writeups/2025-12-13-cornfield/","date":"2025-12-13T00:00:00.000Z"},{"type":"writeup","title":"Eazy Network Analysis","description":"Writeup for Eazy Network Analysis from BrainHack 2023","tags":["wireshark","network","medium","brainhack"],"url":"/cyberportfolio/ctf-writeups/2025-12-30-brainhack-2023-eazy-network-analysis/","date":"2025-12-30T00:00:00.000Z"},{"type":"writeup","title":"CTF Collection","description":"CTF writeups collection and navigation guide","tags":["intro","guide"],"url":"/cyberportfolio/ctf-writeups/2025-12-10-ctf-collection/","date":"2025-12-10T00:00:00.000Z"},{"type":"writeup","title":"Crack the Gate 1","description":"Writeup for Crack the Gate 1 from picoCTF","tags":["web-exploit","easy","picoCTF"],"url":"/cyberportfolio/ctf-writeups/2025-12-24-picoctf-crack-the-gate-1/","date":"2025-12-24T00:00:00.000Z"},{"type":"writeup","title":"Permissions","description":"linux priv escalation chal","tags":["linux","priv-escalation","picoCTF"],"url":"/cyberportfolio/ctf-writeups/2025-12-24-perms/","date":"2025-12-24T00:00:00.000Z"},{"type":"writeup","title":"OverTheWire - Bandit","description":"All level solutions","tags":["linux","general","basics","OTW","easy","walkthrough","collection"],"url":"/cyberportfolio/ctf-writeups/2024-03-10-bandit/","date":"2024-03-10T00:00:00.000Z"},{"type":"review","title":"SC2001 - Algorithm Design and Analysis","description":"greedy, dp and other graph algorithms","tags":["algorithms","python","dp","sc2001"],"category":"module","moduleCode":"SC2001","url":"/cyberportfolio/reviews/2025-12-24-data-structures-and-algorithms/","date":"2025-12-24T00:00:00.000Z"}];
+
+  const searchInput = document.getElementById('globalSearch');
+  const searchForm = document.getElementById('searchForm');
+  const resultsContainer = document.getElementById('searchResults');
+
+  // HTML escape function to prevent XSS
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // Handle form submission (Enter key)
+  searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const query = searchInput.value.trim();
+    if (query) {
+      window.location.href = `/cyberportfolio/search?q=${encodeURIComponent(query)}`;
+    }
+  });
+
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+
+    if (query.length === 0) {
+      resultsContainer.classList.add('hidden');
+      return;
+    }
+
+    const results = searchIndex.filter(item => {
+      const titleMatch = item.title.toLowerCase().includes(query);
+      const descriptionMatch = item.description.toLowerCase().includes(query);
+      const tagsMatch = item.tags.some(tag => tag.toLowerCase().includes(query));
+
+      return titleMatch || descriptionMatch || tagsMatch;
+    });
+
+    if (results.length === 0) {
+      resultsContainer.textContent = 'No results found. Press Enter to see all results.';
+      resultsContainer.className = 'mt-2 absolute rounded-lg shadow-lg w-full z-50 max-h-96 overflow-y-auto p-4';
+      resultsContainer.style.cssText = 'background-color: var(--bg-secondary); border: 1px solid var(--border-primary); color: var(--text-secondary);';
+      return;
+    }
+
+    // Clear and build results using DOM methods instead of innerHTML
+    resultsContainer.innerHTML = '';
+    resultsContainer.className = 'mt-2 absolute rounded-lg shadow-lg w-full z-50 max-h-96 overflow-y-auto';
+    resultsContainer.style.cssText = 'background-color: var(--bg-secondary); border: 1px solid var(--border-primary);';
+
+    results.slice(0, 8).forEach(item => {
+      const link = document.createElement('a');
+      link.href = item.url;
+      link.className = 'block p-4 transition-colors';
+      link.style.cssText = 'border-bottom: 1px solid var(--border-primary);';
+      link.onmouseover = () => link.style.backgroundColor = 'var(--accent-light)';
+      link.onmouseout = () => link.style.backgroundColor = 'transparent';
+
+      const header = document.createElement('div');
+      header.className = 'flex items-center justify-between';
+      
+      const typeSpan = document.createElement('span');
+      typeSpan.className = 'text-xs font-semibold uppercase';
+      typeSpan.style.cssText = 'color: var(--accent-color);';
+      typeSpan.textContent = item.type;
+      header.appendChild(typeSpan);
+
+      if (item.date) {
+        const dateSpan = document.createElement('span');
+        dateSpan.className = 'text-xs';
+        dateSpan.style.cssText = 'color: var(--text-secondary);';
+        dateSpan.textContent = new Date(item.date).toLocaleDateString();
+        header.appendChild(dateSpan);
+      }
+
+      const title = document.createElement('h3');
+      title.className = 'font-semibold mt-1';
+      title.style.cssText = 'color: var(--text-primary);';
+      title.textContent = item.title;
+
+      link.appendChild(header);
+      link.appendChild(title);
+
+      if (item.description) {
+        const desc = document.createElement('p');
+        desc.className = 'text-sm mt-1';
+        desc.style.cssText = 'color: var(--text-secondary);';
+        desc.textContent = item.description.substring(0, 100) + '...';
+        link.appendChild(desc);
+      }
+
+      if (item.tags.length > 0) {
+        const tagsDiv = document.createElement('div');
+        tagsDiv.className = 'flex gap-2 mt-2 flex-wrap';
+        item.tags.slice(0, 3).forEach(tag => {
+          const tagSpan = document.createElement('span');
+          tagSpan.className = 'text-xs px-2 py-1 rounded';
+          tagSpan.style.cssText = 'background-color: var(--accent-light); color: var(--text-primary);';
+          tagSpan.textContent = tag;
+          tagsDiv.appendChild(tagSpan);
+        });
+        link.appendChild(tagsDiv);
+      }
+
+      resultsContainer.appendChild(link);
+    });
+
+    // Add footer
+    const footer = document.createElement('div');
+    footer.className = 'p-2 text-center text-xs';
+    footer.style.cssText = 'color: var(--text-secondary); border-top: 1px solid var(--border-primary);';
+    footer.textContent = 'Press Enter to see all results';
+    resultsContainer.appendChild(footer);
+
+    resultsContainer.classList.remove('hidden');
+  });
+
+  // Close results when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('#globalSearch') && !e.target.closest('#searchResults')) {
+      resultsContainer.classList.add('hidden');
+    }
+  });
+})();</script> </section> </header> <script type="module">const t=document.getElementById("header"),n=document.getElementById("globalSearch");let r=0;window.addEventListener("scroll",()=>{const e=window.scrollY;e>r&&e>100?document.activeElement!==n&&(t.style.transform="translateY(-100%)"):t.style.transform="translateY(0)",r=e});n&&(n.addEventListener("focus",()=>{t.style.transform="translateY(0)"}),n.addEventListener("blur",()=>{window.scrollY>100&&(t.style.transform="translateY(-100%)")}));document.addEventListener("click",e=>{const l=e.target;t&&!t.contains(l)&&window.scrollY>100&&(t.style.transform="translateY(-100%)")});t&&t.addEventListener("click",e=>{e.stopPropagation(),t.style.transform="translateY(0)"});</script>  <main class="flex-1 w-full px-4 py-10 pt-40"> <div class="max-w-7xl mx-auto"> <a href="/cyberportfolio/ctf-writeups" class="inline-flex items-center mb-6 text-[var(--accent-color)] hover:text-[var(--accent-dark)]"> <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path> </svg>
+Back to Writeups
+</a> <div class="flex gap-8 lg:gap-12 relative"> <!-- Sticky Sidebar (Desktop) --> <aside class="hidden lg:block w-48 flex-shrink-0"> <div class="sticky top-15 space-y-4 max-h-[calc(100vh-5rem)] overflow-hidden flex flex-col"> <!-- Back to Top Button --> <button id="backToTop" class="flex items-center gap-2 text-sm font-medium transition-all w-full px-3 py-2 rounded-md hover:shadow-md flex-shrink-0" style="background-color: var(--accent-light); color: var(--text-primary);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path> </svg>
+Back to Top
+</button> <!-- Tags Section (only show if tags exist) --> <div class="flex-shrink-0"> <button id="sidebarToggle" class="flex items-center gap-2 text-sm font-semibold mb-3 transition-colors w-full" style="color: var(--accent-color);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path> </svg> <span id="sidebarToggleText">Tags (7)</span> <svg id="sidebarChevron" class="w-4 h-4 ml-auto transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> </svg> </button> <div id="sidebarTags" class="flex flex-col gap-2"> <a href="/cyberportfolio/search?q=linux" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> linux </a><a href="/cyberportfolio/search?q=general" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> general </a><a href="/cyberportfolio/search?q=basics" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> basics </a><a href="/cyberportfolio/search?q=OTW" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> OTW </a><a href="/cyberportfolio/search?q=easy" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> easy </a><a href="/cyberportfolio/search?q=walkthrough" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> walkthrough </a><a href="/cyberportfolio/search?q=collection" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> collection </a> </div> </div> <!-- Table of Contents Toggle (Desktop) --> <button id="tocToggle" class="flex items-center gap-2 text-sm font-semibold mb-3 transition-colors w-full flex-shrink-0" style="color: var(--accent-color);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> <span id="tocToggleText">Contents</span> <svg id="tocChevron" class="w-4 h-4 ml-auto transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> </svg> </button> <div id="sidebarTOC" class="flex flex-col gap-2 overflow-y-auto pr-2 flex-1 min-h-0"></div> </div> </aside> <!-- Main Article Content + Right Sidebar --> <div class="article-and-sidebar"> <!-- Article --> <article class="flex-1 min-w-0 max-w-4xl"> <h1 class="text-4xl font-bold mb-2 text-[var(--text-primary)]">OverTheWire - Bandit</h1> <p class="text-lg font-medium mb-4 text-[var(--accent-color)]">OTW</p> <div class="text-sm mb-4 text-[var(--text-secondary)]"> <p>
+Published: March 10, 2024 </p>  </div>  <div class="mb-6 lg:hidden"> <button id="mobileToggle" class="flex items-center gap-2 text-sm font-medium transition-colors" style="color: var(--accent-color);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path> </svg> <span id="mobileToggleText">Show Tags (7)</span> </button> <div id="mobileTags" class="hidden mt-3 flex flex-wrap gap-2"> <a href="/cyberportfolio/search?q=linux" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> linux </a><a href="/cyberportfolio/search?q=general" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> general </a><a href="/cyberportfolio/search?q=basics" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> basics </a><a href="/cyberportfolio/search?q=OTW" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> OTW </a><a href="/cyberportfolio/search?q=easy" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> easy </a><a href="/cyberportfolio/search?q=walkthrough" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> walkthrough </a><a href="/cyberportfolio/search?q=collection" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> collection </a> </div> </div> <!-- Mobile TOC Toggle (always available on small screens) --><div class="mb-6 lg:hidden"> <button id="mobileTOCToggle" class="flex items-center gap-2 text-sm font-medium transition-colors mb-3" style="color: var(--accent-color);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> <span id="mobileTOCToggleText">Show Contents</span> </button> <div id="mobileTOC" class="hidden mt-3 flex flex-col gap-2"></div> </div> <div class="prose max-w-none"> <p><em>Link to game</em> <span style="color: blue;"><a href="https://overthewire.org/wargames/bandit/">here</a></span></p>
+<ul>
+<li>it’s okay to cheat :)</li>
+<li>Run <em>man</em> or <em>—help</em> on a command you need help with</li>
+<li>iirc the passwords change regularly (due to server updates and stuff) but the solutions remain the same</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ssh bandit0@bandit.labs.overthewire.org -p 2220</span></span></code></pre>
+<h1 id="level-0-1">Level 0-1</h1>
+<p>use common sense</p>
+<h1 id="level-1-2">Level 1-2</h1>
+<p><strong>Problem</strong>
+The password for the next level is stored in a file called <strong>-</strong> located in the home directory</p>
+<p><strong>Solution</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">cat ./</span><span style="color:#F97583">-</span></span></code></pre>
+<h1 id="level-2-3">Level 2-3</h1>
+<p>use common sense</p>
+<h1 id="level-3-4">Level 3-4</h1>
+<p><strong>Problem</strong>
+The password for the next level is stored in a hidden file in the <strong>inhere</strong> directory.</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>List all the files in the directory with <code>ls</code></li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">ls </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">la</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">total </span><span style="color:#79B8FF">12</span></span>
+<span class="line"><span style="color:#E1E4E8">drwxr</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">xr</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">x </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8"> root    root    </span><span style="color:#79B8FF">4096</span><span style="color:#79B8FF"> Oct</span><span style="color:#79B8FF">  5</span><span style="color:#79B8FF"> 06</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">19</span><span style="color:#F97583"> **</span><span style="color:#E1E4E8">.</span><span style="color:#F97583">**</span></span>
+<span class="line"><span style="color:#E1E4E8">drwxr</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">xr</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">x </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8"> root    root    </span><span style="color:#79B8FF">4096</span><span style="color:#79B8FF"> Oct</span><span style="color:#79B8FF">  5</span><span style="color:#79B8FF"> 06</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">19</span><span style="color:#F97583"> **</span><span style="color:#E1E4E8">..</span><span style="color:#F97583">**</span></span>
+<span class="line"><span style="color:#F97583">-</span><span style="color:#E1E4E8">rw</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">r</span><span style="color:#F97583">-----</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8"> bandit4 bandit3   </span><span style="color:#79B8FF">33</span><span style="color:#79B8FF"> Oct</span><span style="color:#79B8FF">  5</span><span style="color:#79B8FF"> 06</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">19</span><span style="color:#E1E4E8"> .hidden</span></span></code></pre>
+<ol start="2">
+<li><code>cat .hidden</code></li>
+</ol>
+<h1 id="level-4-5">Level 4-5</h1>
+<p><strong>Problem</strong>
+The password for the next level is stored in the only human-readable file in the <strong>inhere</strong> directory. Tip: if your terminal is messed up, try the “reset” command.</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li><code>cd inhere</code></li>
+<li>Listing the files, we get:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">ls</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">-</span><span style="color:#E1E4E8">file00  </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file01  </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file02  </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file03  </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file04  </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file05  </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file06  </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file07  </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file08  </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file09</span></span></code></pre>
+<ol start="3">
+<li>Running the <code>file</code> command on a file returns the file type and from there we can deduce the only human-readable file in the directory.</li>
+<li>However it’s tedious to run the command on every single file, plus we run into the problem of file starting with <code>-</code>. We use the technique from Level 1-2 to tackle this.</li>
+<li><code>file *</code> would list down the types of all files in the directory and combining the technique above:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">file ./</span><span style="color:#F97583">*</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">./</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file00: data</span></span>
+<span class="line"><span style="color:#E1E4E8">./</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file01: data</span></span>
+<span class="line"><span style="color:#E1E4E8">./</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file02: data</span></span>
+<span class="line"><span style="color:#E1E4E8">./</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file03: data</span></span>
+<span class="line"><span style="color:#E1E4E8">./</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file04: data</span></span>
+<span class="line"><span style="color:#E1E4E8">./</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file05: data</span></span>
+<span class="line"><span style="color:#E1E4E8">./</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file06: data</span></span>
+<span class="line"><span style="color:#E1E4E8">./</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file07: ASCII text</span></span>
+<span class="line"><span style="color:#E1E4E8">./</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file08: data</span></span>
+<span class="line"><span style="color:#E1E4E8">./</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">file09: data</span></span></code></pre>
+<ol start="6">
+<li><code>cat ./-file07</code></li>
+</ol>
+<h1 id="level-5-6">Level 5-6</h1>
+<p><strong>Problem</strong>
+The password for the next level is stored in a file somewhere under the <strong>inhere</strong> directory and has all of the following properties:</p>
+<ul>
+<li>human-readable</li>
+<li>1033 bytes in size</li>
+<li>not executable</li>
+</ul>
+<p><strong>Solution</strong></p>
+<ol>
+<li>You could search for the file with separate conditions but it would be best if we can find a one line command that would only give return us one file. For this level, just searching for the file with the correct size will do</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">du </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">a </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">b | grep </span><span style="color:#79B8FF">1033</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">1033</span><span style="color:#E1E4E8">	./maybehere07/.file2</span></span></code></pre>
+<p>However, what if there are multiple files with the same size?</p>
+<ol start="2">
+<li><code>find</code> will list all files in a directory. There should also be enough options to combine the conditions</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">find . </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">type f </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">size 1033c </span><span style="color:#F97583">!</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">executable </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">exec file </span><span style="color:#6A737D">'{}' \; | grep ASCII</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">./maybehere07/.file2: ASCII text, with very long lines (</span><span style="color:#79B8FF">1000</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<p><code>find .</code>: find in the current working directory,
+<code>-type f</code>: the regular files (as opposed to directories, symbolic links, etc.) that are
+<code>-size 1033c</code>: 1033 bytes in size and
+<code>! -executable</code>: are not executable,
+<code>-exec file '{}' \;</code>: run the <code>file</code> command on every file found, <code>{}</code> represents the filename found by <code>find</code>, <code>\;</code> marks the end of the command to be executed
+<code>| grep ASCII</code>: filter to display only those are human-readable (ASCII)</p>
+<p>Learn about pipes (<code>|</code>) in Linux documentation.</p>
+<h1 id="level-6-7">Level 6-7</h1>
+<p><strong>Problem</strong>
+The password for the next level is stored <strong>somewhere on the server</strong> and has all of the following properties:</p>
+<ul>
+<li>owned by user bandit7</li>
+<li>owned by group bandit6</li>
+<li>33 bytes in size</li>
+</ul>
+<p><strong>Solution</strong></p>
+<ol>
+<li>we should start searching for files from the root directory (somewhere on the server), <code>find /</code></li>
+<li>to find files owned by user bandit7, <code>-user bandit7</code></li>
+<li>to find files owned by group bandit6, <code>-group bandit6</code></li>
+<li>33 bytes in size, <code>-size 33c</code></li>
+<li>hide <code>Permission Denied</code> errors (<a href="https://stackoverflow.com/questions/762348/how-can-i-exclude-all-permission-denied-messages-from-find">reference</a>), <code>2>/dev/null</code>: basically dumps all errors into the /dev/null directory</li>
+<li>Together,</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">find / </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">type f </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">user bandit7 </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">group bandit6 </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">size 33c </span><span style="color:#79B8FF">2</span><span style="color:#F97583">></span><span style="color:#E1E4E8">/dev/</span><span style="color:#79B8FF">null</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">/var/lib/dpkg/info/bandit7.password</span></span></code></pre>
+<h1 id="level-7-8">Level 7-8</h1>
+<p><strong>Problem</strong>
+The password for the next level is stored in the file <strong>data.txt</strong> next to the word <strong>millionth</strong></p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>use <code>grep</code> to find the word millionth</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">grep </span><span style="color:#9ECBFF">"millionth"</span><span style="color:#E1E4E8"> data.txt</span></span>
+<span class="line"><span style="color:#E1E4E8">millionth	TESKZC0XvTetK0S9xNwm25STk5iWrBvP</span></span></code></pre>
+<h1 id="level-8-9">Level 8-9</h1>
+<p><strong>Problem</strong>
+The password for the next level is stored in the file <strong>data.txt</strong> and is the only line of text that occurs only once</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>the <code>sort</code> command sorts the lines in a text file alphabetically by default</li>
+<li>the <code>uniq</code> command filters out duplicate lines from the sorted input it received, <code>-u</code> tells it to only display the unique lines</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">sort data.txt | uniq </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">u</span></span>
+<span class="line"><span style="color:#E1E4E8">EN632PlfYiZbn3PhVK3XOGSlNInNE00t</span></span></code></pre>
+<h1 id="level-9-10">Level 9-10</h1>
+<p><strong>Problem</strong>
+The password for the next level is stored in the file <strong>data.txt</strong> in one of the few human-readable strings, preceded by several ‘=’ characters.</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li><code>strings</code> command extracts all readable strings from a file</li>
+<li><code>grep</code> can be used to find the several = characters</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">strings data.txt | grep </span><span style="color:#F97583">===</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">x]T</span><span style="color:#F97583">==========</span><span style="color:#E1E4E8"> theG)</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">========== passwordk^</span></span>
+<span class="line"><span style="color:#9ECBFF">========== is</span></span>
+<span class="line"><span style="color:#9ECBFF">========== G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s</span></span></code></pre>
+<h1 id="level-10-11">Level 10-11</h1>
+<p><strong>Problem</strong>
+The password for the next level is stored in the file <strong>data.txt</strong>, which contains base64 encoded data</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>you can use online tools such as CyberChef to decode the base64 data</li>
+<li>or you can use built-in base64 command line tools</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">base64 </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">d data.txt</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">The password is 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM</span></span></code></pre>
+<h1 id="level-11-12">Level 11-12</h1>
+<p><strong>Problem</strong>
+The password for the next level is stored in the file <strong>data.txt</strong>, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>this is a simple caesar cipher, <a href="https://en.wikipedia.org/wiki/ROT13">ROT13</a></li>
+<li>you can use online tools such as CyberChef to decrypt the cipher but there is also a command line solution with the <code>tr</code> command (<a href="https://unix.stackexchange.com/questions/19772/how-does-tr-a-z-n-za-m-work">reference</a>)</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">cat data.txt | tr </span><span style="color:#9ECBFF">"A-Za-z"</span><span style="color:#9ECBFF"> "N-ZA-Mn-za-m"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">The password is JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv</span></span></code></pre>
+<h1 id="level-12-13">Level 12-13</h1>
+<p><strong>Problem</strong>
+The password for the next level is stored in the file <strong>data.txt</strong>, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>Create a directory to work on the file since we do not have permissions to work in the root directory.</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">mktemp </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">d</span></span>
+<span class="line"><span style="color:#E1E4E8">/tmp/tmp.sc0kPF5eiy</span></span></code></pre>
+<ol start="2">
+<li>Copy <code>data.txt</code> into <code>/tmp/tmp.sc0kPF5eiy</code></li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">cd /tmp/tmp.sc0kPF5eiy</span></span>
+<span class="line"><span style="color:#E1E4E8">cp </span><span style="color:#F97583">~</span><span style="color:#E1E4E8">/data.txt .</span></span></code></pre>
+<ol start="3">
+<li>Reverse hexdump (data.txt) and output it into a file, read about <a href="https://linuxhandbook.com/command-output-to-file/">how to redirect the output of a command into a file</a></li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">cat data.txt | xxd </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">r </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> compressed_data</span></span></code></pre>
+<p><code>xxd</code>: tool used for generating/reversing hex dumps</p>
+<ol start="4">
+<li>Running <code>file</code> on compressed_data,</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">file compressed_data</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">compressed_data: gzip compressed data, was </span><span style="color:#9ECBFF">"data2.bin"</span><span style="color:#E1E4E8">, last modified: Thu </span><span style="color:#79B8FF">Oct</span><span style="color:#79B8FF">  5</span><span style="color:#79B8FF"> 06</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">19</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">20</span><span style="color:#79B8FF"> 2023</span><span style="color:#E1E4E8">, max compression, from Unix, original size modulo </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">^</span><span style="color:#79B8FF">32</span><span style="color:#79B8FF"> 573</span></span></code></pre>
+<ol start="5">
+<li>Rename the file to its respective extension, decompress the gzip file</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">mv compressed_data compressed.gz</span></span>
+<span class="line"><span style="color:#E1E4E8">gzip </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">d compressed.gz</span></span></code></pre>
+<ol start="6">
+<li>Repeat 4-5, checking the type of compressed data and use the correct method of decompressing until you get an ASCII text file</li>
+</ol>
+<h1 id="level-13-14">Level 13-14</h1>
+<p><strong>Problem</strong>
+The password for the next level is stored in <strong>/etc/bandit_pass/bandit14 and can only be read by user bandit14</strong>. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. <strong>Note:</strong> <strong>localhost</strong> is a hostname that refers to the machine you are working on</p>
+<p><strong>Solution</strong>
+There are 2 solutions to solve this:
+<strong>A.</strong></p>
+<ol>
+<li>We are given a private ssh key, what we need to do is extract it into our local machine (own computer, not the server machine) and then use the credentials to log into the next level</li>
+<li><code>scp</code> can be used to transfer files between computers, run this command from your own terminal/command prompt (outside game server)</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">scp </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">P </span><span style="color:#79B8FF">2220</span><span style="color:#E1E4E8"> bandit13@bandit.labs.overthewire.org:sshkey.</span><span style="color:#F97583">private</span><span style="color:#E1E4E8"> .</span></span></code></pre>
+<ol start="3">
+<li>Enter the password to complete the download</li>
+<li>Log in</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">ssh </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">i sshkey.</span><span style="color:#F97583">private</span><span style="color:#E1E4E8"> bandit14@bandit.labs.overthewire.org </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">p </span><span style="color:#79B8FF">2220</span></span></code></pre>
+<p>You will get a permission error:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Permissions 0640 for 'sshkey.private' are too open.</span></span>
+<span class="line"><span>It is required that your private key files are NOT accessible by others.</span></span>
+<span class="line"><span>This private key will be ignored.</span></span></code></pre>
+<ol start="5">
+<li>Modify the key permissions such that only you can access it</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">chmod </span><span style="color:#79B8FF">700</span><span style="color:#E1E4E8"> sshkey.</span><span style="color:#F97583">private</span></span></code></pre>
+<ol start="6">
+<li>Step 4</li>
+</ol>
+<p><strong>B.</strong></p>
+<ol>
+<li>Since you are already logged into bandit13, you can ssh to bandit14 directly via localhost without disconnecting from the game server.</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">ssh </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">i sshkey.</span><span style="color:#F97583">private</span><span style="color:#E1E4E8"> bandit14@localhost </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">p </span><span style="color:#79B8FF">2220</span></span></code></pre>
+<h1 id="level-14-15">Level 14-15</h1>
+<p><strong>Problem</strong>
+The password for the next level can be retrieved by submitting the password of the current level to <strong>port 30000 on localhost</strong>.</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>netcat (<code>nc</code>) is a utility program used for creating network connections and managing data flow. It functions on both TCP and UDP protocols, the building blocks of communication across networks. Use <code>nc</code> to connect to port 30000</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">nc localhost </span><span style="color:#79B8FF">30000</span></span></code></pre>
+<ol start="2">
+<li>Enter the password found in previous level</li>
+</ol>
+<h1 id="level-15-16">Level 15-16</h1>
+<p><strong>Problem</strong>
+The password for the next level can be retrieved by submitting the password of the current level to <strong>port 30001 on localhost</strong> using SSL encryption.
+<strong>Helpful note: Getting “HEARTBEATING” and “Read R BLOCK”? Use -ign_eof and read the “CONNECTED COMMANDS” section in the manpage. Next to ‘R’ and ‘Q’, the ‘B’ command also works in this version of that command…</strong></p>
+<p><strong>Solution</strong></p>
+<ol>
+<li><code>openssl</code> is the foundation of secure communications on the internet (https)</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">openssl s_client </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">connect localhost:</span><span style="color:#79B8FF">30001</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">CONNECTED</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">00000003</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">Can</span><span style="color:#6A737D">'t use SSL_get_servername</span></span>
+<span class="line"><span style="color:#E1E4E8">...</span></span>
+<span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"><span style="color:#E1E4E8">read R BLOCK</span></span></code></pre>
+<ol start="2">
+<li>After running the above, there will be a prompt on the line after read R BLOCK, paste the password and you will be given the password for the next level</li>
+</ol>
+<h1 id="level-16-17">Level 16-17</h1>
+<p><strong>Problem</strong>
+The credentials for the next level can be retrieved by submitting the password of the current level to <strong>a port on localhost in the range 31000 to 32000</strong>. First find out which of these ports have a server listening on them. Then find out which of those speak SSL and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>To scan for an open port, use <code>nmap</code>. Checking the help page,</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">nmap </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">h</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">Usage: nmap [Scan </span><span style="color:#B392F0">Type</span><span style="color:#E1E4E8">(s)] [Options] {target specification}</span></span>
+<span class="line"><span style="color:#E1E4E8">...</span></span>
+<span class="line"><span style="color:#E1E4E8">SERVICE/VERSION DETECTION:</span></span>
+<span class="line"><span style="color:#F97583">  -</span><span style="color:#E1E4E8">sV: Probe open ports </span><span style="color:#F97583">to</span><span style="color:#E1E4E8"> determine service/version info</span></span>
+<span class="line"><span style="color:#E1E4E8">...</span></span>
+<span class="line"><span style="color:#E1E4E8">PORT SPECIFICATION </span><span style="color:#F97583">AND</span><span style="color:#E1E4E8"> SCAN ORDER:</span></span>
+<span class="line"><span style="color:#F97583">  -</span><span style="color:#E1E4E8">p </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8">port ranges</span><span style="color:#F97583">></span><span style="color:#E1E4E8">: Only scan specified ports</span></span>
+<span class="line"><span style="color:#E1E4E8">    Ex: </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">p22; </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">p1</span><span style="color:#79B8FF">-65535</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">p U:</span><span style="color:#79B8FF">53</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">111</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">137</span><span style="color:#E1E4E8">,T:</span><span style="color:#79B8FF">21-25</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">80</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">139</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">8080</span><span style="color:#E1E4E8">,S:</span><span style="color:#79B8FF">9</span></span>
+<span class="line"><span style="color:#F97583">    ---</span></span></code></pre>
+<ol start="2">
+<li>Since the port is on localhost and in the range 31000-32000, follow the usage guide above</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">nmap </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">sV localhost </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">p31000</span><span style="color:#79B8FF">-32000</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">PORT      STATE SERVICE     VERSION</span></span>
+<span class="line"><span style="color:#79B8FF">31046</span><span style="color:#E1E4E8">/tcp open  echo</span></span>
+<span class="line"><span style="color:#79B8FF">31518</span><span style="color:#E1E4E8">/tcp open  ssl/echo</span></span>
+<span class="line"><span style="color:#79B8FF">31691</span><span style="color:#E1E4E8">/tcp open  echo</span></span>
+<span class="line"><span style="color:#79B8FF">31790</span><span style="color:#E1E4E8">/tcp open  ssl/unknown</span></span>
+<span class="line"><span style="color:#79B8FF">31960</span><span style="color:#E1E4E8">/tcp open  echo</span></span></code></pre>
+<ol start="3">
+<li>Only port 31790 doesn’t echo back whatever you send it, seems promising</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">openssl s_client localhost:</span><span style="color:#79B8FF">31790</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">CONNECTED</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">00000003</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">Can</span><span style="color:#6A737D">'t use SSL_get_servername</span></span>
+<span class="line"><span style="color:#E1E4E8">...</span></span>
+<span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"><span style="color:#E1E4E8">read R BLOCK</span></span></code></pre>
+<ol start="4">
+<li>Enter the password for current level</li>
+</ol>
+<h1 id="level-17-18">Level 17-18</h1>
+<p><strong>Problem</strong>
+There are 2 files in the homedirectory: <strong>passwords.old and passwords.new</strong>. The password for the next level is in <strong>passwords.new</strong> and is the only line that has been changed between <strong>passwords.old and passwords.new</strong></p>
+<p><strong>NOTE: if you have solved this level and see ‘Byebye!’ when trying to log into bandit18, this is related to the next level, bandit19</strong></p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>To check for differences between 2 files, use <code>diff</code></li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">diff </span><span style="color:#F97583">--</span><span style="color:#E1E4E8">suppress</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">common</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">lines passwords.</span><span style="color:#F97583">new </span><span style="color:#E1E4E8">passwords.old </span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">42c42</span></span>
+<span class="line"><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> hga5tuuCLF6fFzUpnagiMN8ssu9LFrdg</span></span>
+<span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"><span style="color:#F97583">></span><span style="color:#E1E4E8"> p6ggwdNHncnmCNxuAt0KtKVq185ZU7AW</span></span></code></pre>
+<ol start="2">
+<li>The first password in the output is the new password since passwords.new was specified first before passwords.old in the command we ran</li>
+</ol>
+<h1 id="level-18-19">Level 18-19</h1>
+<p><strong>Problem</strong>
+The password for the next level is stored in a file <strong>readme</strong> in the homedirectory. Unfortunately, someone has modified <strong>.bashrc</strong> to log you out when you log in with SSH.</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li><code>ssh</code> allows you to run a command on the target machine/environment after a connection is successfully established.</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">ssh</span><span style="color:#9ECBFF"> bandit18@bandit.labs.overthewire.org</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> 2220</span><span style="color:#9ECBFF"> ls</span></span>
+<span class="line"><span style="color:#B392F0">                         _</span><span style="color:#9ECBFF">                     _</span><span style="color:#9ECBFF"> _</span><span style="color:#9ECBFF"> _</span><span style="color:#E1E4E8">   </span></span>
+<span class="line"><span style="color:#F97583">                        |</span><span style="color:#F97583"> |</span><span style="color:#B392F0">__</span><span style="color:#9ECBFF">   __</span><span style="color:#9ECBFF"> _</span><span style="color:#9ECBFF"> _</span><span style="color:#9ECBFF"> __</span><span style="color:#9ECBFF">   __</span><span style="color:#F97583">|</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">_</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">|</span><span style="color:#B392F0">_</span><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#F97583">                        |</span><span style="color:#B392F0"> '_ \ / _` | '</span><span style="color:#B392F0">_</span><span style="color:#79B8FF"> \ </span><span style="color:#9ECBFF">/</span><span style="color:#9ECBFF"> _` </span><span style="color:#F97583">|</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> __</span><span style="color:#F97583">|</span></span>
+<span class="line"><span style="color:#F97583">                        |</span><span style="color:#F97583"> |</span><span style="color:#B392F0">_</span><span style="color:#9ECBFF">) </span><span style="color:#F97583">|</span><span style="color:#9ECBFF"> (</span><span style="color:#B392F0">_</span><span style="color:#F97583">|</span><span style="color:#F97583"> |</span><span style="color:#F97583"> |</span><span style="color:#F97583"> |</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> (</span><span style="color:#B392F0">_</span><span style="color:#F97583">|</span><span style="color:#F97583"> |</span><span style="color:#F97583"> |</span><span style="color:#F97583"> |</span><span style="color:#B392F0">_</span><span style="color:#9ECBFF"> </span></span>
+<span class="line"><span style="color:#F97583">                        |</span><span style="color:#B392F0">_.__/</span><span style="color:#79B8FF"> \_</span><span style="color:#9ECBFF">_,_</span><span style="color:#F97583">|</span><span style="color:#B392F0">_</span><span style="color:#F97583">|</span><span style="color:#F97583"> |</span><span style="color:#B392F0">_</span><span style="color:#F97583">|</span><span style="color:#B392F0">\__,_</span><span style="color:#F97583">|</span><span style="color:#B392F0">_</span><span style="color:#F97583">|</span><span style="color:#B392F0">\__</span><span style="color:#F97583">|</span></span>
+<span class="line"><span style="color:#9ECBFF">                                                       </span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">                      This</span><span style="color:#9ECBFF"> is an OverTheWire game server. </span></span>
+<span class="line"><span style="color:#B392F0">            More</span><span style="color:#9ECBFF"> information on http://www.overthewire.org/wargames</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">bandit18@bandit.labs.overthewire.org's password: </span></span>
+<span class="line"><span style="color:#B392F0">readme</span></span></code></pre>
+<ol start="2">
+<li>Notice that <code>ls</code> was run successfully and we see the readme file that was mentioned above.</li>
+<li>All we have to now is to login again and display the file</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">ssh</span><span style="color:#9ECBFF"> bandit18@bandit.labs.overthewire.org</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> 2220</span><span style="color:#9ECBFF"> cat</span><span style="color:#9ECBFF"> readme</span></span>
+<span class="line"><span style="color:#B392F0">                         _</span><span style="color:#9ECBFF">                     _</span><span style="color:#9ECBFF"> _</span><span style="color:#9ECBFF"> _</span><span style="color:#E1E4E8">   </span></span>
+<span class="line"><span style="color:#F97583">                        |</span><span style="color:#F97583"> |</span><span style="color:#B392F0">__</span><span style="color:#9ECBFF">   __</span><span style="color:#9ECBFF"> _</span><span style="color:#9ECBFF"> _</span><span style="color:#9ECBFF"> __</span><span style="color:#9ECBFF">   __</span><span style="color:#F97583">|</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">_</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">|</span><span style="color:#B392F0">_</span><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#F97583">                        |</span><span style="color:#B392F0"> '_ \ / _` | '</span><span style="color:#B392F0">_</span><span style="color:#79B8FF"> \ </span><span style="color:#9ECBFF">/</span><span style="color:#9ECBFF"> _` </span><span style="color:#F97583">|</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> __</span><span style="color:#F97583">|</span></span>
+<span class="line"><span style="color:#F97583">                        |</span><span style="color:#F97583"> |</span><span style="color:#B392F0">_</span><span style="color:#9ECBFF">) </span><span style="color:#F97583">|</span><span style="color:#9ECBFF"> (</span><span style="color:#B392F0">_</span><span style="color:#F97583">|</span><span style="color:#F97583"> |</span><span style="color:#F97583"> |</span><span style="color:#F97583"> |</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> (</span><span style="color:#B392F0">_</span><span style="color:#F97583">|</span><span style="color:#F97583"> |</span><span style="color:#F97583"> |</span><span style="color:#F97583"> |</span><span style="color:#B392F0">_</span><span style="color:#9ECBFF"> </span></span>
+<span class="line"><span style="color:#F97583">                        |</span><span style="color:#B392F0">_.__/</span><span style="color:#79B8FF"> \_</span><span style="color:#9ECBFF">_,_</span><span style="color:#F97583">|</span><span style="color:#B392F0">_</span><span style="color:#F97583">|</span><span style="color:#F97583"> |</span><span style="color:#B392F0">_</span><span style="color:#F97583">|</span><span style="color:#B392F0">\__,_</span><span style="color:#F97583">|</span><span style="color:#B392F0">_</span><span style="color:#F97583">|</span><span style="color:#B392F0">\__</span><span style="color:#F97583">|</span></span>
+<span class="line"><span style="color:#9ECBFF">                                                       </span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">                      This</span><span style="color:#9ECBFF"> is an OverTheWire game server. </span></span>
+<span class="line"><span style="color:#B392F0">            More</span><span style="color:#9ECBFF"> information on http://www.overthewire.org/wargames</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">bandit18@bandit.labs.overthewire.org's password: </span></span>
+<span class="line"><span style="color:#B392F0">awhqfNnAbc1naukrpqDYcF95h7HoMTrC</span></span></code></pre>
+<h1 id="level-19-20">Level 19-20</h1>
+<p><strong>Problem</strong>
+To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary.</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>A <em>setuid binary</em> is a special type of program on Unix-based systems (like Linux and macOS) that has its permissions adjusted to allow it to run with the privileges of the file’s owner, even if the user running the program is not the owner. (explained by Gemini)</li>
+<li>There is a file named <em>bandit20-do</em> in the homedirectory</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">./bandit20-do</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Run</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> command</span><span style="color:#9ECBFF"> as</span><span style="color:#9ECBFF"> another</span><span style="color:#9ECBFF"> user.</span></span>
+<span class="line"><span style="color:#B392F0">  Example:</span><span style="color:#9ECBFF"> ./bandit20-do</span><span style="color:#9ECBFF"> id</span></span></code></pre>
+<ol start="3">
+<li>We could probably just <em>cat</em> out /etc/bandit_pass/bandit20 then</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">./bandit20-do</span><span style="color:#9ECBFF"> cat</span><span style="color:#9ECBFF"> /etc/bandit_pass/bandit20</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">VxCazJaVykI6W36BkBU0mJTCM8rR95XT</span></span></code></pre>
+<h1 id="level-20-21">Level 20-21</h1>
+<p><strong>Problem</strong>
+There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).</p>
+<p><strong>NOTE:</strong> Try connecting to your own network daemon to see if it works as you think</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>The setuid binary can be used as follows:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">./suconnect</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Usage:</span><span style="color:#9ECBFF"> ./suconnect</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">portnumbe</span><span style="color:#E1E4E8">r</span><span style="color:#F97583">></span></span></code></pre>
+<ol start="2">
+<li>For the setuid binary to connect to localhost, we need to first create a server using <code>nc</code>. the <code>-l</code> flag means listening and is needed to create a server. the <code>-p</code> flag is used to specify a port. then we can use <code>echo</code> to send the password via piping (because you only want a one-time server that sends a message and then disconnects). <code>-n</code> is to prevent newline characters <code>&#x26;</code> pushes the process to run in the background (so that you can continue to use the terminal/interface in the meantime).</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#79B8FF"> -n</span><span style="color:#9ECBFF"> 'VxCazJaVykI6W36BkBU0mJTCM8rR95XT'</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> nc</span><span style="color:#79B8FF"> -l</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> 1234</span><span style="color:#E1E4E8"> &#x26;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">[1] </span><span style="color:#B392F0">1212452</span></span></code></pre>
+<ol start="3">
+<li>Connect to the specified port using the setuid binary</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">./suconnect</span><span style="color:#79B8FF"> 1234</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Read:</span><span style="color:#9ECBFF"> VxCazJaVykI6W36BkBU0mJTCM8rR95XT</span></span>
+<span class="line"><span style="color:#B392F0">Password</span><span style="color:#9ECBFF"> matches,</span><span style="color:#9ECBFF"> sending</span><span style="color:#9ECBFF"> next</span><span style="color:#9ECBFF"> password</span></span>
+<span class="line"><span style="color:#B392F0">NvEJF7oVjkddltPSrdKEFOllh9V1IBcq</span></span></code></pre>
+<h1 id="level-21-22">Level 21-22</h1>
+<p><strong>Problem</strong>
+A program is running automatically at regular intervals from <strong>cron</strong>, the time-based job scheduler. Look in <strong>/etc/cron.d/</strong> for the configuration and see what command is being executed.</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li><code>cron</code> jobs are background processes that run at regular intervals on your computer</li>
+<li><code>cd</code> to the directory</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> /etc/cron.d</span></span></code></pre>
+<ol start="3">
+<li>We see that <em>/usr/bin/cronjob_bandit22.sh</em> is running for bandit22</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">ls</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">cronjob_bandit15_root</span><span style="color:#9ECBFF">  cronjob_bandit22</span><span style="color:#9ECBFF">  cronjob_bandit24</span><span style="color:#9ECBFF">       e2scrub_all</span><span style="color:#9ECBFF">  sysstat</span></span>
+<span class="line"><span style="color:#B392F0">cronjob_bandit17_root</span><span style="color:#9ECBFF">  cronjob_bandit23</span><span style="color:#9ECBFF">  cronjob_bandit25_root</span><span style="color:#9ECBFF">  otw-tmp-dir</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> cronjob_bandit22</span></span>
+<span class="line"><span style="color:#B392F0">@reboot</span><span style="color:#9ECBFF"> bandit22</span><span style="color:#9ECBFF"> /usr/bin/cronjob_bandit22.sh</span><span style="color:#E1E4E8"> &#x26;</span><span style="color:#F97583">></span><span style="color:#E1E4E8"> /dev/null</span></span>
+<span class="line"><span style="color:#F97583">*</span><span style="color:#F97583"> *</span><span style="color:#F97583"> *</span><span style="color:#F97583"> *</span><span style="color:#F97583"> *</span><span style="color:#E1E4E8"> bandit22 /usr/bin/cronjob_bandit22.sh &#x26;</span><span style="color:#F97583">></span><span style="color:#E1E4E8"> /dev/null</span></span></code></pre>
+<ol start="4">
+<li><code>chmod</code> is used to manage file permissions, <code>chmod 644</code> is changing the permissions of the directory <em>/tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv</em>, it is allowing the owner of file to read and write, the group the file belongs to and others to only read from the directory. then the file writes the password for bandit22 into the directory. read about <a href="https://www.redhat.com/sysadmin/introduction-chmod">chmod</a></li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> /usr/bin/cronjob_bandit22.sh</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">#!/bin/bash</span></span>
+<span class="line"><span style="color:#B392F0">chmod</span><span style="color:#79B8FF"> 644</span><span style="color:#9ECBFF"> /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv</span></span>
+<span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> /etc/bandit_pass/bandit22</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF"> /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv</span></span></code></pre>
+<ol start="5">
+<li>we can just read the file directly without having to modify any permission</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">WdDozAdTM2z9DiFEQ2mGlwngMfj4EZff</span></span></code></pre>
+<h1 id="level-22-23">Level 22-23</h1>
+<p><strong>Problem</strong>
+A program is running automatically at regular intervals from <strong>cron</strong>, the time-based job scheduler. Look in <strong>/etc/cron.d/</strong> for the configuration and see what command is being executed.</p>
+<p><strong>NOTE:</strong> Looking at shell scripts written by other people is a very useful skill. The script for this level is intentionally made easy to read. If you are having problems understanding what it does, try executing it to see the debug information it prints.</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>navigate to the target directory and look at what the script is doing</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#6A737D">#!/bin/bash</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">myname</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">whoami</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">mytarget</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> I</span><span style="color:#9ECBFF"> am</span><span style="color:#9ECBFF"> user</span><span style="color:#E1E4E8"> $myname </span><span style="color:#F97583">|</span><span style="color:#B392F0"> md5sum</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> cut</span><span style="color:#79B8FF"> -d</span><span style="color:#9ECBFF"> ' '</span><span style="color:#79B8FF"> -f</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "Copying passwordfile /etc/bandit_pass/</span><span style="color:#E1E4E8">$myname</span><span style="color:#9ECBFF"> to /tmp/</span><span style="color:#E1E4E8">$mytarget</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> /etc/bandit_pass/</span><span style="color:#E1E4E8">$myname </span><span style="color:#F97583">></span><span style="color:#9ECBFF"> /tmp/</span><span style="color:#E1E4E8">$mytarget</span></span></code></pre>
+<ol start="2">
+<li>the script is writing the password to /tmp/$mytarget. We just need to figure out what mytarget is. luckily, we are given the step to find it on line 4. <code>echo I am user $myname | md5sum | cut -d ' ' -f 1</code>. We are bandit22 (to be sure, you can also run <em>whoami</em>), so running</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> I</span><span style="color:#9ECBFF"> am</span><span style="color:#9ECBFF"> user</span><span style="color:#9ECBFF"> bandit22</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> md5sum</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> cut</span><span style="color:#79B8FF"> -d</span><span style="color:#9ECBFF"> " "</span><span style="color:#79B8FF"> -f</span><span style="color:#79B8FF"> 1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">8169b67bd894ddbb4412f91573b38db3</span></span></code></pre>
+<ol start="3">
+<li>Replacing <em>mytarget</em> with the result we just found, we get <em>/tmp/8169b67bd894ddbb4412f91573b38db3</em></li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> /tmp/8169b67bd894ddbb4412f91573b38db3</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">WdDozAdTM2z9DiFEQ2mGlwngMfj4EZff</span></span></code></pre>
+<h1 id="level-23-24">Level 23-24</h1>
+<p><strong>Problem</strong>
+A program is running automatically at regular intervals from <strong>cron</strong>, the time-based job scheduler. Look in <strong>/etc/cron.d/</strong> for the configuration and see what command is being executed.</p>
+<p><strong>NOTE:</strong> This level requires you to create your own first shell-script. This is a very big step and you should be proud of yourself when you beat this level!</p>
+<p><strong>NOTE 2:</strong> Keep in mind that your shell script is removed once executed, so you may want to keep a copy around…</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>let’s dissect the script. it executes (only if the owner of the file is bandit23) and deletes every file in /var/spool/bandit23/foo. so we need to create a script that will give us the password for the next level and move it into the directory to be executed</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#6A737D">#!/bin/bash</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">myname</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">whoami</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> /var/spool/</span><span style="color:#E1E4E8">$myname</span><span style="color:#9ECBFF">/foo</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "Executing and deleting all scripts in /var/spool/</span><span style="color:#E1E4E8">$myname</span><span style="color:#9ECBFF">/foo:"</span></span>
+<span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">in</span><span style="color:#9ECBFF"> *</span><span style="color:#9ECBFF"> .*</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">do</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> [ </span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">$i</span><span style="color:#9ECBFF">"</span><span style="color:#F97583"> !=</span><span style="color:#9ECBFF"> "."</span><span style="color:#F97583"> -a</span><span style="color:#9ECBFF"> "</span><span style="color:#E1E4E8">$i</span><span style="color:#9ECBFF">"</span><span style="color:#F97583"> !=</span><span style="color:#9ECBFF"> ".."</span><span style="color:#E1E4E8"> ];</span></span>
+<span class="line"><span style="color:#F97583">    then</span></span>
+<span class="line"><span style="color:#79B8FF">        echo</span><span style="color:#9ECBFF"> "Handling </span><span style="color:#E1E4E8">$i</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#E1E4E8">        owner</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"$(</span><span style="color:#79B8FF">stat</span><span style="color:#79B8FF"> --format</span><span style="color:#9ECBFF"> "%U" ./</span><span style="color:#E1E4E8">$i</span><span style="color:#9ECBFF">)"</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> [ </span><span style="color:#9ECBFF">"${</span><span style="color:#E1E4E8">owner</span><span style="color:#9ECBFF">}"</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "bandit23"</span><span style="color:#E1E4E8"> ]; </span><span style="color:#F97583">then</span></span>
+<span class="line"><span style="color:#B392F0">            timeout</span><span style="color:#79B8FF"> -s</span><span style="color:#79B8FF"> 9</span><span style="color:#79B8FF"> 60</span><span style="color:#9ECBFF"> ./</span><span style="color:#E1E4E8">$i</span></span>
+<span class="line"><span style="color:#F97583">        fi</span></span>
+<span class="line"><span style="color:#B392F0">        rm</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> ./</span><span style="color:#E1E4E8">$i</span></span>
+<span class="line"><span style="color:#F97583">    fi</span></span>
+<span class="line"><span style="color:#F97583">done</span></span></code></pre>
+<ol start="2">
+<li>first, we create a temporary directory to work in. then we create a bash script with <code>nano</code>.</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">mktemp</span><span style="color:#79B8FF"> -d</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">/tmp/tmp.EBCPI7mvfb</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> /tmp/tmp.EBCPI7mvfb</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">nano</span><span style="color:#9ECBFF"> pass.sh</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D">#!/bin/bash</span></span>
+<span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> /etc/bandit_pass/bandit24</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF"> /tmp/tmp.EBCPI7mvfb/password</span></span></code></pre>
+<ol start="3">
+<li>create a file for the password to be written into</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> password</span></span></code></pre>
+<ol start="4">
+<li>give the directory and file the relevant permissions</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">chmod</span><span style="color:#9ECBFF"> +rwx</span><span style="color:#9ECBFF"> password</span></span>
+<span class="line"><span style="color:#B392F0">chmod</span><span style="color:#79B8FF"> 777</span><span style="color:#9ECBFF"> /tmp/tmp.EBCPI7mvfb</span></span></code></pre>
+<ol start="5">
+<li>move the bash script into /var/spool/bandit23/foo</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">cp</span><span style="color:#9ECBFF"> pass.sh</span><span style="color:#9ECBFF"> /var/spool/bandit24/foo/pass.sh</span></span></code></pre>
+<ol start="6">
+<li>wait for a minute, try to read /var/spool/bandit24/foo/pass.sh. if the file doesn’t exist, it means that the cron job has finished running</li>
+<li>you can now read the password in the temporary directory</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> password</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span></span></code></pre>
+<h1 id="level-24-25">Level 24-25</h1>
+<p><strong>Problem</strong>
+A daemon is listening on port 30002 and will give you the password for bandit25 if given the password for bandit24 and a secret numeric 4-digit pincode. There is no way to retrieve the pincode except by going through all of the 10000 combinations, called brute-forcing.<br>
+You do not need to create new connections each time</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>Try connecting to port 30002 and entering a random code just to see the output</li>
+<li>Write a script to generate a text file that contains the previous password and each of the 10000 combinations, each on a new line into a file called possibilities.txt. Next, pipe every line in possibilities.txt into netcat and output the result into results.txt. (do all of this in a temporary directory)</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D">#!/bin/bash</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> {</span><span style="color:#B392F0">0000..9999}</span></span>
+<span class="line"><span style="color:#F97583">do</span></span>
+<span class="line"><span style="color:#79B8FF">        echo</span><span style="color:#9ECBFF"> UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ</span><span style="color:#E1E4E8"> $i </span><span style="color:#F97583">>></span><span style="color:#9ECBFF"> possibilities.txt</span></span>
+<span class="line"><span style="color:#F97583">done</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> possibilities.txt</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> nc</span><span style="color:#9ECBFF"> localhost</span><span style="color:#79B8FF"> 30002</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF"> results.txt</span></span></code></pre>
+<ol start="3">
+<li>Then we can sort and filter out all the lines which contain the string “Wrong”</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cmd"><code><span class="line"><span style="color:#E1E4E8">sort results.txt | grep </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">v </span><span style="color:#9ECBFF">"Wrong"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">Correct</span><span style="color:#F97583">!</span></span>
+<span class="line"><span style="color:#E1E4E8">Exiting.</span></span>
+<span class="line"><span style="color:#E1E4E8">I am the pincode checker </span><span style="color:#F97583">for</span><span style="color:#E1E4E8"> user bandit25. Please enter the password </span><span style="color:#F97583">for</span><span style="color:#E1E4E8"> user bandit24 </span><span style="color:#F97583">and</span><span style="color:#E1E4E8"> the secret pincode on a single line, separated by a </span><span style="color:#79B8FF">space</span><span style="color:#E1E4E8">.</span></span>
+<span class="line"><span style="color:#E1E4E8">The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d</span></span></code></pre>
+<ol start="4">
+<li>If you find that you were unable to get the password, it could be that the game server was updated to only accept up to 6000 brute force entries.</li>
+<li>In this case, just break the <em>for</em> loop into 2, one from 0000 to 5999 and the other from 5999 to 9999. You would also need to put them into 2 different text files and bruteforce each one as well.</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D">#!/bin/bash</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> {</span><span style="color:#B392F0">0000..5999}</span></span>
+<span class="line"><span style="color:#F97583">do</span></span>
+<span class="line"><span style="color:#79B8FF">        echo</span><span style="color:#9ECBFF"> UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ</span><span style="color:#E1E4E8"> $i </span><span style="color:#F97583">>></span><span style="color:#9ECBFF"> possibilities1.txt</span></span>
+<span class="line"><span style="color:#F97583">done</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> {</span><span style="color:#B392F0">5999..9999}</span></span>
+<span class="line"><span style="color:#F97583">do</span></span>
+<span class="line"><span style="color:#79B8FF">        echo</span><span style="color:#9ECBFF"> UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ</span><span style="color:#E1E4E8"> $i </span><span style="color:#F97583">>></span><span style="color:#9ECBFF"> possibilities2.txt</span></span>
+<span class="line"><span style="color:#F97583">done</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> possibilities2.txt</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> nc</span><span style="color:#9ECBFF"> localhost</span><span style="color:#79B8FF"> 30002</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF"> results2.txt</span></span>
+<span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> possibilities1.txt</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> nc</span><span style="color:#9ECBFF"> localhost</span><span style="color:#79B8FF"> 30002</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF"> results1.txt</span></span>
+<span class="line"><span style="color:#79B8FF">exit</span></span></code></pre>
+<ol start="6">
+<li>Search both text files for the the password.</li>
+</ol>
+<h1 id="level-25-26">Level 25-26</h1>
+<p><strong>Problem</strong>
+Logging in to bandit26 from bandit25 should be fairly easy… The shell for user bandit26 is not <strong>/bin/bash</strong>, but something else. Find out what it is, how it works and how to break out of it.</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>There is a private ssh key for the next level in the current directory, we need to limit the rights to the key to use it to log in.</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ls</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">bandit26.sshkey</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">chmod</span><span style="color:#79B8FF"> 700</span><span style="color:#9ECBFF"> bandit26.sshkey</span></span></code></pre>
+<ol start="2">
+<li>A default shell is the program that automatically launches when you open your terminal/command prompt. For macOS, the default shell is zsh.</li>
+<li>On Unix-like systems, there is an important file called /etc/passwd that stores critical information about user accounts on the system. The default login shell can also be found here. To find the file for bandit26,</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> /etc/passwd</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> grep</span><span style="color:#9ECBFF"> bandit26</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">bandit26:x:11026:11026:bandit</span><span style="color:#9ECBFF"> level</span><span style="color:#9ECBFF"> 26:/home/bandit26:/usr/bin/showtext</span></span></code></pre>
+<ol start="4">
+<li>User bandit26 uses the Bourne Shell (sh). <code>more</code> is a shell command that allows files to be displayed in an interactive mode when the contents of the file are too large to fit into the terminal window. It allows the text editor ‘vim’ to be opened with <code>v</code>. The script opens a file called <em>text.txt</em> in the home directory of bandit26 with the <em>more</em> program.</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> /usr/bin/showtext</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">#!/bin/sh</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#E1E4E8"> TERM</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">linux</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">exec</span><span style="color:#9ECBFF"> more</span><span style="color:#9ECBFF"> ~/text.txt</span></span>
+<span class="line"><span style="color:#79B8FF">exit</span><span style="color:#79B8FF"> 0</span></span></code></pre>
+<ol start="5">
+<li>When we try to log in, the connection is immediately closed because the <em>/usr/bin/showtext</em> is executed</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">ssh</span><span style="color:#79B8FF"> -i</span><span style="color:#9ECBFF"> bandit26.sshkey</span><span style="color:#9ECBFF"> bandit26@bandit.labs.overthewire.org</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> 2220</span></span></code></pre>
+<ol start="6">
+<li>This is because the contents of <em>text.txt</em> is too short and <code>more</code> does not need to go into command mode. If we make the window extremely small, it will force the <code>more</code> command to run. Press ‘v’ to open vim.</li>
+<li>Change the shell to bash</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="vim"><code><span class="line"><span style="color:#E1E4E8">:</span><span style="color:#F97583">set</span><span style="color:#79B8FF"> shell</span><span style="color:#F97583">=</span><span style="color:#DBEDFF">/bin/</span><span style="color:#E1E4E8">bash</span></span></code></pre>
+<ol start="8">
+<li>Now, you have a shell you can use to read text.txt</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ls</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">bandit27-do</span><span style="color:#9ECBFF">  text.txt</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> text.txt</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z</span></span></code></pre>
+<h1 id="level-26-27">Level 26-27</h1>
+<p><strong>Problem</strong>
+Good job getting a shell! Now hurry and grab the password for bandit27!</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>In the shell of bandit26, we can run commands as bandit27 using the setuid binary given.</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">./bandit27-do</span><span style="color:#9ECBFF"> cat</span><span style="color:#9ECBFF"> /etc/bandit</span><span style="color:#79B8FF">\_</span><span style="color:#9ECBFF">pass/bandit27</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">3ba3118a22e93127a4ed485be72ef5ea</span></span></code></pre>
+<h1 id="level-27-28">Level 27-28</h1>
+<p><strong>Problem</strong>
+There is a git repository at <code>ssh://bandit27-git@localhost/home/bandit27-git/repo</code> via the port <code>2220</code>. The password for the user <code>bandit27-git</code> is the same as for the user <code>bandit27</code>.</p>
+<p>Clone the repository and find the password for the next level.</p>
+<p><strong>Solution</strong>
+Read about git <a href="https://youtu.be/mJ-qvsxPHpY?si=4OgIDh30A8PquvPY">here</a>
+<a href="https://www.geeksforgeeks.org/git-cheat-sheet/">Cheatsheet</a></p>
+<ol>
+<li>Create and move to a temporary directory</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">mktemp</span><span style="color:#79B8FF"> -d</span></span>
+<span class="line"><span style="color:#B392F0">/tmp/tmp.2Ldm7pFdcy</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> /tmp/tmp.2Ldm7pFdcy</span></span></code></pre>
+<ol start="2">
+<li>Clone the git repository, this will overwrite all the contents in the directory</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> clone</span><span style="color:#9ECBFF"> ssh://bandit27-git@localhost:2220/home/bandit27-git/repo</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Cloning</span><span style="color:#9ECBFF"> into</span><span style="color:#9ECBFF"> 'repo'...</span></span>
+<span class="line"><span style="color:#B392F0">The</span><span style="color:#9ECBFF"> authenticity</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> host</span><span style="color:#9ECBFF"> '[localhost]:2220 ([127.0.0.1]:2220)'</span><span style="color:#9ECBFF"> can't be established.</span></span>
+<span class="line"><span style="color:#9ECBFF">ED25519 key fingerprint is SHA256:C2ihUBV7ihnV1wUXRb4RrEcLfXC5CXlhmAAM/urerLY.</span></span>
+<span class="line"><span style="color:#9ECBFF">This key is not known by any other names</span></span>
+<span class="line"><span style="color:#9ECBFF">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes</span></span>
+<span class="line"><span style="color:#9ECBFF">Could not create directory '/home/bandit27/.ssh' (Permission denied).</span></span>
+<span class="line"><span style="color:#9ECBFF">Failed to add the host to the list of known hosts (/home/bandit27/.ssh/known_hosts).</span></span>
+<span class="line"><span style="color:#9ECBFF">                         _                     _ _ _   </span></span>
+<span class="line"><span style="color:#9ECBFF">                        | |__   __ _ _ __   __| (_) |_ </span></span>
+<span class="line"><span style="color:#9ECBFF">                        | '_</span><span style="color:#79B8FF"> \ </span><span style="color:#9ECBFF">/</span><span style="color:#9ECBFF"> _` </span><span style="color:#F97583">|</span><span style="color:#B392F0"> '_ \ / _` | | __|</span></span>
+<span class="line"><span style="color:#B392F0">                        | |_) | (_| | | | | (_| | | |_ </span></span>
+<span class="line"><span style="color:#B392F0">                        |_.__/ \__,_|_| |_|\__,_|_|\__|</span></span>
+<span class="line"><span style="color:#B392F0">                                                       </span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">                      This is an OverTheWire game server. </span></span>
+<span class="line"><span style="color:#B392F0">            More information on http://www.overthewire.org/wargames</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">bandit27-git@localhost's</span><span style="color:#9ECBFF"> password: </span></span>
+<span class="line"><span style="color:#B392F0">remote:</span><span style="color:#9ECBFF"> Enumerating objects: 3, done.</span></span>
+<span class="line"><span style="color:#B392F0">remote:</span><span style="color:#9ECBFF"> Counting objects: 100% (3/3), done.</span></span>
+<span class="line"><span style="color:#B392F0">remote:</span><span style="color:#9ECBFF"> Compressing objects: 100% (2/2), done.</span></span>
+<span class="line"><span style="color:#B392F0">remote:</span><span style="color:#9ECBFF"> Total </span><span style="color:#79B8FF">3</span><span style="color:#9ECBFF"> (delta </span><span style="color:#79B8FF">0</span><span style="color:#9ECBFF">), reused 0 (</span><span style="color:#B392F0">delta</span><span style="color:#79B8FF"> 0</span><span style="color:#9ECBFF">), pack-reused 0</span></span>
+<span class="line"><span style="color:#B392F0">Receiving</span><span style="color:#9ECBFF"> objects: 100% (3/3), done.</span></span></code></pre>
+<ol start="3">
+<li>Explore</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">ls</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">repo</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> repo</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">ls</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">README</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> README</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">The</span><span style="color:#9ECBFF"> password</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> next</span><span style="color:#9ECBFF"> level</span><span style="color:#9ECBFF"> is:</span><span style="color:#9ECBFF"> AVanL161y9rsbcJIsFHuw35rjaOM19nR</span></span></code></pre>
+<h1 id="level-28-29">Level 28-29</h1>
+<p><strong>Problem</strong>
+There is a git repository at <code>ssh://bandit28-git@localhost/home/bandit28-git/repo</code> via the port <code>2220</code>. The password for the user <code>bandit28-git</code> is the same as for the user <code>bandit28</code>.</p>
+<p>Clone the repository and find the password for the next level.</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>Create and move to a temporary directory</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">mktemp</span><span style="color:#79B8FF"> -d</span></span>
+<span class="line"><span style="color:#B392F0">/tmp/tmp.tGm1qKPkoZ</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> /tmp/tmp.tGm1qKPkoZ</span></span></code></pre>
+<ol start="2">
+<li>Clone repository, if you run into permission/rights error, correct it first by <code>chmod 777 /tmp/tmp.tGm1qKPkoZ</code></li>
+<li>Explore</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">ls</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">repo</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> repo</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">ls</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">README.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> README.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Bandit Notes</span></span>
+<span class="line"><span style="color:#B392F0">Some</span><span style="color:#9ECBFF"> notes</span><span style="color:#9ECBFF"> for</span><span style="color:#9ECBFF"> level29</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> bandit.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">## credentials</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">-</span><span style="color:#9ECBFF"> username:</span><span style="color:#9ECBFF"> bandit29</span></span>
+<span class="line"><span style="color:#B392F0">-</span><span style="color:#9ECBFF"> password:</span><span style="color:#9ECBFF"> xxxxxxxxxx</span></span></code></pre>
+<ol start="4">
+<li>Check the logs, there might have been modifications to the file</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> log</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">commit</span><span style="color:#9ECBFF"> 14f754b3ba6531a2b89df6ccae6446e8969a41f3</span><span style="color:#E1E4E8"> (HEAD -</span><span style="color:#F97583">></span><span style="color:#9ECBFF"> master,</span><span style="color:#9ECBFF"> origin/master,</span><span style="color:#9ECBFF"> origin/HEAD</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0">Author:</span><span style="color:#9ECBFF"> Morla</span><span style="color:#9ECBFF"> Porla</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">morla@overthewire.or</span><span style="color:#E1E4E8">g</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#B392F0">Date:</span><span style="color:#9ECBFF">   Thu</span><span style="color:#9ECBFF"> Oct</span><span style="color:#79B8FF"> 5</span><span style="color:#9ECBFF"> 06:19:41</span><span style="color:#79B8FF"> 2023</span><span style="color:#9ECBFF"> +0000</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    fix</span><span style="color:#9ECBFF"> info</span><span style="color:#9ECBFF"> leak</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">commit</span><span style="color:#9ECBFF"> f08b9cc63fa1a4602fb065257633c2dae6e5651b</span></span>
+<span class="line"><span style="color:#B392F0">Author:</span><span style="color:#9ECBFF"> Morla</span><span style="color:#9ECBFF"> Porla</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">morla@overthewire.or</span><span style="color:#E1E4E8">g</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#B392F0">Date:</span><span style="color:#9ECBFF">   Thu</span><span style="color:#9ECBFF"> Oct</span><span style="color:#79B8FF"> 5</span><span style="color:#9ECBFF"> 06:19:41</span><span style="color:#79B8FF"> 2023</span><span style="color:#9ECBFF"> +0000</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    add</span><span style="color:#9ECBFF"> missing</span><span style="color:#9ECBFF"> data</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">commit</span><span style="color:#9ECBFF"> a645bcc508c63f081234911d2f631f87cf469258</span></span>
+<span class="line"><span style="color:#B392F0">Author:</span><span style="color:#9ECBFF"> Ben</span><span style="color:#9ECBFF"> Dover</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">noone@overthewire.or</span><span style="color:#E1E4E8">g</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#B392F0">Date:</span><span style="color:#9ECBFF">   Thu</span><span style="color:#9ECBFF"> Oct</span><span style="color:#79B8FF"> 5</span><span style="color:#9ECBFF"> 06:19:41</span><span style="color:#79B8FF"> 2023</span><span style="color:#9ECBFF"> +0000</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    initial</span><span style="color:#9ECBFF"> commit</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> README.md</span></span></code></pre>
+<ol start="5">
+<li>Since the last commit was about fixing info leak…the password might be in the version before it which is commit f08b9cc63fa1a4602fb065257633c2dae6e5651b.</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> show</span><span style="color:#9ECBFF"> f08b9cc63fa1a4602fb065257633c2dae6e5651b</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">commit</span><span style="color:#9ECBFF"> f08b9cc63fa1a4602fb065257633c2dae6e5651b</span></span>
+<span class="line"><span style="color:#B392F0">Author:</span><span style="color:#9ECBFF"> Morla</span><span style="color:#9ECBFF"> Porla</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">morla@overthewire.or</span><span style="color:#E1E4E8">g</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#B392F0">Date:</span><span style="color:#9ECBFF">   Thu</span><span style="color:#9ECBFF"> Oct</span><span style="color:#79B8FF"> 5</span><span style="color:#9ECBFF"> 06:19:41</span><span style="color:#79B8FF"> 2023</span><span style="color:#9ECBFF"> +0000</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9ECBFF">    add</span><span style="color:#9ECBFF"> missing</span><span style="color:#9ECBFF"> data</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">**</span><span style="color:#E1E4E8">diff --git a/README.md b/README.md</span><span style="color:#F97583">**</span></span>
+<span class="line"><span style="color:#F97583">**</span><span style="color:#E1E4E8">index 7ba2d2f..b302105 100644</span><span style="color:#F97583">**</span></span>
+<span class="line"><span style="color:#F97583">**</span><span style="color:#E1E4E8">--- a/README.md</span><span style="color:#F97583">**</span></span>
+<span class="line"><span style="color:#F97583">**</span><span style="color:#E1E4E8">+++ b/README.md</span><span style="color:#F97583">**</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">@@</span><span style="color:#79B8FF"> -4,5</span><span style="color:#9ECBFF"> +4,5</span><span style="color:#9ECBFF"> @@</span><span style="color:#9ECBFF"> Some</span><span style="color:#9ECBFF"> notes</span><span style="color:#9ECBFF"> for</span><span style="color:#9ECBFF"> level29</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> bandit.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0"> ##</span><span style="color:#9ECBFF"> credentials</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0"> -</span><span style="color:#9ECBFF"> username:</span><span style="color:#9ECBFF"> bandit29</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">--</span><span style="color:#9ECBFF"> password:</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">TB</span><span style="color:#E1E4E8">D</span><span style="color:#F97583">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">+-</span><span style="color:#9ECBFF"> password:</span><span style="color:#9ECBFF"> tQKvmcwNYcFS6vmPHIUSI3ShmsrQZK8S</span></span></code></pre>
+<h1 id="level-29-30">Level 29-30</h1>
+<p><strong>Problem</strong>
+There is a git repository at <code>ssh://bandit29-git@localhost/home/bandit29-git/repo</code> via the port <code>2220</code>. The password for the user <code>bandit29-git</code> is the same as for the user <code>bandit29</code>.</p>
+<p>Clone the repository and find the password for the next level.</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>temp directory + clone repository. usual stuff</li>
+<li>read readme</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> README.md</span><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#6A737D"># Bandit Notes</span></span>
+<span class="line"><span style="color:#B392F0">Some</span><span style="color:#9ECBFF"> notes</span><span style="color:#9ECBFF"> for</span><span style="color:#9ECBFF"> bandit30</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> bandit.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">## credentials</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">-</span><span style="color:#9ECBFF"> username:</span><span style="color:#9ECBFF"> bandit30</span></span>
+<span class="line"><span style="color:#B392F0">-</span><span style="color:#9ECBFF"> password:</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">no</span><span style="color:#9ECBFF"> passwords</span><span style="color:#9ECBFF"> in</span><span style="color:#9ECBFF"> production</span><span style="color:#F97583">!></span></span></code></pre>
+<ol start="3">
+<li>in tech lingo, if something isn’t in production, it’s in development! so we can check if there are other branches to this project (basically, when documenting new features of a project in git, new features are stored in separate branches for testing purposes, if everything is good to go, the code will be merged into the main project branch)</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> branch</span><span style="color:#79B8FF"> -a</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">*</span><span style="color:#E1E4E8"> master</span></span>
+<span class="line"><span style="color:#B392F0">  remotes/origin/HEAD</span><span style="color:#E1E4E8"> -</span><span style="color:#F97583">></span><span style="color:#9ECBFF"> origin/master</span></span>
+<span class="line"><span style="color:#B392F0">  remotes/origin/dev</span></span>
+<span class="line"><span style="color:#B392F0">  remotes/origin/master</span></span>
+<span class="line"><span style="color:#B392F0">  remotes/origin/sploits-dev</span></span></code></pre>
+<ol start="4">
+<li>let’s check out the ‘dev’ branch</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> checkout</span><span style="color:#9ECBFF"> dev</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Branch</span><span style="color:#9ECBFF"> 'dev'</span><span style="color:#9ECBFF"> set</span><span style="color:#9ECBFF"> up</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> track</span><span style="color:#9ECBFF"> remote</span><span style="color:#9ECBFF"> branch</span><span style="color:#9ECBFF"> 'dev'</span><span style="color:#9ECBFF"> from</span><span style="color:#9ECBFF"> 'origin'.</span></span>
+<span class="line"><span style="color:#B392F0">Switched</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> new</span><span style="color:#9ECBFF"> branch</span><span style="color:#9ECBFF"> 'dev'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">ls</span></span>
+<span class="line"><span style="color:#B392F0">code</span><span style="color:#9ECBFF">  README.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> README.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Bandit Notes</span></span>
+<span class="line"><span style="color:#B392F0">Some</span><span style="color:#9ECBFF"> notes</span><span style="color:#9ECBFF"> for</span><span style="color:#9ECBFF"> bandit30</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> bandit.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">## credentials</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">-</span><span style="color:#9ECBFF"> username:</span><span style="color:#9ECBFF"> bandit30</span></span>
+<span class="line"><span style="color:#B392F0">-</span><span style="color:#9ECBFF"> password:</span><span style="color:#9ECBFF"> xbhV3HpNGlTIdnjUrdAlPzc2L6y9EOnS</span></span></code></pre>
+<h1 id="level-30-31">Level 30-31</h1>
+<p><strong>Problem</strong>
+There is a git repository at <code>ssh://bandit30-git@localhost/home/bandit30-git/repo</code> via the port <code>2220</code>. The password for the user <code>bandit30-git</code> is the same as for the user <code>bandit30</code>.</p>
+<p>Clone the repository and find the password for the next level.</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>temp directory + clone repository. usual stuff</li>
+<li>read readme</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> README.md</span></span>
+<span class="line"><span style="color:#B392F0">just</span><span style="color:#9ECBFF"> an</span><span style="color:#9ECBFF"> epmty</span><span style="color:#9ECBFF"> file...</span><span style="color:#9ECBFF"> muahaha</span></span></code></pre>
+<ol start="3">
+<li>Git tagging can be used to mark specific points in the history of the repository. e.g. release points of software</li>
+<li>to view the tags in a branch,</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> tag</span></span>
+<span class="line"><span style="color:#B392F0">secret</span></span></code></pre>
+<ol start="5">
+<li>to see more details,</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> show</span><span style="color:#9ECBFF"> secret</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">OoffzGDlzhAlerFJ2cAiz1D41JW1Mhmt</span></span></code></pre>
+<h1 id="level-31-32">Level 31-32</h1>
+<p><strong>Problem</strong>
+There is a git repository at <code>ssh://bandit31-git@localhost/home/bandit31-git/repo</code> via the port <code>2220</code>. The password for the user <code>bandit31-git</code> is the same as for the user <code>bandit31</code>.</p>
+<p>Clone the repository and find the password for the next level.</p>
+<p><strong>Solution</strong>
+<a href="https://stackoverflow.com/questions/2745076/what-are-the-differences-between-git-commit-and-git-push">read</a> about the differences between “git commit” and “git push”</p>
+<ol>
+<li>usual stuff</li>
+<li>listing all contents in the directory</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">ls</span><span style="color:#79B8FF"> -la</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">total</span><span style="color:#79B8FF"> 20</span></span>
+<span class="line"><span style="color:#B392F0">drwxrwxr-x</span><span style="color:#79B8FF"> 3</span><span style="color:#9ECBFF"> bandit31</span><span style="color:#9ECBFF"> bandit31</span><span style="color:#79B8FF"> 4096</span><span style="color:#9ECBFF"> Mar</span><span style="color:#79B8FF"> 11</span><span style="color:#9ECBFF"> 13:39</span><span style="color:#9ECBFF"> .</span></span>
+<span class="line"><span style="color:#B392F0">drwxrwxrwx</span><span style="color:#79B8FF"> 3</span><span style="color:#9ECBFF"> bandit31</span><span style="color:#9ECBFF"> bandit31</span><span style="color:#79B8FF"> 4096</span><span style="color:#9ECBFF"> Mar</span><span style="color:#79B8FF"> 11</span><span style="color:#9ECBFF"> 13:39</span><span style="color:#9ECBFF"> ..</span></span>
+<span class="line"><span style="color:#B392F0">drwxrwxr-x</span><span style="color:#79B8FF"> 8</span><span style="color:#9ECBFF"> bandit31</span><span style="color:#9ECBFF"> bandit31</span><span style="color:#79B8FF"> 4096</span><span style="color:#9ECBFF"> Mar</span><span style="color:#79B8FF"> 11</span><span style="color:#9ECBFF"> 13:39</span><span style="color:#9ECBFF"> .git</span></span>
+<span class="line"><span style="color:#B392F0">-rw-rw-r--</span><span style="color:#79B8FF"> 1</span><span style="color:#9ECBFF"> bandit31</span><span style="color:#9ECBFF"> bandit31</span><span style="color:#79B8FF">    6</span><span style="color:#9ECBFF"> Mar</span><span style="color:#79B8FF"> 11</span><span style="color:#9ECBFF"> 13:39</span><span style="color:#9ECBFF"> .gitignore</span></span>
+<span class="line"><span style="color:#B392F0">-rw-rw-r--</span><span style="color:#79B8FF"> 1</span><span style="color:#9ECBFF"> bandit31</span><span style="color:#9ECBFF"> bandit31</span><span style="color:#79B8FF">  147</span><span style="color:#9ECBFF"> Mar</span><span style="color:#79B8FF"> 11</span><span style="color:#9ECBFF"> 13:39</span><span style="color:#9ECBFF"> README.md</span></span></code></pre>
+<ol start="3">
+<li>readme says the following</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> README.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">This</span><span style="color:#9ECBFF"> time</span><span style="color:#9ECBFF"> your</span><span style="color:#9ECBFF"> task</span><span style="color:#9ECBFF"> is</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> push</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> file</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> remote</span><span style="color:#9ECBFF"> repository.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Details:</span></span>
+<span class="line"><span style="color:#B392F0">    File</span><span style="color:#9ECBFF"> name:</span><span style="color:#9ECBFF"> key.txt</span></span>
+<span class="line"><span style="color:#B392F0">    Content:</span><span style="color:#9ECBFF"> 'May I come in?'</span></span>
+<span class="line"><span style="color:#B392F0">    Branch:</span><span style="color:#9ECBFF"> master</span></span></code></pre>
+<ol start="4">
+<li>create a key.txt that contains “May I come in?”</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "May I come in?"</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF"> key.txt</span></span></code></pre>
+<ol start="5">
+<li>.gitignore lists the file type that will not be pushed into the repository. this particular file ignores all files with the <em>.txt</em> extension. so making a commit and then pushing it will not work.</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> .gitignore</span></span>
+<span class="line"><span style="color:#F97583">*</span><span style="color:#E1E4E8">.txt</span></span></code></pre>
+<ol start="6">
+<li>we need to use <code>git add</code> with the flag “-f” which will force files to be committed even if they are normally ignored. commit all files in the local repository and then push it into the remote repository</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> add</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> key.txt</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> commit</span><span style="color:#79B8FF"> -a</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> push</span><span style="color:#9ECBFF"> origin</span><span style="color:#9ECBFF"> master</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">remote:</span><span style="color:#6A737D"> ### Attempting to validate files... ####</span></span>
+<span class="line"><span style="color:#B392F0">remote:</span><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#B392F0">remote:</span><span style="color:#9ECBFF"> .oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.</span></span>
+<span class="line"><span style="color:#B392F0">remote:</span><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#B392F0">remote:</span><span style="color:#9ECBFF"> Well</span><span style="color:#9ECBFF"> done!</span><span style="color:#9ECBFF"> Here</span><span style="color:#9ECBFF"> is</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> password</span><span style="color:#9ECBFF"> for</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> next</span><span style="color:#9ECBFF"> level:</span></span>
+<span class="line"><span style="color:#B392F0">remote:</span><span style="color:#9ECBFF"> rmCBvG56y58BXzv98yZGdO7ATVL5dW8y</span><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#B392F0">remote:</span><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#B392F0">remote:</span><span style="color:#9ECBFF"> .oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.</span></span>
+<span class="line"><span style="color:#B392F0">remote:</span><span style="color:#E1E4E8"> </span></span></code></pre>
+<h1 id="level-32-33">Level 32-33</h1>
+<p><strong>Problem</strong>
+After all this <code>git</code> stuff its time for another escape. Good luck!</p>
+<p><strong>Solution</strong></p>
+<ol>
+<li>we realise upon testing the shell that all our commands are being made UPPERCASE</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#F97583">>></span><span style="color:#E1E4E8"> ls  </span></span>
+<span class="line"><span style="color:#B392F0">sh:</span><span style="color:#9ECBFF"> 1:</span><span style="color:#9ECBFF"> LS:</span><span style="color:#9ECBFF"> not</span><span style="color:#9ECBFF"> found</span></span></code></pre>
+<ol start="2">
+<li>the only thing in Linux that is uppercase is variables. Some common that are good to know are:</li>
+</ol>
+<ul>
+<li><code>TERM</code> -  current terminal emulation</li>
+<li><code>HOME</code> - the path to home directory of currently logged in user</li>
+<li><code>LANG</code> - current locales settings</li>
+<li><code>PATH</code> - directory list to be searched when executing commands</li>
+<li><code>PWD</code> - pathname of the current working directory</li>
+<li><code>SHELL</code>/<code>0</code> - the path of the current user’s shell</li>
+<li><code>USER</code> - currently logged-in user the variable 
+<code>$0</code> has a reference to a shell, it might let us break out of the uppercase shell</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#F97583">>></span><span style="color:#FFAB70"> $0</span></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> ls</span><span style="color:#79B8FF"> -la</span></span>
+<span class="line"><span style="color:#B392F0">total</span><span style="color:#79B8FF"> 28</span></span>
+<span class="line"><span style="color:#B392F0">drwxr-xr-x</span><span style="color:#79B8FF">  2</span><span style="color:#9ECBFF"> root</span><span style="color:#9ECBFF">     root</span><span style="color:#79B8FF">     4096</span><span style="color:#9ECBFF"> May</span><span style="color:#79B8FF">  7</span><span style="color:#79B8FF">  2020</span><span style="color:#9ECBFF"> .</span></span>
+<span class="line"><span style="color:#B392F0">drwxr-xr-x</span><span style="color:#79B8FF"> 41</span><span style="color:#9ECBFF"> root</span><span style="color:#9ECBFF">     root</span><span style="color:#79B8FF">     4096</span><span style="color:#9ECBFF"> May</span><span style="color:#79B8FF">  7</span><span style="color:#79B8FF">  2020</span><span style="color:#9ECBFF"> ..</span></span>
+<span class="line"><span style="color:#B392F0">-rw-r--r--</span><span style="color:#79B8FF">  1</span><span style="color:#9ECBFF"> root</span><span style="color:#9ECBFF">     root</span><span style="color:#79B8FF">      220</span><span style="color:#9ECBFF"> May</span><span style="color:#79B8FF"> 15</span><span style="color:#79B8FF">  2017</span><span style="color:#9ECBFF"> .bash_logout</span></span>
+<span class="line"><span style="color:#B392F0">-rw-r--r--</span><span style="color:#79B8FF">  1</span><span style="color:#9ECBFF"> root</span><span style="color:#9ECBFF">     root</span><span style="color:#79B8FF">     3526</span><span style="color:#9ECBFF"> May</span><span style="color:#79B8FF"> 15</span><span style="color:#79B8FF">  2017</span><span style="color:#9ECBFF"> .bashrc</span></span>
+<span class="line"><span style="color:#B392F0">-rw-r--r--</span><span style="color:#79B8FF">  1</span><span style="color:#9ECBFF"> root</span><span style="color:#9ECBFF">     root</span><span style="color:#79B8FF">      675</span><span style="color:#9ECBFF"> May</span><span style="color:#79B8FF"> 15</span><span style="color:#79B8FF">  2017</span><span style="color:#9ECBFF"> .profile</span></span>
+<span class="line"><span style="color:#B392F0">-rwsr-x---</span><span style="color:#79B8FF">  1</span><span style="color:#9ECBFF"> bandit33</span><span style="color:#9ECBFF"> bandit32</span><span style="color:#79B8FF"> 7556</span><span style="color:#9ECBFF"> May</span><span style="color:#79B8FF">  7</span><span style="color:#79B8FF">  2020</span><span style="color:#9ECBFF"> uppershell</span></span></code></pre>
+<ol start="3">
+<li>the file ‘uppershell’ can only be run by bandit33, running <code>whoami</code> confirms that we are bandit33.</li>
+<li>we can just read the password file</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> /etc/bandit_pass/bandit33</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">odHo63fHiFqcWWJG9rLiLDtPm45KzUKy</span></span></code></pre>
+<h1 id="level-33-34">Level 33-34</h1>
+<p><strong>Problem</strong>
+<strong>At this moment, level 34 does not exist yet.</strong></p>
+<p><strong>Solution</strong>
+1.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> README.txt</span><span style="color:#E1E4E8"> </span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Congratulations</span><span style="color:#9ECBFF"> on</span><span style="color:#9ECBFF"> solving</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> last</span><span style="color:#9ECBFF"> level</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> this</span><span style="color:#9ECBFF"> game!</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">At</span><span style="color:#9ECBFF"> this</span><span style="color:#9ECBFF"> moment,</span><span style="color:#9ECBFF"> there</span><span style="color:#9ECBFF"> are</span><span style="color:#9ECBFF"> no</span><span style="color:#9ECBFF"> more</span><span style="color:#9ECBFF"> levels</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> play</span><span style="color:#9ECBFF"> in</span><span style="color:#9ECBFF"> this</span><span style="color:#9ECBFF"> game.</span><span style="color:#9ECBFF"> However,</span><span style="color:#9ECBFF"> we</span><span style="color:#9ECBFF"> are</span><span style="color:#9ECBFF"> constantly</span><span style="color:#9ECBFF"> working</span></span>
+<span class="line"><span style="color:#B392F0">on</span><span style="color:#9ECBFF"> new</span><span style="color:#9ECBFF"> levels</span><span style="color:#9ECBFF"> and</span><span style="color:#9ECBFF"> will</span><span style="color:#9ECBFF"> most</span><span style="color:#9ECBFF"> likely</span><span style="color:#9ECBFF"> expand</span><span style="color:#9ECBFF"> this</span><span style="color:#9ECBFF"> game</span><span style="color:#9ECBFF"> with</span><span style="color:#9ECBFF"> more</span><span style="color:#9ECBFF"> levels</span><span style="color:#9ECBFF"> soon.</span></span>
+<span class="line"><span style="color:#B392F0">Keep</span><span style="color:#9ECBFF"> an</span><span style="color:#9ECBFF"> eye</span><span style="color:#9ECBFF"> out</span><span style="color:#9ECBFF"> for</span><span style="color:#9ECBFF"> an</span><span style="color:#9ECBFF"> announcement</span><span style="color:#9ECBFF"> on</span><span style="color:#9ECBFF"> our</span><span style="color:#9ECBFF"> usual</span><span style="color:#9ECBFF"> communication</span><span style="color:#9ECBFF"> channels!</span></span>
+<span class="line"><span style="color:#B392F0">In</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> meantime,</span><span style="color:#9ECBFF"> you</span><span style="color:#9ECBFF"> could</span><span style="color:#9ECBFF"> play</span><span style="color:#9ECBFF"> some</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> our</span><span style="color:#9ECBFF"> other</span><span style="color:#9ECBFF"> wargames.</span></span></code></pre> </div> </article> <!-- Right Sidebar: Stacked Stats and Related Posts with Toggle --> <div class="hidden lg:flex flex-col gap-6 relative"> <button id="rightSidebarToggle" aria-label="Toggle article info sidebar" title="Toggle article info" class="self-end"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path> </svg> </button> <div id="rightSidebar" class="flex flex-col gap-6 w-80">  <aside class="hidden lg:block w-full"> <div class="rounded-lg p-4 border border-[var(--accent-light)]" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.05);"> <h3 class="text-lg font-bold mb-4 text-[var(--text-primary)]">Article Stats</h3> <div class="space-y-4" id="articleStats">  <div class="flex items-start gap-3" id="readingTimeContainer" style="display: none;"> <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path> </svg> <div> <p class="text-sm text-[var(--text-secondary)]">Reading Time</p> <p class="font-semibold text-[var(--text-primary)]" id="readingTimeValue">- min read</p> </div> </div>  <div class="flex items-start gap-3" id="wordCountContainer" style="display: none;"> <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path> </svg> <div> <p class="text-sm text-[var(--text-secondary)]">Word Count</p> <p class="font-semibold text-[var(--text-primary)]" id="wordCountValue">0</p> </div> </div>  <div class="flex items-start gap-3"> <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path> </svg> <div> <p class="text-sm text-[var(--text-secondary)]">Published</p> <p class="font-semibold text-[var(--text-primary)]">Mar 10, 2024</p> </div> </div>   </div> </div> </aside> <script type="module">function r(){const e=document.querySelector("article .prose");if(!e)return;const t=(e.textContent||"").split(/\s+/).filter(l=>l.length>0).length,d=Math.ceil(t/200),i=document.getElementById("readingTimeContainer"),a=document.getElementById("wordCountContainer"),n=document.getElementById("readingTimeValue"),o=document.getElementById("wordCountValue");n&&(n.textContent=`${d} min read`,i?.style.removeProperty("display")),o&&(o.textContent=t.toLocaleString(),a?.style.removeProperty("display"))}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();</script> <aside class="hidden lg:block w-full"> <div class="rounded-lg p-4 border border-[var(--accent-light)]" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.05);"> <h3 class="text-lg font-bold mb-4 text-[var(--text-primary)]">Related Writeups</h3> <div class="space-y-3"> <a href="/cyberportfolio/ctf-writeups/2025-12-24-picoctf-crack-the-gate-1" class="group block p-3 rounded-lg transition-all duration-200" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.08);"> <p class="font-medium text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors line-clamp-2"> Crack the Gate 1 </p> <p class="text-xs text-[var(--text-secondary)] mt-1"> Dec 24, 25 </p> <div class="flex flex-wrap gap-1 mt-2"> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> web-exploit </span><span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> easy </span> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-secondary);">
++1 </span> </div> </a><a href="/cyberportfolio/ctf-writeups/2025-12-24-perms" class="group block p-3 rounded-lg transition-all duration-200" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.08);"> <p class="font-medium text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors line-clamp-2"> Permissions </p> <p class="text-xs text-[var(--text-secondary)] mt-1"> Dec 24, 25 </p> <div class="flex flex-wrap gap-1 mt-2"> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> linux </span><span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> priv-escalation </span> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-secondary);">
++1 </span> </div> </a><a href="/cyberportfolio/ctf-writeups/2025-12-13-cornfield" class="group block p-3 rounded-lg transition-all duration-200" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.08);"> <p class="font-medium text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors line-clamp-2"> Cornfield Chase </p> <p class="text-xs text-[var(--text-secondary)] mt-1"> Dec 13, 25 </p> <div class="flex flex-wrap gap-1 mt-2"> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> niteCTF </span><span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> osint </span> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-secondary);">
++3 </span> </div> </a> </div> </div> </aside> </div> </div> </div> </div> </div> </main> <footer class="relative border-t" style="background-color: var(--bg-secondary); border-color: var(--border-primary)"> <div class="mx-auto max-w-6xl px-6 py-12 lg:px-8"> <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8"> <div class="flex flex-col gap-4"> <h3 class="text-2xl font-bold text-[var(--text-primary)]"> maejikal </h3> <p class="text-base text-[var(--text-secondary)]"> cybersecurity enthusiast, certified nerd. welcome to my cozy corner. </p> <div class="flex gap-x-6"> <a href="mailto:undefined" aria-label="Email" class="transition-colors duration-300 text-[var(--text-secondary)] hover:text-[var(--accent-color)]"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path> <path d="M3 7l9 6l9 -6"></path> </svg> </a> <a href="linkedin.com/in/meyling-taing-bab5ab139" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="transition-colors duration-300 text-[var(--text-secondary)] hover:text-[var(--accent-color)]"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M8 11v5"></path><path d="M8 8v.01"></path><path d="M12 16v-5"></path> <path d="M16 16v-3a2 2 0 1 0 -4 0"></path> <path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"></path> </svg> </a> <a target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="transition-colors duration-300 text-[var(--text-secondary)] hover:text-[var(--accent-color)]"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path> <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path> </svg> </a> <a href="https://github.com/maejikal" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="transition-colors duration-300 text-[var(--text-secondary)] hover:text-[var(--accent-color)]"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path> </svg> </a> </div> </div> <div class="hidden md:block flex flex-col md:items-end gap-4"> <nav class="flex gap-x-8"> <a href="/cyberportfolio/#about" class="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">About</a> <a href="/cyberportfolio/blog" class="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Blog</a> <a href="/cyberportfolio/ctf-writeups" class="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">CTFs</a>  <a href="/cyberportfolio/reviews" class="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Reviews</a> </nav> <p class="text-sm text-[var(--text-secondary)]">
+© 2026 maejikal. All rights reserved.
+</p> </div> </div> </div> <div class="absolute inset-0 -z-10 overflow-hidden text-[var(--border-primary)] opacity-20"> <svg aria-hidden="true" class="absolute bottom-0 left-0 w-full h-24"> <pattern id="footer-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"> <path d="M0 50 Q 25 40, 50 50 T 100 50" stroke="currentColor" stroke-width="0.5" fill="none"></path> </pattern> <rect width="100%" height="100%" fill="url(#footer-pattern)"></rect> </svg> </div> </footer> </body></html>

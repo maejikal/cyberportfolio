@@ -26,7 +26,7 @@ if (!existsSync(contentAssetsPath)) {
 }
 
 export default defineConfig({
-  site: "https://maejikal.github.io/cyberportfolio/",
+  site: "https://maejikal.github.io/cyberportfolio",
   base: '/cyberportfolio/',
 
   markdown: {

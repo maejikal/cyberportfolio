@@ -1,0 +1,640 @@
+<!DOCTYPE html><html lang="en"> <head><style is:global>
+  :root {
+    --accent-color: #60a5fa;
+    --accent-light: rgba(193, 219, 251, 0.1);
+    --accent-dark: rgba(251, 121, 117, 1);
+    --accent-link: #bbff7cff;
+    --accent-number: #ffc36aff;
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --bg-secondary-translucent: rgba(26, 26, 26, 0.75);
+    --bg-code: #000000;
+    --bg-code-border: rgba(96, 165, 250, 0.2);
+    --text-primary: #e5e5e5;
+    --text-secondary: #a3a3a3;
+    --text-code: #d4d4d4;
+    --border-primary: #60a5fa;
+    --border-code: #60a5fa;
+  }
+</style><meta charset="utf-8"><script type="module" src="/cyberportfolio/_astro/_slug_.astro_astro_type_script_index_0_lang.DL7JLXz2.js"></script><script type="module" src="/cyberportfolio/_astro/_slug_.astro_astro_type_script_index_1_lang.5d8QzmEz.js"></script><script type="module" src="/cyberportfolio/_astro/_slug_.astro_astro_type_script_index_2_lang.T3-5GIcd.js"></script><script type="module" src="/cyberportfolio/_astro/_slug_.astro_astro_type_script_index_3_lang.B-GXHydZ.js"></script><link rel="icon" type="image/x-icon" href="/cyberportfolio/favicon.ico"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Astro v5.16.6"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"><title>Network Enumeration with Nmap - HTB Academy</title><style>html{scroll-behavior:smooth}#header[data-astro-cid-3ef6ksr2]{transform:translateY(0)}
+.disclaimer-box[data-astro-cid-cukr4w5s]{display:flex;gap:.75rem;padding:1rem;border-radius:.5rem;background-color:#f59e0b14;border:1px solid rgba(245,158,11,.3);border-left:4px solid rgba(245,158,11,.6);color:var(--text-primary);font-size:.875rem;line-height:1.5}.disclaimer-icon[data-astro-cid-cukr4w5s]{flex:0 0 1.25rem;display:flex;align-items:flex-start;justify-content:center;color:#f59e0b;margin-top:.125rem}.disclaimer-icon-mark[data-astro-cid-cukr4w5s]{width:1.25rem;height:1.25rem;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.05rem;line-height:1}.disclaimer-content[data-astro-cid-cukr4w5s]{flex:1}.disclaimer-title[data-astro-cid-cukr4w5s]{margin:0 0 .25rem;font-weight:600;font-size:.875rem;color:var(--text-primary)}.disclaimer-text[data-astro-cid-cukr4w5s]{margin:0;color:var(--text-secondary);font-size:.8rem}@media(prefers-color-scheme:dark){.disclaimer-box[data-astro-cid-cukr4w5s]{background-color:#f59e0b1f;border-color:#f59e0b66;border-left-color:#f59e0bb3}.disclaimer-icon[data-astro-cid-cukr4w5s]{color:#fbbf24}}.tag-link:hover,#backToTop:hover{transform:translateY(-2px);filter:brightness(1.1)}#sidebarChevron,#tocChevron{transition:transform .3s ease}#sidebarTOC a,#mobileTOC a{display:block;padding:.25rem;border-radius:4px;text-decoration:none;color:var(--text-secondary)}#sidebarTOC a:hover,#mobileTOC a:hover{color:var(--accent-link);background:#00000008}#sidebarTOC{scrollbar-width:thin;scrollbar-color:var(--accent-light) transparent;padding-right:.5rem}#sidebarTOC::-webkit-scrollbar{width:8px}#sidebarTOC::-webkit-scrollbar-track{background:transparent}#sidebarTOC::-webkit-scrollbar-thumb{background-color:var(--accent-light);border-radius:4px;border:2px solid transparent;background-clip:padding-box}#sidebarTOC::-webkit-scrollbar-thumb:hover{background-color:var(--accent-color)}
+</style>
+<link rel="stylesheet" href="/cyberportfolio/_astro/blog.CBlC4rlS.css"></head> <body class="flex flex-col min-h-screen"> <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-sm" style="background-color: var(--bg-secondary-translucent)" data-astro-cid-3ef6ksr2> <nav class="max-w-7xl mx-auto px-4 py-3 md:px-6 md:py-4" data-astro-cid-3ef6ksr2> <ul class="flex items-center gap-3 md:gap-8 justify-center text-xs md:text-base flex-wrap" data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>Home</a></li> <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio/ctf-writeups" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>CTFs</a></li> <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio/blog" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>Blog</a></li>  <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio/#about" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>About</a></li>  <li data-astro-cid-3ef6ksr2><a href="/cyberportfolio/reviews" class="font-medium text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-colors" data-astro-cid-3ef6ksr2>Reviews</a></li> </ul> </nav> <section class="max-w-4xl mx-auto px-4 py-1 md:py-3" data-astro-cid-3ef6ksr2> <div class="mb-8 relative"> <form id="searchForm" class="w-full"> <input type="text" id="globalSearch" name="q" placeholder="Search posts, writeups, reviews, tags..." class="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2" style="border: 1px solid var(--border-primary); background-color: var(--bg-secondary-translucent); color: var(--text-primary); backdrop-filter: blur(8px);"> </form> <div id="searchResults" class="mt-2 hidden absolute rounded-lg shadow-lg w-full z-50 max-h-96 overflow-y-auto" style="background-color: var(--bg-secondary); border: 1px solid var(--border-primary);"></div> </div> <script>(function(){const searchIndex = [{"type":"post","title":"Welcome to My Website!","description":"Site overview and navigation guide","tags":["intro-blog","guide"],"url":"/cyberportfolio/blog/2025-12-10-welcome/","date":"2025-12-10T00:00:00.000Z"},{"type":"post","title":"JavaScript Deobfuscation - HTB Academy","description":"basics of deobfuscation and decoding JavaScript code","tags":["basics","htb-academy","javascript","web-exploit","obfuscation","encode","decode","cipher"],"url":"/cyberportfolio/blog/2025-12-18-javascript-deob/","date":"2025-12-18T00:00:00.000Z"},{"type":"post","title":"Attacking Web Applications With Ffuf - HTB Academy","description":"my notes for ffuf htb academy","tags":["basics","web-exploit","ffuf","fuzzing","directory","htb-academy","learn","dns"],"url":"/cyberportfolio/blog/2025-12-15-awawfuff/","date":"2025-12-15T00:00:00.000Z"},{"type":"post","title":"Network Enumeration with Nmap - HTB Academy","description":"notes for nmap enumeration","tags":["htb-academy","enumeration","nmap","basics","firewall"],"url":"/cyberportfolio/blog/2025-12-17-htb-nmap/","date":"2025-12-17T00:00:00.000Z"},{"type":"post","title":"Using the Metasploit Framework - HTB Academy","description":"metasploit","tags":["htb-academy","basics","metasploit","firewall","apache","msfvenom","firewall-evasion","priv-escalation"],"url":"/cyberportfolio/blog/2025-12-24-msf/","date":"2025-12-24T00:00:00.000Z"},{"type":"writeup","title":"Cornfield Chase","description":"geoguessr","tags":["niteCTF","osint","taiwan","power pole","easy"],"url":"/cyberportfolio/ctf-writeups/2025-12-13-cornfield/","date":"2025-12-13T00:00:00.000Z"},{"type":"writeup","title":"Eazy Network Analysis","description":"Writeup for Eazy Network Analysis from BrainHack 2023","tags":["wireshark","network","medium","brainhack"],"url":"/cyberportfolio/ctf-writeups/2025-12-30-brainhack-2023-eazy-network-analysis/","date":"2025-12-30T00:00:00.000Z"},{"type":"writeup","title":"CTF Collection","description":"CTF writeups collection and navigation guide","tags":["intro","guide"],"url":"/cyberportfolio/ctf-writeups/2025-12-10-ctf-collection/","date":"2025-12-10T00:00:00.000Z"},{"type":"writeup","title":"Crack the Gate 1","description":"Writeup for Crack the Gate 1 from picoCTF","tags":["web-exploit","easy","picoCTF"],"url":"/cyberportfolio/ctf-writeups/2025-12-24-picoctf-crack-the-gate-1/","date":"2025-12-24T00:00:00.000Z"},{"type":"writeup","title":"Permissions","description":"linux priv escalation chal","tags":["linux","priv-escalation","picoCTF"],"url":"/cyberportfolio/ctf-writeups/2025-12-24-perms/","date":"2025-12-24T00:00:00.000Z"},{"type":"writeup","title":"OverTheWire - Bandit","description":"All level solutions","tags":["linux","general","basics","OTW","easy","walkthrough","collection"],"url":"/cyberportfolio/ctf-writeups/2024-03-10-bandit/","date":"2024-03-10T00:00:00.000Z"},{"type":"review","title":"SC2001 - Algorithm Design and Analysis","description":"greedy, dp and other graph algorithms","tags":["algorithms","python","dp","sc2001"],"category":"module","moduleCode":"SC2001","url":"/cyberportfolio/reviews/2025-12-24-data-structures-and-algorithms/","date":"2025-12-24T00:00:00.000Z"}];
+
+  const searchInput = document.getElementById('globalSearch');
+  const searchForm = document.getElementById('searchForm');
+  const resultsContainer = document.getElementById('searchResults');
+
+  // HTML escape function to prevent XSS
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // Handle form submission (Enter key)
+  searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const query = searchInput.value.trim();
+    if (query) {
+      window.location.href = `/cyberportfolio/search?q=${encodeURIComponent(query)}`;
+    }
+  });
+
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+
+    if (query.length === 0) {
+      resultsContainer.classList.add('hidden');
+      return;
+    }
+
+    const results = searchIndex.filter(item => {
+      const titleMatch = item.title.toLowerCase().includes(query);
+      const descriptionMatch = item.description.toLowerCase().includes(query);
+      const tagsMatch = item.tags.some(tag => tag.toLowerCase().includes(query));
+
+      return titleMatch || descriptionMatch || tagsMatch;
+    });
+
+    if (results.length === 0) {
+      resultsContainer.textContent = 'No results found. Press Enter to see all results.';
+      resultsContainer.className = 'mt-2 absolute rounded-lg shadow-lg w-full z-50 max-h-96 overflow-y-auto p-4';
+      resultsContainer.style.cssText = 'background-color: var(--bg-secondary); border: 1px solid var(--border-primary); color: var(--text-secondary);';
+      return;
+    }
+
+    // Clear and build results using DOM methods instead of innerHTML
+    resultsContainer.innerHTML = '';
+    resultsContainer.className = 'mt-2 absolute rounded-lg shadow-lg w-full z-50 max-h-96 overflow-y-auto';
+    resultsContainer.style.cssText = 'background-color: var(--bg-secondary); border: 1px solid var(--border-primary);';
+
+    results.slice(0, 8).forEach(item => {
+      const link = document.createElement('a');
+      link.href = item.url;
+      link.className = 'block p-4 transition-colors';
+      link.style.cssText = 'border-bottom: 1px solid var(--border-primary);';
+      link.onmouseover = () => link.style.backgroundColor = 'var(--accent-light)';
+      link.onmouseout = () => link.style.backgroundColor = 'transparent';
+
+      const header = document.createElement('div');
+      header.className = 'flex items-center justify-between';
+      
+      const typeSpan = document.createElement('span');
+      typeSpan.className = 'text-xs font-semibold uppercase';
+      typeSpan.style.cssText = 'color: var(--accent-color);';
+      typeSpan.textContent = item.type;
+      header.appendChild(typeSpan);
+
+      if (item.date) {
+        const dateSpan = document.createElement('span');
+        dateSpan.className = 'text-xs';
+        dateSpan.style.cssText = 'color: var(--text-secondary);';
+        dateSpan.textContent = new Date(item.date).toLocaleDateString();
+        header.appendChild(dateSpan);
+      }
+
+      const title = document.createElement('h3');
+      title.className = 'font-semibold mt-1';
+      title.style.cssText = 'color: var(--text-primary);';
+      title.textContent = item.title;
+
+      link.appendChild(header);
+      link.appendChild(title);
+
+      if (item.description) {
+        const desc = document.createElement('p');
+        desc.className = 'text-sm mt-1';
+        desc.style.cssText = 'color: var(--text-secondary);';
+        desc.textContent = item.description.substring(0, 100) + '...';
+        link.appendChild(desc);
+      }
+
+      if (item.tags.length > 0) {
+        const tagsDiv = document.createElement('div');
+        tagsDiv.className = 'flex gap-2 mt-2 flex-wrap';
+        item.tags.slice(0, 3).forEach(tag => {
+          const tagSpan = document.createElement('span');
+          tagSpan.className = 'text-xs px-2 py-1 rounded';
+          tagSpan.style.cssText = 'background-color: var(--accent-light); color: var(--text-primary);';
+          tagSpan.textContent = tag;
+          tagsDiv.appendChild(tagSpan);
+        });
+        link.appendChild(tagsDiv);
+      }
+
+      resultsContainer.appendChild(link);
+    });
+
+    // Add footer
+    const footer = document.createElement('div');
+    footer.className = 'p-2 text-center text-xs';
+    footer.style.cssText = 'color: var(--text-secondary); border-top: 1px solid var(--border-primary);';
+    footer.textContent = 'Press Enter to see all results';
+    resultsContainer.appendChild(footer);
+
+    resultsContainer.classList.remove('hidden');
+  });
+
+  // Close results when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('#globalSearch') && !e.target.closest('#searchResults')) {
+      resultsContainer.classList.add('hidden');
+    }
+  });
+})();</script> </section> </header> <script type="module">const t=document.getElementById("header"),n=document.getElementById("globalSearch");let r=0;window.addEventListener("scroll",()=>{const e=window.scrollY;e>r&&e>100?document.activeElement!==n&&(t.style.transform="translateY(-100%)"):t.style.transform="translateY(0)",r=e});n&&(n.addEventListener("focus",()=>{t.style.transform="translateY(0)"}),n.addEventListener("blur",()=>{window.scrollY>100&&(t.style.transform="translateY(-100%)")}));document.addEventListener("click",e=>{const l=e.target;t&&!t.contains(l)&&window.scrollY>100&&(t.style.transform="translateY(-100%)")});t&&t.addEventListener("click",e=>{e.stopPropagation(),t.style.transform="translateY(0)"});</script>  <main class="flex-1 w-full px-4 py-10 pt-40"> <div class="max-w-7xl mx-auto"> <a href="/cyberportfolio/blog" class="inline-flex items-center mb-6 text-[var(--accent-color)] hover:text-[var(--accent-dark)]"> <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path> </svg>
+Back to Blog
+</a> <div class="flex gap-8 lg:gap-12 relative"> <!-- Sticky Sidebar (Desktop) --> <aside class="hidden lg:block w-48 flex-shrink-0"> <div class="sticky top-15 space-y-4 max-h-[calc(100vh-5rem)] overflow-hidden flex flex-col"> <!-- Back to Top Button --> <button id="backToTop" class="flex items-center gap-2 text-sm font-medium transition-all w-full px-3 py-2 rounded-md hover:shadow-md flex-shrink-0" style="background-color: var(--accent-light); color: var(--text-primary);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path> </svg>
+Back to Top
+</button> <!-- Tags Section (only show if tags exist) --> <div class="flex-shrink-0"> <button id="sidebarToggle" class="flex items-center gap-2 text-sm font-semibold mb-3 transition-colors w-full" style="color: var(--accent-color);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path> </svg> <span id="sidebarToggleText">Tags (5)</span> <svg id="sidebarChevron" class="w-4 h-4 ml-auto transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> </svg> </button> <div id="sidebarTags" class="flex flex-col gap-2"> <a href="/cyberportfolio/search?q=htb-academy" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> htb-academy </a><a href="/cyberportfolio/search?q=enumeration" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> enumeration </a><a href="/cyberportfolio/search?q=nmap" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> nmap </a><a href="/cyberportfolio/search?q=basics" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> basics </a><a href="/cyberportfolio/search?q=firewall" class="tag-link px-3 py-1.5 text-sm rounded-md transition-all text-center" style="background-color: var(--accent-light); color: var(--text-primary);"> firewall </a> </div> </div> <!-- Table of Contents Toggle (Desktop) --> <button id="tocToggle" class="flex items-center gap-2 text-sm font-semibold mb-3 transition-colors w-full flex-shrink-0" style="color: var(--accent-color);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> <span id="tocToggleText">Contents</span> <svg id="tocChevron" class="w-4 h-4 ml-auto transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> </svg> </button> <div id="sidebarTOC" class="flex flex-col gap-2 overflow-y-auto pr-2 flex-1 min-h-0"></div> </div> </aside> <!-- Main Article Content + Right Sidebar --> <div class="article-and-sidebar"> <!-- Article --> <article class="flex-1 min-w-0 max-w-4xl"> <h1 class="text-4xl font-bold mb-2 text-[var(--text-primary)]">Network Enumeration with Nmap - HTB Academy</h1> <div class="text-sm mb-4 text-[var(--text-secondary)]"> <p>
+Published: December 17, 2025 </p>  </div>  <div class="mb-6 lg:hidden"> <button id="mobileToggle" class="flex items-center gap-2 text-sm font-medium transition-colors" style="color: var(--accent-color);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path> </svg> <span id="mobileToggleText">Show Tags (5)</span> </button> <div id="mobileTags" class="hidden mt-3 flex flex-wrap gap-2"> <a href="/cyberportfolio/search?q=htb-academy" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> htb-academy </a><a href="/cyberportfolio/search?q=enumeration" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> enumeration </a><a href="/cyberportfolio/search?q=nmap" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> nmap </a><a href="/cyberportfolio/search?q=basics" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> basics </a><a href="/cyberportfolio/search?q=firewall" class="tag-link px-3 py-1.5 text-sm rounded-full transition-all hover:shadow-md" style="background-color: var(--accent-light); color: var(--text-primary);"> firewall </a> </div> </div> <!-- Mobile TOC Toggle (always available on small screens) --><div class="mb-6 lg:hidden"> <button id="mobileTOCToggle" class="flex items-center gap-2 text-sm font-medium transition-colors mb-3" style="color: var(--accent-color);"> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> <span id="mobileTOCToggleText">Show Contents</span> </button> <div id="mobileTOC" class="hidden mt-3 flex flex-col gap-2"></div> </div> <div class="prose max-w-none"> <p>Download <code>nmap</code> Cheatsheet <a href="https://academy.hackthebox.com/module/cheatsheet/19">here</a></p>
+<p><a href="https://nmap.org/book/toc.html">Nmap Network Scanning: The Official Nmap Project Guide to Network Discovery and Security Scanning</a></p>
+<p>Enumeration is collecting as much information regarding a target network as much as possible, allowing us to attack a target from different ways.</p>
+<p>Getting access to a target system can be narrowed down into the following points:</p>
+<ul>
+<li>functions and/or resources that allow us to interact with the target</li>
+<li>information that provides us with even more important information to access our target</li>
+</ul>
+<p>VERY important that you <span style="color:rgb(255, 117, 159)">spend a couple of hours learning more about a service, how it works, and what it is meant for</span>. This will save you a lot of time when trying to get access to a system.</p>
+<blockquote>
+<p>Network Mapper (<code>Nmap</code>) is an open-source network analysis and security auditing tool written in C, C++, Python, and Lua. It is designed to scan networks and identify which hosts are available on the network using raw packets, and services and applications, including the name and version, where possible. It can also identify the operating systems and versions of these hosts. Besides other features, Nmap also offers scanning capabilities that can determine if packet filters, firewalls, or intrusion detection systems (IDS) are configured as needed.</p>
+</blockquote>
+<p><code>-sS</code> scan:</p>
+<ul>
+<li>If our target sends a <code>SYN-ACK</code> flagged packet back to us, Nmap detects that the port is <code>open</code>.</li>
+<li>If the target responds with an <code>RST</code> flagged packet, it is an indicator that the port is <code>closed</code>.</li>
+<li>If Nmap does not receive a packet back, it will display it as <code>filtered</code>. Depending on the firewall configuration, certain packets may be dropped or ignored by the firewall.</li>
+</ul>
+<h2 id="host-discovery">Host Discovery</h2>
+<p><a href="https://jumpcloud.com/it-index/what-is-an-icmp-echo-request">ICMP echo requests</a></p>
+<p><a href="https://nmap.org/book/host-discovery-strategies.html">Host discovery strategies</a></p>
+<p>It’s important to<span style="color:rgb(255, 192, 0)"> store the results of every single scan</span>.</p>
+<ul>
+<li><code>10.129.2.0/24</code> - target network range</li>
+<li><code>-sn</code> - disable port scanning</li>
+<li><code>oA tnet</code> - stores the results in all formats starting with the name “tnet”</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#9ECBFF"> 10.129.2.0/24</span><span style="color:#79B8FF"> -sn</span><span style="color:#79B8FF"> -oA</span><span style="color:#9ECBFF"> tnet</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> grep</span><span style="color:#9ECBFF"> for</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> cut</span><span style="color:#79B8FF"> -d</span><span style="color:#9ECBFF">" "</span><span style="color:#79B8FF"> -f5</span></span></code></pre>
+<ul>
+<li><code>-iL</code> - performs defined scans against targets in provided ‘hosts.lst’ list.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#79B8FF"> -sn</span><span style="color:#79B8FF"> -oA</span><span style="color:#9ECBFF"> tnet</span><span style="color:#79B8FF"> -iL</span><span style="color:#9ECBFF"> hosts.lst</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> grep</span><span style="color:#9ECBFF"> for</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> cut</span><span style="color:#79B8FF"> -d</span><span style="color:#9ECBFF">" "</span><span style="color:#79B8FF"> -f5</span></span></code></pre>
+<ul>
+<li>scan multiple ips, .18, .19, .20</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#79B8FF"> -sn</span><span style="color:#79B8FF"> -oA</span><span style="color:#9ECBFF"> tnet</span><span style="color:#9ECBFF"> 10.129.2.18-20</span><span style="color:#F97583">|</span><span style="color:#B392F0"> grep</span><span style="color:#9ECBFF"> for</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> cut</span><span style="color:#79B8FF"> -d</span><span style="color:#9ECBFF">" "</span><span style="color:#79B8FF"> -f5</span></span></code></pre>
+<ul>
+<li><code>--packet-trace</code> to see ARP ping and reply packets being sent before ICMP echo request</li>
+<li><code>-PE</code> - ping scan against target</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#79B8FF"> 10.129.2.18</span><span style="color:#79B8FF"> -sn</span><span style="color:#79B8FF"> -oA</span><span style="color:#9ECBFF"> host</span><span style="color:#79B8FF"> -PE</span><span style="color:#79B8FF"> --packet-trace</span></span></code></pre>
+<blockquote>
+<p>Tip for <code>ttl</code> OS fingerprinting</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>OS</th><th>Default TTL</th></tr></thead><tbody><tr><td>Windows</td><td>128</td></tr><tr><td>Linux/Unix</td><td>64</td></tr><tr><td>Solaris/AIX</td><td>254</td></tr><tr><td>Cisco Routers</td><td>255</td></tr></tbody></table>
+<h2 id="host-and-port-scanning">Host and Port Scanning</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>State</th><th>Description</th></tr></thead><tbody><tr><td>open</td><td>This indicates that the connection to the scanned port has been established. These connections can be <strong>TCP connections</strong>, <strong>UDP datagrams</strong> as well as <strong>SCTP associations</strong>.</td></tr><tr><td>closed</td><td>When the port is shown as closed, the TCP protocol indicates that the packet we received back contains an <code>RST</code> flag. This scanning method can also be used to determine if our target is alive or not.</td></tr><tr><td>filtered</td><td>Nmap cannot correctly identify whether the scanned port is open or closed because either no response is returned from the target for the port or we get an error code from the target.</td></tr><tr><td>unfiltered</td><td>This state of a port only occurs during the <strong>TCP-ACK</strong> scan and means that the port is accessible, but it cannot be determined whether it is open or closed.</td></tr><tr><td>open|filtered</td><td>If we do not get a response for a specific port, <code>Nmap</code> will set it to that state. This indicates that a firewall or packet filter may protect the port.</td></tr><tr><td>closed|filtered</td><td>This state only occurs in the <strong>IP ID idle</strong> scans and indicates that it was impossible to determine if the scanned port is closed or filtered by a firewall.</td></tr></tbody></table>
+<p>Scanning top 10 most frequent ports</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#79B8FF"> 10.129.2.28</span><span style="color:#79B8FF"> --top-ports=10</span><span style="color:#E1E4E8"> </span></span></code></pre>
+<p>Connect Scan (<code>-sT</code>) is the most accurate but not stealthy, also slow because it establishes a full connection (which creates logs on most systems).</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#79B8FF"> 10.129.2.28</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> 443</span><span style="color:#79B8FF"> --packet-trace</span><span style="color:#79B8FF"> --disable-arp-ping</span><span style="color:#79B8FF"> -Pn</span><span style="color:#79B8FF"> -n</span><span style="color:#79B8FF"> --reason</span><span style="color:#79B8FF"> -sT</span></span></code></pre>
+<p>To track how our sent packets are handled, we <em><strong><span style="color:rgb(255, 117, 159)">deactivate</span></strong></em>:</p>
+<ul>
+<li>the ICMP echo requests (<code>-Pn</code>)</li>
+<li>DNS resolution (<code>-n</code>)</li>
+<li>ARP ping scan (<code>--disable-arp-ping</code>)</li>
+</ul>
+<div class="callout callout-cyan callout-collapsible" data-expanded="false">
+  <div class="callout-title">
+    <span class="callout-icon">ℹ️</span>
+    <span class="callout-title-text">why?</span>
+    <svg class="callout-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+  <div class="callout-content">
+<ul>
+<li>You disable ARP ping because ARP operates at Layer 2 and bypasses IP, TCP, and ICMP entirely. If ARP ping is enabled, Nmap may discover hosts without sending traceable packets, making packet tracing and analysis impossible.</li>
+<li>You disable ICMP echo requests, DNS resolution, and ARP ping scans to eliminate auxiliary traffic and force Nmap to use only IP-based probing packets, allowing you to accurately trace how our scan packets are processed by the network and target.</li>
+</ul>
+</div></div>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#79B8FF"> 10.129.2.28</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> 445</span><span style="color:#79B8FF"> --packet-trace</span><span style="color:#79B8FF"> -n</span><span style="color:#79B8FF"> --disable-arp-ping</span><span style="color:#79B8FF"> -Pn</span></span></code></pre>
+<ul>
+<li><code>-F</code> - scans top 100 ports
+<ul>
+<li>use this flag if you want to speed things up, might just get lucky</li>
+</ul>
+</li>
+<li><code>-sU</code> - performs a UDP scan</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#79B8FF"> 10.129.2.28</span><span style="color:#79B8FF"> -F</span><span style="color:#79B8FF"> -sU</span></span></code></pre>
+<p><code>-sV</code> - identify versions, service names, and details about target
+<code>-sC</code> - runs a curated list of scripts which can help you find the host name of target</p>
+<h2 id="saving-the-results">Saving the Results</h2>
+<p><code>-oN</code> = <code>.nmap</code> file (normal)</p>
+<p><code>-oG</code> = <code>.gnmap</code> file (greppable)</p>
+<p><code>-oX</code> = <code>.xml</code> file</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#79B8FF"> 10.129.2.49</span><span style="color:#79B8FF"> -oX</span><span style="color:#9ECBFF"> target1.xml</span></span></code></pre>
+<p>convert xml to html</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">xsltproc</span><span style="color:#9ECBFF"> target.xml</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> target.html</span></span></code></pre>
+<h2 id="service-enumeration">Service Enumeration</h2>
+<p><code>--stats-every=5s</code> - add flag to show progress of scan every 5 seconds</p>
+<p><code>-v</code> - increase verbosity of scan</p>
+<p>Sometimes Nmap might miss out on some information from the server.</p>
+<blockquote>
+<p>After a successful three-way handshake, the server often sends a banner for identification to let the client know which service it is working with.</p>
+<ul>
+<li>At the network level, this happens with a <code>PSH</code> flag in the TCP header.</li>
+<li>However, it can happen that some services do not immediately provide such information.</li>
+</ul>
+</blockquote>
+<p>To find what nmap missed out on, we can manually connect to the SMTP server using <code>nc</code>, grab the banner and intercept the network traffic using <code>tcpdump</code>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> tcpdump</span><span style="color:#79B8FF"> -i</span><span style="color:#9ECBFF"> eth0</span><span style="color:#9ECBFF"> host</span><span style="color:#79B8FF"> 10.10.14.2</span><span style="color:#9ECBFF"> and</span><span style="color:#79B8FF"> 10.129.2.28</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">nc</span><span style="color:#79B8FF"> -nv</span><span style="color:#79B8FF"> 10.129.2.28</span><span style="color:#79B8FF"> 25</span></span></code></pre>
+<p>Intercepted traffic:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">18:28:07.128564</span><span style="color:#9ECBFF"> IP</span><span style="color:#79B8FF"> 10.10.14.2.59618</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF"> 10.129.2.28.smtp:</span><span style="color:#9ECBFF"> Flags</span><span style="color:#E1E4E8"> [S], seq 1798872233, win 65535, options [mss 1460,nop,wscale 6,nop,nop,TS val </span><span style="color:#79B8FF">331260178</span><span style="color:#E1E4E8"> ecr 0,sackOK,eol], length 0</span></span>
+<span class="line"><span style="color:#B392F0">18:28:07.255151</span><span style="color:#9ECBFF"> IP</span><span style="color:#9ECBFF"> 10.129.2.28.smtp</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF"> 10.10.14.2.59618:</span><span style="color:#9ECBFF"> Flags</span><span style="color:#E1E4E8"> [S.], seq 1130574379, ack 1798872234, win 65160, options [mss 1460,sackOK,TS val </span><span style="color:#79B8FF">1800383922</span><span style="color:#E1E4E8"> ecr 331260178,nop,wscale 7], length 0</span></span>
+<span class="line"><span style="color:#B392F0">18:28:07.255281</span><span style="color:#9ECBFF"> IP</span><span style="color:#79B8FF"> 10.10.14.2.59618</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF"> 10.129.2.28.smtp:</span><span style="color:#9ECBFF"> Flags</span><span style="color:#E1E4E8"> [.], ack 1, win 2058, options [nop,nop,TS val </span><span style="color:#79B8FF">331260304</span><span style="color:#E1E4E8"> ecr 1800383922], length 0</span></span>
+<span class="line"><span style="color:#B392F0">18:28:07.319306</span><span style="color:#9ECBFF"> IP</span><span style="color:#9ECBFF"> 10.129.2.28.smtp</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF"> 10.10.14.2.59618:</span><span style="color:#9ECBFF"> Flags</span><span style="color:#E1E4E8"> [P.], seq 1:36, ack 1, win 510, options [nop,nop,TS val </span><span style="color:#79B8FF">1800383985</span><span style="color:#E1E4E8"> ecr 331260304], length 35: SMTP: 220 inlane ESMTP Postfix (</span><span style="color:#B392F0">Ubuntu</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0">18:28:07.319426</span><span style="color:#9ECBFF"> IP</span><span style="color:#79B8FF"> 10.10.14.2.59618</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF"> 10.129.2.28.smtp:</span><span style="color:#9ECBFF"> Flags</span><span style="color:#E1E4E8"> [.], ack 36, win 2058, options [nop,nop,TS val </span><span style="color:#79B8FF">331260368</span><span style="color:#E1E4E8"> ecr 1800383985], length 0</span></span></code></pre>
+<ul>
+<li>first 3 lines are 3-way handshake</li>
+<li>then SMTP server sends a TCP packet with <code>PSH</code> and <code>ACK</code> flags
+<ul>
+<li><code>PSH</code> states that the target server is sending data to us</li>
+<li><code>ACK</code> informs us that all required data has been sent</li>
+</ul>
+</li>
+<li>we send the last packet to confirm the receipt with and ACK</li>
+</ul>
+<h2 id="nmap-scripting-engine">Nmap Scripting Engine</h2>
+<p>We can use the NSE to create scripts in Lua for interaction with certain services.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Category</th><th>Description</th></tr></thead><tbody><tr><td>auth</td><td>Determination of authentication credentials.</td></tr><tr><td>broadcast</td><td>Scripts, which are used for host discovery by broadcasting and the discovered hosts, can be automatically added to the remaining scans.</td></tr><tr><td>brute</td><td>Executes scripts that try to log in to the respective service by brute-forcing with credentials.</td></tr><tr><td>default</td><td>Default scripts executed by using the <code>-sC</code> option.</td></tr><tr><td>discovery</td><td>Evaluation of accessible services.</td></tr><tr><td>dos</td><td>These scripts are used to check services for denial of service vulnerabilities and are used less as it harms the services.</td></tr><tr><td>exploit</td><td>This category of scripts tries to exploit known vulnerabilities for the scanned port.</td></tr><tr><td>external</td><td>Scripts that use external services for further processing.</td></tr><tr><td>fuzzer</td><td>This uses scripts to identify vulnerabilities and unexpected packet handling by sending different fields, which can take much time.</td></tr><tr><td>intrusive</td><td>Intrusive scripts that could negatively affect the target system.</td></tr><tr><td>malware</td><td>Checks if some malware infects the target system.</td></tr><tr><td>safe</td><td>Defensive scripts that do not perform intrusive and destructive access.</td></tr><tr><td>version</td><td>Extension for service detection.</td></tr><tr><td>vuln</td><td>Identification of specific vulnerabilities.</td></tr></tbody></table>
+<p><strong>Default script</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">targe</span><span style="color:#E1E4E8">t</span><span style="color:#F97583">></span><span style="color:#79B8FF"> -sC</span></span></code></pre>
+<p><strong>Specific scripts</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">targe</span><span style="color:#E1E4E8">t</span><span style="color:#F97583">></span><span style="color:#79B8FF"> --script</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">categor</span><span style="color:#E1E4E8">y</span><span style="color:#F97583">></span></span></code></pre>
+<p><strong>Defined Scripts</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">targe</span><span style="color:#E1E4E8">t</span><span style="color:#F97583">></span><span style="color:#79B8FF"> --script</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">script-nam</span><span style="color:#E1E4E8">e</span><span style="color:#F97583">></span><span style="color:#9ECBFF">,</span><span style="color:#F97583">&#x3C;</span><span style="color:#9ECBFF">script-nam</span><span style="color:#E1E4E8">e</span><span style="color:#F97583">></span><span style="color:#9ECBFF">,...</span></span></code></pre>
+<p><code>-A</code> - (aggressive scan) service detection, OS detection and traceroute, default scripts</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#79B8FF"> 10.129.2.28</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> 80</span><span style="color:#79B8FF"> -A</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#79B8FF"> -sV</span><span style="color:#79B8FF"> -p80</span><span style="color:#79B8FF"> --script</span><span style="color:#9ECBFF"> vuln</span><span style="color:#79B8FF"> 10.129.216.101</span></span></code></pre>
+<h2 id="performance">Performance</h2>
+<p>Setting the <code>--initial-rtt-timeout</code> too short may cause us to overlook hosts</p>
+<p><code>--min-rate</code>: min. number of packets to be sent per second</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#9ECBFF"> 10.129.2.0/24</span><span style="color:#79B8FF"> -F</span><span style="color:#79B8FF"> -oN</span><span style="color:#9ECBFF"> tnet.minrate300</span><span style="color:#79B8FF"> --min-rate</span><span style="color:#79B8FF"> 300</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> tnet.minrate300</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> grep</span><span style="color:#9ECBFF"> "/tcp"</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> wc</span><span style="color:#79B8FF"> -l</span></span></code></pre>
+<p>Timing
+<code>-T 0</code> / <code>-T paranoid</code></p>
+<p><code>-T 1</code> / <code>-T sneaky</code></p>
+<p><code>-T 2</code>/ <code>-T polite</code></p>
+<p><code>-T 3</code> /<code>-T normal</code></p>
+<p><code>-T 4</code> / <code>-T aggressive</code></p>
+<p><code>-T 5</code> / <code>-T insane</code></p>
+<h2 id="firewall-and-idsips-evasion">Firewall and IDS/IPS Evasion</h2>
+<blockquote>
+<p><strong>IDS (detection)</strong> scans the network for potential attacks, analyses them, and reports any detected attacks. <strong>IPS (prevention)</strong> complements IDS by taking specific defensive measures if a potential attack should have been detected.</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><strong>Scanning Options</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr><td><code>10.129.2.28</code></td><td>Scans the specified target.</td></tr><tr><td><code>-p 21,22,25</code></td><td>Scans only the specified ports.</td></tr><tr><td><code>-sS</code></td><td>Performs SYN scan on specified ports.</td></tr><tr><td><code>-sA</code></td><td>Performs ACK scan on specified ports.</td></tr><tr><td><code>-Pn</code></td><td>Disables ICMP Echo requests.</td></tr><tr><td><code>-n</code></td><td>Disables DNS resolution.</td></tr><tr><td><code>--disable-arp-ping</code></td><td>Disables ARP ping.</td></tr><tr><td><code>--packet-trace</code></td><td>Shows all packets sent and received.</td></tr></tbody></table>
+<p><strong>SYN-Scan</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#79B8FF"> 10.129.2.28</span><span style="color:#79B8FF"> -p</span><span style="color:#9ECBFF"> 21,22,25</span><span style="color:#79B8FF"> -sS</span><span style="color:#79B8FF"> -Pn</span><span style="color:#79B8FF"> -n</span><span style="color:#79B8FF"> --disable-arp-ping</span><span style="color:#79B8FF"> --packet-trace</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Starting</span><span style="color:#9ECBFF"> Nmap</span><span style="color:#79B8FF"> 7.80</span><span style="color:#E1E4E8"> ( </span><span style="color:#9ECBFF">https://nmap.org</span><span style="color:#E1E4E8"> ) at 2020-06-21 14:56 CEST</span></span>
+<span class="line"><span style="color:#B392F0">SENT</span><span style="color:#E1E4E8"> (0.0278s) TCP 10.10.14.2:57347 </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> 10.129.2.28:22 S ttl</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">53</span><span style="color:#E1E4E8"> id</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">22412</span><span style="color:#E1E4E8"> iplen</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">44</span><span style="color:#E1E4E8">  seq</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">4092255222</span><span style="color:#E1E4E8"> win</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">1024</span><span style="color:#E1E4E8"> &#x3C;mss 1460></span></span>
+<span class="line"><span style="color:#9ECBFF">SENT</span><span style="color:#E1E4E8"> (0.0278s) TCP 10.10.14.2:57347 </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> 10.129.2.28:25 S ttl</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">50</span><span style="color:#E1E4E8"> id</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">62291</span><span style="color:#E1E4E8"> iplen</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">44</span><span style="color:#E1E4E8">  seq</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">4092255222</span><span style="color:#E1E4E8"> win</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">1024</span><span style="color:#E1E4E8"> &#x3C;mss 1460></span></span>
+<span class="line"><span style="color:#9ECBFF">SENT</span><span style="color:#E1E4E8"> (0.0278s) TCP 10.10.14.2:57347 </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> 10.129.2.28:21 S ttl</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">58</span><span style="color:#E1E4E8"> id</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">38696</span><span style="color:#E1E4E8"> iplen</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">44</span><span style="color:#E1E4E8">  seq</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">4092255222</span><span style="color:#E1E4E8"> win</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">1024</span><span style="color:#E1E4E8"> &#x3C;mss 1460></span></span>
+<span class="line"><span style="color:#9ECBFF">RCVD</span><span style="color:#E1E4E8"> (0.0329s) ICMP [</span><span style="color:#79B8FF">10.129.2.28</span><span style="color:#F97583"> ></span><span style="color:#79B8FF"> 10.10.14.2</span><span style="color:#E1E4E8"> Port </span><span style="color:#79B8FF">21</span><span style="color:#E1E4E8"> unreachable (type</span><span style="color:#F97583">=</span><span style="color:#79B8FF">3</span><span style="color:#F97583">/</span><span style="color:#E1E4E8">code</span><span style="color:#F97583">=</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">) ] IP [ttl</span><span style="color:#F97583">=</span><span style="color:#79B8FF">64</span><span style="color:#E1E4E8"> id</span><span style="color:#F97583">=</span><span style="color:#79B8FF">40884</span><span style="color:#E1E4E8"> iplen</span><span style="color:#F97583">=</span><span style="color:#79B8FF">72</span><span style="color:#E1E4E8"> ]</span></span>
+<span class="line"><span style="color:#B392F0">RCVD</span><span style="color:#E1E4E8"> (0.0341s) TCP 10.129.2.28:22 </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> 10.10.14.2:57347 SA ttl</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">64</span><span style="color:#E1E4E8"> id</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">0</span><span style="color:#E1E4E8"> iplen</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">44</span><span style="color:#E1E4E8">  seq</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">1153454414</span><span style="color:#E1E4E8"> win</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">64240</span><span style="color:#E1E4E8"> &#x3C;mss 1460></span></span>
+<span class="line"><span style="color:#9ECBFF">RCVD</span><span style="color:#E1E4E8"> (1.0386s) TCP 10.129.2.28:22 </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> 10.10.14.2:57347 SA ttl</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">64</span><span style="color:#E1E4E8"> id</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">0</span><span style="color:#E1E4E8"> iplen</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">44</span><span style="color:#E1E4E8">  seq</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">1153454414</span><span style="color:#E1E4E8"> win</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">64240</span><span style="color:#E1E4E8"> &#x3C;mss 1460></span></span>
+<span class="line"><span style="color:#9ECBFF">SENT</span><span style="color:#E1E4E8"> (1.1366s) TCP 10.10.14.2:57348 </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> 10.129.2.28:25 S ttl</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">44</span><span style="color:#E1E4E8"> id</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">6796</span><span style="color:#E1E4E8"> iplen</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">44</span><span style="color:#E1E4E8">  seq</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">4092320759</span><span style="color:#E1E4E8"> win</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">1024</span><span style="color:#E1E4E8"> &#x3C;mss 1460></span></span>
+<span class="line"><span style="color:#9ECBFF">Nmap</span><span style="color:#9ECBFF"> scan</span><span style="color:#9ECBFF"> report</span><span style="color:#9ECBFF"> for</span><span style="color:#79B8FF"> 10.129.2.28</span></span>
+<span class="line"><span style="color:#B392F0">Host</span><span style="color:#9ECBFF"> is</span><span style="color:#9ECBFF"> up</span><span style="color:#E1E4E8"> (0.0053s </span><span style="color:#9ECBFF">latency</span><span style="color:#E1E4E8">).</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">PORT</span><span style="color:#9ECBFF">   STATE</span><span style="color:#9ECBFF">    SERVICE</span></span>
+<span class="line"><span style="color:#B392F0">21/tcp</span><span style="color:#9ECBFF"> filtered</span><span style="color:#9ECBFF"> ftp</span></span>
+<span class="line"><span style="color:#B392F0">22/tcp</span><span style="color:#9ECBFF"> open</span><span style="color:#9ECBFF">     ssh</span></span>
+<span class="line"><span style="color:#B392F0">25/tcp</span><span style="color:#9ECBFF"> filtered</span><span style="color:#9ECBFF"> smtp</span></span>
+<span class="line"><span style="color:#B392F0">MAC</span><span style="color:#9ECBFF"> Address:</span><span style="color:#9ECBFF"> DE:AD:00:00:BE:EF</span><span style="color:#E1E4E8"> (Intel </span><span style="color:#9ECBFF">Corporate</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Nmap</span><span style="color:#9ECBFF"> done:</span><span style="color:#79B8FF"> 1</span><span style="color:#9ECBFF"> IP</span><span style="color:#9ECBFF"> address</span><span style="color:#E1E4E8"> (1 </span><span style="color:#9ECBFF">host</span><span style="color:#9ECBFF"> up</span><span style="color:#E1E4E8">) scanned in 0.07 seconds</span></span></code></pre>
+<p><strong>ACK-Scan</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#79B8FF"> 10.129.2.28</span><span style="color:#79B8FF"> -p</span><span style="color:#9ECBFF"> 21,22,25</span><span style="color:#79B8FF"> -sA</span><span style="color:#79B8FF"> -Pn</span><span style="color:#79B8FF"> -n</span><span style="color:#79B8FF"> --disable-arp-ping</span><span style="color:#79B8FF"> --packet-trace</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Starting</span><span style="color:#9ECBFF"> Nmap</span><span style="color:#79B8FF"> 7.80</span><span style="color:#E1E4E8"> ( </span><span style="color:#9ECBFF">https://nmap.org</span><span style="color:#E1E4E8"> ) at 2020-06-21 14:57 CEST</span></span>
+<span class="line"><span style="color:#B392F0">SENT</span><span style="color:#E1E4E8"> (0.0422s) TCP 10.10.14.2:49343 </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> 10.129.2.28:21 A ttl</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">49</span><span style="color:#E1E4E8"> id</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">12381</span><span style="color:#E1E4E8"> iplen</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">40</span><span style="color:#E1E4E8">  seq</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">0</span><span style="color:#E1E4E8"> win</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">1024</span></span>
+<span class="line"><span style="color:#B392F0">SENT</span><span style="color:#E1E4E8"> (0.0423s) TCP 10.10.14.2:49343 </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> 10.129.2.28:22 A ttl</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">41</span><span style="color:#E1E4E8"> id</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">5146</span><span style="color:#E1E4E8"> iplen</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">40</span><span style="color:#E1E4E8">  seq</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">0</span><span style="color:#E1E4E8"> win</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">1024</span></span>
+<span class="line"><span style="color:#B392F0">SENT</span><span style="color:#E1E4E8"> (0.0423s) TCP 10.10.14.2:49343 </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> 10.129.2.28:25 A ttl</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">49</span><span style="color:#E1E4E8"> id</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">5800</span><span style="color:#E1E4E8"> iplen</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">40</span><span style="color:#E1E4E8">  seq</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">0</span><span style="color:#E1E4E8"> win</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">1024</span></span>
+<span class="line"><span style="color:#B392F0">RCVD</span><span style="color:#E1E4E8"> (0.1252s) ICMP [</span><span style="color:#79B8FF">10.129.2.28</span><span style="color:#F97583"> ></span><span style="color:#79B8FF"> 10.10.14.2</span><span style="color:#E1E4E8"> Port </span><span style="color:#79B8FF">21</span><span style="color:#E1E4E8"> unreachable (type</span><span style="color:#F97583">=</span><span style="color:#79B8FF">3</span><span style="color:#F97583">/</span><span style="color:#E1E4E8">code</span><span style="color:#F97583">=</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">) ] IP [ttl</span><span style="color:#F97583">=</span><span style="color:#79B8FF">64</span><span style="color:#E1E4E8"> id</span><span style="color:#F97583">=</span><span style="color:#79B8FF">55628</span><span style="color:#E1E4E8"> iplen</span><span style="color:#F97583">=</span><span style="color:#79B8FF">68</span><span style="color:#E1E4E8"> ]</span></span>
+<span class="line"><span style="color:#B392F0">RCVD</span><span style="color:#E1E4E8"> (0.1268s) TCP 10.129.2.28:22 </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> 10.10.14.2:49343 R ttl</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">64</span><span style="color:#E1E4E8"> id</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">0</span><span style="color:#E1E4E8"> iplen</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">40</span><span style="color:#E1E4E8">  seq</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">1660784500</span><span style="color:#E1E4E8"> win</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">0</span></span>
+<span class="line"><span style="color:#B392F0">SENT</span><span style="color:#E1E4E8"> (1.3837s) TCP 10.10.14.2:49344 </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> 10.129.2.28:25 A ttl</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">59</span><span style="color:#E1E4E8"> id</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">21915</span><span style="color:#E1E4E8"> iplen</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">40</span><span style="color:#E1E4E8">  seq</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">0</span><span style="color:#E1E4E8"> win</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">1024</span></span>
+<span class="line"><span style="color:#B392F0">Nmap</span><span style="color:#9ECBFF"> scan</span><span style="color:#9ECBFF"> report</span><span style="color:#9ECBFF"> for</span><span style="color:#79B8FF"> 10.129.2.28</span></span>
+<span class="line"><span style="color:#B392F0">Host</span><span style="color:#9ECBFF"> is</span><span style="color:#9ECBFF"> up</span><span style="color:#E1E4E8"> (0.083s </span><span style="color:#9ECBFF">latency</span><span style="color:#E1E4E8">).</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">PORT</span><span style="color:#9ECBFF">   STATE</span><span style="color:#9ECBFF">      SERVICE</span></span>
+<span class="line"><span style="color:#B392F0">21/tcp</span><span style="color:#9ECBFF"> filtered</span><span style="color:#9ECBFF">   ftp</span></span>
+<span class="line"><span style="color:#B392F0">22/tcp</span><span style="color:#9ECBFF"> unfiltered</span><span style="color:#9ECBFF"> ssh</span></span>
+<span class="line"><span style="color:#B392F0">25/tcp</span><span style="color:#9ECBFF"> filtered</span><span style="color:#9ECBFF">   smtp</span></span>
+<span class="line"><span style="color:#B392F0">MAC</span><span style="color:#9ECBFF"> Address:</span><span style="color:#9ECBFF"> DE:AD:00:00:BE:EF</span><span style="color:#E1E4E8"> (Intel </span><span style="color:#9ECBFF">Corporate</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Nmap</span><span style="color:#9ECBFF"> done:</span><span style="color:#79B8FF"> 1</span><span style="color:#9ECBFF"> IP</span><span style="color:#9ECBFF"> address</span><span style="color:#E1E4E8"> (1 </span><span style="color:#9ECBFF">host</span><span style="color:#9ECBFF"> up</span><span style="color:#E1E4E8">) scanned in 0.15 seconds</span></span></code></pre>
+<p>Looking at the RCVD packets and the flag we received from the target, we see that in the SYN scan (<code>-sS</code>), the target tries to establish TCP connection by sending a packet back with the SYN-ACK (<code>SA</code>) flags. In the ACK Scan (<code>-sA</code>) we get the <code>RST</code> flag because port 22 is open. for the TCP port 25, we do not receive any packets back.</p>
+<h3 id="detect-ipsids">Detect IPS/IDS</h3>
+<p>Use <strong>virtual private servers (VPS)</strong> with different IP address to detect IDS and IPS</p>
+<blockquote>
+<ul>
+<li>IDS helps administrators detect potential attacks on their network. Aggressively scan a single port and its service. If security measures are taken, we can detect present monitoring applications.</li>
+<li>To determine whether such IPS system is present in the target network, scan from a single host (VPS). If at any time this host is blocked and has no access to the target network, we know that the administrator has taken some security measures.</li>
+</ul>
+</blockquote>
+<h3 id="decoys">Decoys</h3>
+<p>Decoys are used when administrators <span style="color:rgb(0, 176, 240)">block specific subnets from different regions or when the IPS blocks us</span>. Nmap generates various random IP addresses to disguise the origin of the packet sent. With this method, we can generate (<code>RND</code>) some IP addresses.</p>
+<ul>
+<li>Our IP address is then randomly placed between the generated IP addresses.</li>
+<li>Decoys must be alive</li>
+</ul>
+<p><code>-D RND:5</code> - Generates five random IP addresses that indicates the source IP the connection comes from.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#79B8FF"> 10.129.2.28</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> 80</span><span style="color:#79B8FF"> -sS</span><span style="color:#79B8FF"> -Pn</span><span style="color:#79B8FF"> -n</span><span style="color:#79B8FF"> --disable-arp-ping</span><span style="color:#79B8FF"> --packet-trace</span><span style="color:#79B8FF"> -D</span><span style="color:#9ECBFF"> RND:5</span></span></code></pre>
+<p><code>-O</code> - Performs operation system detection scan.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#79B8FF"> 10.129.2.28</span><span style="color:#79B8FF"> -n</span><span style="color:#79B8FF"> -Pn</span><span style="color:#79B8FF"> -p445</span><span style="color:#79B8FF"> -O</span></span></code></pre>
+<p><code>-e tun0</code> - Sends all requests through the specified interface.</p>
+<p><code>-S</code> - Scans the target by using different source IP address.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#79B8FF"> 10.129.2.28</span><span style="color:#79B8FF"> -n</span><span style="color:#79B8FF"> -Pn</span><span style="color:#79B8FF"> -p</span><span style="color:#79B8FF"> 445</span><span style="color:#79B8FF"> -O</span><span style="color:#79B8FF"> -S</span><span style="color:#79B8FF"> 10.129.2.200</span><span style="color:#79B8FF"> -e</span><span style="color:#9ECBFF"> tun0</span></span></code></pre>
+<h3 id="dns-proxying">DNS Proxying</h3>
+<p>By default, Nmap performs a <span style="color:rgb(0, 176, 80)">reverse DNS resolution unless specified otherwise</span>.</p>
+<ul>
+<li>DNS queries are made over the <code>UDP port 53</code></li>
+<li>Zone transfers between DNS servers or data transfer larger than 512 bytes are made over the <code>TCP port 53</code></li>
+</ul>
+<blockquote>
+<p>More and more, this is changing due to IPv6 and DNSSEC expansions. These changes cause many DNS requests to be made via TCP port 53.</p>
+</blockquote>
+<p>We can specify DNS servers using <code>--dns-server &#x3C;ns>,&#x3C;ns></code>.</p>
+<p>Assume normal SYN-scan shows <strong>port 50000</strong> as <em><strong>filtered</strong></em>. Scanning from <strong>source port 5</strong>3 instead, shows it as <em><strong>open</strong></em>. This is because the administrator did not filter IDS/IPS properly and out packet was able to pass through.</p>
+<div class="callout callout-yellow callout-collapsible" data-expanded="false">
+  <div class="callout-title">
+    <span class="callout-icon">❓</span>
+    <span class="callout-title-text">Why admins think traffic from port 53 is trustable</span>
+    <svg class="callout-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+  <div class="callout-content">
+<p>Many admins mistakenly allow or trust traffic<strong>from port 53</strong> because:</p>
+<ul>
+<li>DNS replies originate from port 53</li>
+<li>They want DNS to “just work”</li>
+</ul>
+</div></div>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nmap</span><span style="color:#79B8FF"> 10.129.2.28</span><span style="color:#79B8FF"> -p50000</span><span style="color:#79B8FF"> -sS</span><span style="color:#79B8FF"> -Pn</span><span style="color:#79B8FF"> -n</span><span style="color:#79B8FF"> --disable-arp-ping</span><span style="color:#79B8FF"> --packet-trace</span><span style="color:#79B8FF"> --source-port</span><span style="color:#79B8FF"> 53</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">SENT</span><span style="color:#E1E4E8"> (0.0482s) TCP 10.10.14.2:53 </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> 10.129.2.28:50000 S ttl</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">58</span><span style="color:#E1E4E8"> id</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">27470</span><span style="color:#E1E4E8"> iplen</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">44</span><span style="color:#E1E4E8">  seq</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">4003923435</span><span style="color:#E1E4E8"> win</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">1024</span><span style="color:#E1E4E8"> &#x3C;mss 1460></span></span>
+<span class="line"><span style="color:#9ECBFF">RCVD</span><span style="color:#E1E4E8"> (0.0608s) TCP 10.129.2.28:50000 </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> 10.10.14.2:53 SA ttl</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">64</span><span style="color:#E1E4E8"> id</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">0</span><span style="color:#E1E4E8"> iplen</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">44</span><span style="color:#E1E4E8">  seq</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">540635485</span><span style="color:#E1E4E8"> win</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">64240</span><span style="color:#E1E4E8"> &#x3C;mss 1460></span></span>
+<span class="line"><span style="color:#9ECBFF">Nmap</span><span style="color:#9ECBFF"> scan</span><span style="color:#9ECBFF"> report</span><span style="color:#9ECBFF"> for</span><span style="color:#79B8FF"> 10.129.2.28</span></span>
+<span class="line"><span style="color:#B392F0">Host</span><span style="color:#9ECBFF"> is</span><span style="color:#9ECBFF"> up</span><span style="color:#E1E4E8"> (0.013s </span><span style="color:#9ECBFF">latency</span><span style="color:#E1E4E8">).</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">PORT</span><span style="color:#9ECBFF">      STATE</span><span style="color:#9ECBFF"> SERVICE</span></span>
+<span class="line"><span style="color:#B392F0">50000/tcp</span><span style="color:#9ECBFF"> open</span><span style="color:#9ECBFF">  ibm-db2</span></span>
+<span class="line"><span style="color:#B392F0">MAC</span><span style="color:#9ECBFF"> Address:</span><span style="color:#9ECBFF"> DE:AD:00:00:BE:EF</span><span style="color:#E1E4E8"> (Intel </span><span style="color:#9ECBFF">Corporate</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<div class="callout callout-red callout-collapsible" data-expanded="false">
+  <div class="callout-title">
+    <span class="callout-icon">🔥</span>
+    <span class="callout-title-text">Firewall/IDS evasion tricks</span>
+    <svg class="callout-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+  <div class="callout-content">
+<p><code>--source-port 53</code>, <code>--source-port 20</code>, <code>--source-port 443</code> are classic <strong>firewall/IDS evasion tricks</strong></p>
+</div></div>
+<h2 id="easy-lab">Easy Lab</h2>
+<p>Our client wants to know if we can identify which operating system their provided machine is running on. Submit the OS name as the answer.</p>
+<div class="callout callout-green callout-collapsible" data-expanded="false">
+  <div class="callout-title">
+    <span class="callout-icon">✅</span>
+    <span class="callout-title-text">Solution</span>
+    <svg class="callout-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+  <div class="callout-content">
+<ol>
+<li>we want to be stealthy</li>
+<li>we know <code>port 80</code> is running <code>http</code> due to status page</li>
+<li>do a service scan on port 80 while <span style="color:rgb(0, 176, 80)">disabling ping probes</span></li>
+</ol>
+<p><code>sudo nmap 10.129.26.208 -p80 -sV --disable-arp-ping -Pn</code></p>
+</div></div>
+<h2 id="medium-lab">Medium Lab</h2>
+<p>After the configurations are transferred to the system, our client wants to know if it is possible to find out our target’s DNS server version. Submit the DNS server version of the target as the answer.</p>
+<div class="callout callout-green callout-collapsible" data-expanded="false">
+  <div class="callout-title">
+    <span class="callout-icon">✅</span>
+    <span class="callout-title-text">Solution</span>
+    <svg class="callout-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+  <div class="callout-content">
+<ol>
+<li>DNS runs on port 53 and uses UDP</li>
+<li>target UDP port 53 to reduces amount of alerts</li>
+</ol>
+<p><code>sudo nmap 10.129.26.208 -p53 -sV -sU -Pn</code></p>
+</div></div>
+<h2 id="hard-lab">Hard Lab</h2>
+<p>Now our client wants to know if it is possible to find out the version of the running services. Identify the version of service our client was talking about and submit the flag as the answer.</p>
+<div class="callout callout-green callout-collapsible" data-expanded="false">
+  <div class="callout-title">
+    <span class="callout-icon">✅</span>
+    <span class="callout-title-text">Solution</span>
+    <svg class="callout-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+  <div class="callout-content">
+<ol>
+<li>
+<p>find open ports, check if it accepts <code>tcp 53</code> as source
+<code>sudo nmap --source-port 53 -p- -Pn -sS -n 10.129.26.208</code></p>
+</li>
+<li>
+<p>open port found, -p50000</p>
+</li>
+<li>
+<p>run <code>-sV</code> on the port but flag not found</p>
+</li>
+<li>
+<p>connect to it via <code>nc</code>,
+<code>nc -p 53 -nv 10.129.26.208 50000</code></p>
+</li>
+</ol>
+</div></div> </div> </article> <!-- Right Sidebar: Stacked Stats and Related Posts with Toggle --> <div class="hidden lg:flex flex-col gap-6 relative"> <button id="rightSidebarToggle" aria-label="Toggle article info sidebar" title="Toggle article info" class="self-end"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path> </svg> </button> <div id="rightSidebar" class="flex flex-col gap-6 w-80"> <div class="disclaimer-box" data-astro-cid-cukr4w5s><div class="disclaimer-icon" data-astro-cid-cukr4w5s><div class="disclaimer-icon-mark" aria-hidden="true" data-astro-cid-cukr4w5s>!</div></div><div class="disclaimer-content" data-astro-cid-cukr4w5s><h3 class="disclaimer-title" data-astro-cid-cukr4w5s>Side Note</h3><p class="disclaimer-text" data-astro-cid-cukr4w5s>This article contains exact quotes from HTB&#39;s module on ffuf. There will be minimal walkthrough for the questions. You are highly encouraged to try them yourself.</p></div></div> <aside class="hidden lg:block w-full"> <div class="rounded-lg p-4 border border-[var(--accent-light)]" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.05);"> <h3 class="text-lg font-bold mb-4 text-[var(--text-primary)]">Article Stats</h3> <div class="space-y-4" id="articleStats">  <div class="flex items-start gap-3" id="readingTimeContainer" style="display: none;"> <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path> </svg> <div> <p class="text-sm text-[var(--text-secondary)]">Reading Time</p> <p class="font-semibold text-[var(--text-primary)]" id="readingTimeValue">- min read</p> </div> </div>  <div class="flex items-start gap-3" id="wordCountContainer" style="display: none;"> <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path> </svg> <div> <p class="text-sm text-[var(--text-secondary)]">Word Count</p> <p class="font-semibold text-[var(--text-primary)]" id="wordCountValue">0</p> </div> </div>  <div class="flex items-start gap-3"> <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path> </svg> <div> <p class="text-sm text-[var(--text-secondary)]">Published</p> <p class="font-semibold text-[var(--text-primary)]">Dec 17, 2025</p> </div> </div>   </div> </div> </aside> <script type="module">function r(){const e=document.querySelector("article .prose");if(!e)return;const t=(e.textContent||"").split(/\s+/).filter(l=>l.length>0).length,d=Math.ceil(t/200),i=document.getElementById("readingTimeContainer"),a=document.getElementById("wordCountContainer"),n=document.getElementById("readingTimeValue"),o=document.getElementById("wordCountValue");n&&(n.textContent=`${d} min read`,i?.style.removeProperty("display")),o&&(o.textContent=t.toLocaleString(),a?.style.removeProperty("display"))}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();</script> <aside class="hidden lg:block w-full"> <div class="rounded-lg p-4 border border-[var(--accent-light)]" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.05);"> <h3 class="text-lg font-bold mb-4 text-[var(--text-primary)]">Related Posts</h3> <div class="space-y-3"> <a href="/cyberportfolio/blog/2025-12-24-msf" class="group block p-3 rounded-lg transition-all duration-200" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.08);"> <p class="font-medium text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors line-clamp-2"> Using the Metasploit Framework - HTB Academy </p> <p class="text-xs text-[var(--text-secondary)] mt-1"> Dec 24, 25 </p> <div class="flex flex-wrap gap-1 mt-2"> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> htb-academy </span><span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> basics </span> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-secondary);">
++6 </span> </div> </a><a href="/cyberportfolio/blog/2025-12-18-javascript-deob" class="group block p-3 rounded-lg transition-all duration-200" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.08);"> <p class="font-medium text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors line-clamp-2"> JavaScript Deobfuscation - HTB Academy </p> <p class="text-xs text-[var(--text-secondary)] mt-1"> Dec 18, 25 </p> <div class="flex flex-wrap gap-1 mt-2"> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> basics </span><span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> htb-academy </span> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-secondary);">
++6 </span> </div> </a><a href="/cyberportfolio/blog/2025-12-15-awawfuff" class="group block p-3 rounded-lg transition-all duration-200" style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.08);"> <p class="font-medium text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors line-clamp-2"> Attacking Web Applications With Ffuf - HTB Academy </p> <p class="text-xs text-[var(--text-secondary)] mt-1"> Dec 15, 25 </p> <div class="flex flex-wrap gap-1 mt-2"> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> basics </span><span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-primary);"> web-exploit </span> <span class="text-xs px-2 py-0.5 rounded-full" style="background-color: var(--accent-light); color: var(--text-secondary);">
++6 </span> </div> </a> </div> </div> </aside> </div> </div> </div> </div> </div> </main> <footer class="relative border-t" style="background-color: var(--bg-secondary); border-color: var(--border-primary)"> <div class="mx-auto max-w-6xl px-6 py-12 lg:px-8"> <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8"> <div class="flex flex-col gap-4"> <h3 class="text-2xl font-bold text-[var(--text-primary)]"> maejikal </h3> <p class="text-base text-[var(--text-secondary)]"> cybersecurity enthusiast, certified nerd. welcome to my cozy corner. </p> <div class="flex gap-x-6"> <a href="mailto:undefined" aria-label="Email" class="transition-colors duration-300 text-[var(--text-secondary)] hover:text-[var(--accent-color)]"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path> <path d="M3 7l9 6l9 -6"></path> </svg> </a> <a href="linkedin.com/in/meyling-taing-bab5ab139" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="transition-colors duration-300 text-[var(--text-secondary)] hover:text-[var(--accent-color)]"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M8 11v5"></path><path d="M8 8v.01"></path><path d="M12 16v-5"></path> <path d="M16 16v-3a2 2 0 1 0 -4 0"></path> <path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"></path> </svg> </a> <a target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="transition-colors duration-300 text-[var(--text-secondary)] hover:text-[var(--accent-color)]"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path> <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path> </svg> </a> <a href="https://github.com/maejikal" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="transition-colors duration-300 text-[var(--text-secondary)] hover:text-[var(--accent-color)]"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path> </svg> </a> </div> </div> <div class="hidden md:block flex flex-col md:items-end gap-4"> <nav class="flex gap-x-8"> <a href="/cyberportfolio/#about" class="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">About</a> <a href="/cyberportfolio/blog" class="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Blog</a> <a href="/cyberportfolio/ctf-writeups" class="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">CTFs</a>  <a href="/cyberportfolio/reviews" class="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Reviews</a> </nav> <p class="text-sm text-[var(--text-secondary)]">
+© 2026 maejikal. All rights reserved.
+</p> </div> </div> </div> <div class="absolute inset-0 -z-10 overflow-hidden text-[var(--border-primary)] opacity-20"> <svg aria-hidden="true" class="absolute bottom-0 left-0 w-full h-24"> <pattern id="footer-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"> <path d="M0 50 Q 25 40, 50 50 T 100 50" stroke="currentColor" stroke-width="0.5" fill="none"></path> </pattern> <rect width="100%" height="100%" fill="url(#footer-pattern)"></rect> </svg> </div> </footer> </body></html>
