@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Sidebar from '../../components/Sidebar.astro';
@@ -15,13 +15,13 @@ import { siteConfig } from "../../config";
 export async function getStaticPaths() {
   const writeups = await getCollection('writeups');
   return writeups.map(writeup => ({
-    params: { slug: writeup.slug },
+    params: { slug: writeup.id.replace(/\.md$/, '') },
     props: { writeup },
   }));
 }
 
 const { writeup } = Astro.props;
-const { Content } = await writeup.render();
+const { Content } = await render(writeup);
 ---
 
 <html lang="en">
@@ -114,6 +114,27 @@ const { Content } = await writeup.render();
 
               <MobileTOC />
 
+              {writeup.data.downloads && writeup.data.downloads.length > 0 && (
+                <div class="mb-8 p-4 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-color)]">
+                  <h3 class="text-lg font-bold mb-3 text-[var(--text-primary)] flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Downloads
+                  </h3>
+                  <div class="flex flex-wrap gap-3">
+                    {writeup.data.downloads.map(download => (
+                      <a 
+                        href={download.url} 
+                        download 
+                        class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md bg-[var(--accent-color)] text-white hover:bg-[var(--accent-dark)] transition-colors"
+                      >
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path></svg>
+                        {download.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               <div class="prose max-w-none">
                 <Content />
               </div>
@@ -134,7 +155,7 @@ const { Content } = await writeup.render();
               <div id="rightSidebar" class="flex flex-col gap-6 w-80">
                 <Disclaimer type="writeup" customDisclaimer={writeup.data.disclaimer} />
                 <ArticleStats pubDate={writeup.data.pubDate} lastUpdated={writeup.data.lastUpdated} />
-                <RelatedPosts currentSlug={writeup.slug} tags={writeup.data.tags} type="writeup" />
+                <RelatedPosts currentSlug={writeup.id.replace(/\.md$/, '')} tags={writeup.data.tags} type="writeup" />
               </div>
             </div>
           </div>

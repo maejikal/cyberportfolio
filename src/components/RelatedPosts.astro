@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 interface Props {
   currentSlug: string;
   tags?: string[];
-  type: 'writeup' | 'post';
+  type: 'writeup' | 'post' | 'review';
 }
 
 const { currentSlug, tags = [], type } = Astro.props;
@@ -12,11 +12,14 @@ const { currentSlug, tags = [], type } = Astro.props;
 // Get all posts/writeups from the same collection
 const collection = type === 'writeup' 
   ? await getCollection('writeups')
+  : type === 'review'
+  ? await getCollection('reviews')
   : await getCollection('posts');
 
 // Filter related items by tags and exclude drafts
 let relatedItems = collection.filter(item => {
-  if (item.slug === currentSlug) return false;
+  const itemSlug = item.id.replace(/\.md$/, '');
+  if (itemSlug === currentSlug) return false;
   if (item.data.draft) return false; // Exclude drafts
   if (!item.data.tags) return false;
   
@@ -43,7 +46,11 @@ relatedItems = relatedItems
   })
   .slice(0, 4); // Limit to 4 related items
 
-const baseUrl = type === 'writeup' ? '/cyberportfolio/ctf-writeups' : '/cyberportfolio/blog';
+const baseUrl = type === 'writeup' 
+  ? '/cyberportfolio/ctf-writeups' 
+  : type === 'review'
+  ? '/cyberportfolio/reviews'
+  : '/cyberportfolio/blog';
 ---
 
 <aside class="hidden lg:block w-full">
@@ -54,7 +61,7 @@ const baseUrl = type === 'writeup' ? '/cyberportfolio/ctf-writeups' : '/cyberpor
       <div class="space-y-3">
         {relatedItems.map(item => (
           <a
-            href={`${baseUrl}/${item.slug}`}
+            href={`${baseUrl}/${item.id.replace(/\.md$/, '')}`}
             class="group block p-3 rounded-lg transition-all duration-200"
             style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.08);"
           >

@@ -7,13 +7,14 @@ import { siteConfig } from '../config';
 import '../styles/global.css';
 import ThemeProvider from "../components/ThemeProvider.astro";
 
+const getSlug = (id) => id.replace(/\.md$/, '');
 
 const allPosts = (await getCollection('posts')).filter(post => !post.data.draft)
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
 // Pin the welcome post
-const pinnedPost = allPosts.find(post => post.slug === '2025-12-10-welcome');
-const otherPosts = allPosts.filter(post => post.slug !== '2025-12-10-welcome');
+const pinnedPost = allPosts.find(post => getSlug(post.id) === '2025-12-10-welcome');
+const otherPosts = allPosts.filter(post => getSlug(post.id) !== '2025-12-10-welcome');
 const posts = pinnedPost ? [pinnedPost, ...otherPosts] : allPosts;
 ---
 
@@ -41,7 +42,7 @@ const posts = pinnedPost ? [pinnedPost, ...otherPosts] : allPosts;
       <BlogSearch />
       <div class="space-y-6">
         {posts.map((post, index) => (
-  <a href={`/cyberportfolio/blog/${post.slug}/`} class="block hover:shadow-lg transition-shadow p-4 rounded-lg">
+  <a href={`/cyberportfolio/blog/${getSlug(post.id)}/`} class="block hover:shadow-lg transition-shadow p-4 rounded-lg">
     <article class={`blog-article border-b pb-6 ${index === 0 && pinnedPost ? 'p-4 rounded-lg border-l-4' : ''}`} 
          style={index === 0 && pinnedPost ? `background-color: var(--accent-light); border-left-color: var(--accent-color); border-bottom-color: var(--border-primary)` : 'border-color: var(--border-primary)'}
          data-tags={post.data.tags ? post.data.tags.join(',') : ''}>

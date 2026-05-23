@@ -10,6 +10,8 @@ const posts = (await getCollection('posts')).filter(p => !p.data.draft);
 const writeups = (await getCollection('writeups')).filter(w => !w.data.draft);
 const reviews = (await getCollection('reviews')).filter(r => !r.data.draft);
 
+const getSlug = (id) => id.replace(/\.md$/, '');
+
 // Build searchable index
 const allItems = [
   ...posts.map(post => ({
@@ -17,7 +19,7 @@ const allItems = [
     title: post.data.title,
     description: post.data.description || '',
     tags: post.data.tags || [],
-    url: `/cyberportfolio/blog/${post.slug}/`,
+    url: `/cyberportfolio/blog/${getSlug(post.id)}/`,
     date: post.data.pubDate.toISOString()
   })),
   ...writeups.map(writeup => ({
@@ -25,7 +27,7 @@ const allItems = [
     title: writeup.data.title,
     description: writeup.data.description || '',
     tags: writeup.data.tags || [],
-    url: `/cyberportfolio/ctf-writeups/${writeup.slug}/`,
+    url: `/cyberportfolio/ctf-writeups/${getSlug(writeup.id)}/`,
     date: writeup.data.pubDate.toISOString()
   })),
   ...reviews.map(review => ({
@@ -35,7 +37,7 @@ const allItems = [
     tags: review.data.tags || [],
     category: review.data.category,
     moduleCode: review.data.moduleCode || '',
-    url: `/cyberportfolio/reviews/${review.slug}/`,
+    url: `/cyberportfolio/reviews/${getSlug(review.id)}/`,
     date: review.data.pubDate.toISOString()
   }))
 ];

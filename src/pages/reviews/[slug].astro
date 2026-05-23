@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Sidebar from '../../components/Sidebar.astro';
@@ -15,13 +15,13 @@ import { siteConfig } from "../../config";
 export async function getStaticPaths() {
   const reviews = await getCollection('reviews');
   return reviews.map(review => ({
-    params: { slug: review.slug },
+    params: { slug: review.id.replace(/\.md$/, '') },
     props: { review },
   }));
 }
 
 const { review } = Astro.props;
-const { Content } = await review.render();
+const { Content } = await render(review);
 ---
 
 <html lang="en">
@@ -160,7 +160,7 @@ const { Content } = await review.render();
               <div id="rightSidebar" class="flex flex-col gap-6 w-80">
                 <Disclaimer type="review" customDisclaimer={review.data.disclaimer} />
                 <ArticleStats pubDate={review.data.pubDate} lastUpdated={review.data.lastUpdated} />
-                <RelatedPosts currentSlug={review.slug} tags={review.data.tags} type="review" />
+                <RelatedPosts currentSlug={review.id.replace(/\.md$/, '')} tags={review.data.tags} type="review" />
               </div>
             </div>
           </div>

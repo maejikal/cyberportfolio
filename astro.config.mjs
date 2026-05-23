@@ -1,6 +1,8 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
@@ -30,7 +32,8 @@ export default defineConfig({
   base: '/cyberportfolio/',
 
   markdown: {
-    remarkPlugins: [remarkCallouts],
+    remarkPlugins: [remarkCallouts, remarkMath],
+    rehypePlugins: [rehypeKatex],
   },
 
   vite: {

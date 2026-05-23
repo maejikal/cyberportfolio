@@ -12,6 +12,7 @@ import { siteConfig } from '../config';
 import '../styles/global.css';
 import ThemeProvider from "../components/ThemeProvider.astro";
 
+const getSlug = (id: string) => id.replace(/\.md$/, '');
 
 // Get recent blog posts
 const posts = (await getCollection('posts'))

@@ -7,6 +7,8 @@ import '../styles/global.css';
 import ThemeProvider from "../components/ThemeProvider.astro";
 import { siteConfig } from "../config";
 
+const getSlug = (id: string) => id.replace(/\.md$/, '');
+
 const allWriteups = (await getCollection('writeups'))
   .filter(writeup => !writeup.data.draft)
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
@@ -42,7 +44,7 @@ const writeups = pinnedWriteup ? [pinnedWriteup, ...otherWriteups] : allWriteups
       ) : (
         <div class="space-y-6">
           {writeups.map((writeup, index) => (
-  <a href={`/cyberportfolio/ctf-writeups/${writeup.slug}/`} class="block hover:shadow-lg transition-shadow p-4 rounded-lg">
+  <a href={`/cyberportfolio/ctf-writeups/${getSlug(writeup.id)}/`} class="block hover:shadow-lg transition-shadow p-4 rounded-lg">
     <article class={`writeup-article pb-6 ${index === 0 && pinnedWriteup ? 'p-4 rounded-lg border-l-4' : 'border-b'}`} 
          style={index === 0 && pinnedWriteup ? 'background-color: var(--accent-light); border-left-color: var(--accent-color); border-bottom-color: var(--border-primary);' : 'border-bottom-color: var(--border-primary);'}
          data-tags={writeup.data.tags ? writeup.data.tags.join(',') : ''}>

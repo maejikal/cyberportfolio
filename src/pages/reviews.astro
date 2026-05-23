@@ -6,6 +6,8 @@ import '../styles/global.css';
 import ThemeProvider from "../components/ThemeProvider.astro";
 import { siteConfig } from "../config";
 
+const getSlug = (id: string) => id.replace(/\.md$/, '');
+
 const allReviews = (await getCollection('reviews'))
   .filter(review => !review.data.draft)
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
@@ -58,7 +60,7 @@ const allReviews = (await getCollection('reviews'))
       ) : (
         <div class="space-y-6" id="reviews-container">
           {allReviews.map((review) => (
-            <a href={`/cyberportfolio/reviews/${review.slug}/`} class="block hover:shadow-lg transition-shadow p-4 rounded-lg review-item" data-category={review.data.category}>
+            <a href={`/cyberportfolio/reviews/${getSlug(review.id)}/`} class="block hover:shadow-lg transition-shadow p-4 rounded-lg review-item" data-category={review.data.category}>
               <article class="pb-6 border-b" style="border-bottom-color: var(--border-primary);">
                 <div class="flex items-start justify-between mb-2">
                   <h2 class="text-2xl font-semibold text-[var(--text-primary)] hover:text-[var(--accent-color)]">
