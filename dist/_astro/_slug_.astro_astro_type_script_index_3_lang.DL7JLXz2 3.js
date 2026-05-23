@@ -1,1 +1,0 @@
-document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".callout-collapsible").forEach(e=>{const t=e.querySelector(".callout-title");t&&t.addEventListener("click",()=>{const l=e.getAttribute("data-expanded")==="true";e.setAttribute("data-expanded",!l)})})});

@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://maejikal.github.io/cyberportfolio/sitemap-index.xml
