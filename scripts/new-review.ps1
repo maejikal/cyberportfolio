@@ -15,8 +15,8 @@ param(
 
 $date = Get-Date -Format "yyyy-MM-dd"
 $slug = "$date-$($Title.ToLower().Replace(' ', '-'))"
-$filename = "$slug.md"
-$filepath = "src/content/reviews/$filename"
+$folderpath = "src/content/reviews/$slug"
+$filepath = "$folderpath/index.md"
 
 # Format tags
 $tagsString = if ($Tags.Count -gt 0) {
@@ -65,6 +65,9 @@ Main lessons learned
 Who would benefit from this? Final thoughts.
 "@
 
+if (!(Test-Path $folderpath)) {
+    New-Item -ItemType Directory -Path $folderpath -Force | Out-Null
+}
 New-Item -Path $filepath -Value $template -Force
 Write-Host "Created review: $filepath" -ForegroundColor Green
 Write-Host "Category: $Category" -ForegroundColor Cyan

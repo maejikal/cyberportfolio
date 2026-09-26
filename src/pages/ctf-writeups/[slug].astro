@@ -15,7 +15,7 @@ import { siteConfig } from "../../config";
 export async function getStaticPaths() {
   const writeups = await getCollection('writeups');
   return writeups.map(writeup => ({
-    params: { slug: writeup.id.replace(/\.md$/, '') },
+    params: { slug: writeup.id.replace(/\/index$/, '').replace(/\.md$/, '') },
     props: { writeup },
   }));
 }
@@ -122,9 +122,10 @@ const { Content } = await render(writeup);
                   </h3>
                   <div class="flex flex-wrap gap-3">
                     {writeup.data.downloads.map(download => {
-                      const downloadUrl = download.url.startsWith('/') 
-                        ? `/cyberportfolio${download.url}` 
-                        : download.url;
+                      const currentSlug = writeup.id.replace(/\/index$/, '').replace(/\.md$/, '');
+                      const downloadUrl = download.url.startsWith('http') || download.url.startsWith('/') 
+                        ? (download.url.startsWith('/') ? `/cyberportfolio${download.url}` : download.url)
+                        : `/cyberportfolio/ctf-writeups/${currentSlug}/${download.url.replace(/^\.\//, '')}`;
                       return (
                         <a 
                           href={downloadUrl} 
@@ -160,7 +161,7 @@ const { Content } = await render(writeup);
               <div id="rightSidebar" class="flex flex-col gap-6 w-80">
                 <Disclaimer type="writeup" customDisclaimer={writeup.data.disclaimer} />
                 <ArticleStats pubDate={writeup.data.pubDate} lastUpdated={writeup.data.lastUpdated} />
-                <RelatedPosts currentSlug={writeup.id.replace(/\.md$/, '')} tags={writeup.data.tags} type="writeup" />
+                <RelatedPosts currentSlug={writeup.id.replace(/\/index$/, '').replace(/\.md$/, '')} tags={writeup.data.tags} type="writeup" />
               </div>
             </div>
           </div>

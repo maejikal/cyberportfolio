@@ -7,7 +7,7 @@ import { siteConfig } from '../config';
 import '../styles/global.css';
 import ThemeProvider from "../components/ThemeProvider.astro";
 
-const getSlug = (id) => id.replace(/\.md$/, '');
+const getSlug = (id) => id.replace(/\/index$/, '').replace(/\.md$/, '');
 
 const allPosts = (await getCollection('posts')).filter(post => !post.data.draft)
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());

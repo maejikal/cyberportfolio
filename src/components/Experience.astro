@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import { siteConfig } from "../config";
 
-const getSlug = (id: string) => id.replace(/\.md$/, '');
+const getSlug = (id: string) => id.replace(/\/index$/, '').replace(/\.md$/, '');
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
 
 // Get all writeups to match with experience entries

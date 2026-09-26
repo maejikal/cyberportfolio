@@ -15,7 +15,7 @@ import { siteConfig } from "../../config";
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
   return posts.map(post => ({
-    params: { slug: post.id.replace(/\.md$/, '') },
+    params: { slug: post.id.replace(/\/index$/, '').replace(/\.md$/, '') },
     props: { post },
   }));
 }
@@ -131,7 +131,7 @@ const { Content } = await render(post);
               <div id="rightSidebar" class="flex flex-col gap-6 w-80">
                 <Disclaimer type="post" customDisclaimer={post.data.disclaimer} />
                 <ArticleStats pubDate={post.data.pubDate} lastUpdated={post.data.lastUpdated} />
-                <RelatedPosts currentSlug={post.id.replace(/\.md$/, '')} tags={post.data.tags} type="post" />
+                <RelatedPosts currentSlug={post.id.replace(/\/index$/, '').replace(/\.md$/, '')} tags={post.data.tags} type="post" />
               </div>
             </div>
         </div>

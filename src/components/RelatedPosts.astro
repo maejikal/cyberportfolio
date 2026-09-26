@@ -18,7 +18,7 @@ const collection = type === 'writeup'
 
 // Filter related items by tags and exclude drafts
 let relatedItems = collection.filter(item => {
-  const itemSlug = item.id.replace(/\.md$/, '');
+  const itemSlug = item.id.replace(/\/index$/, '').replace(/\.md$/, '');
   if (itemSlug === currentSlug) return false;
   if (item.data.draft) return false; // Exclude drafts
   if (!item.data.tags) return false;
@@ -61,7 +61,7 @@ const baseUrl = type === 'writeup'
       <div class="space-y-3">
         {relatedItems.map(item => (
           <a
-            href={`${baseUrl}/${item.id.replace(/\.md$/, '')}`}
+            href={`${baseUrl}/${item.id.replace(/\/index$/, '').replace(/\.md$/, '')}`}
             class="group block p-3 rounded-lg transition-all duration-200"
             style="background-color: rgba(var(--accent-rgb, 59, 130, 246), 0.08);"
           >

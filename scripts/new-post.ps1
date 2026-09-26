@@ -7,8 +7,8 @@ param(
 
 $date = Get-Date -Format "yyyy-MM-dd"
 $slug = "$date-$($Title.ToLower().Replace(' ', '-'))"
-$filename = "$slug.md"
-$filepath = "src/content/posts/$filename"
+$folderpath = "src/content/posts/$slug"
+$filepath = "$folderpath/index.md"
 
 $tagsString = $Tags | ForEach-Object { "`"$_`"" }
 $tagsFormatted = $tagsString -join ", "
@@ -36,6 +36,9 @@ tags: [$tagsFormatted]
 [Your conclusion]
 "@
 
+if (!(Test-Path $folderpath)) {
+    New-Item -ItemType Directory -Path $folderpath -Force | Out-Null
+}
 New-Item -Path $filepath -Value $template -Force
 Write-Host "Created blog post: $filepath" -ForegroundColor Green
 code $filepath

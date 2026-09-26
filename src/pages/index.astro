@@ -12,7 +12,7 @@ import { siteConfig } from '../config';
 import '../styles/global.css';
 import ThemeProvider from "../components/ThemeProvider.astro";
 
-const getSlug = (id: string) => id.replace(/\.md$/, '');
+const getSlug = (id: string) => id.replace(/\/index$/, '').replace(/\.md$/, '');
 
 // Get recent blog posts
 const posts = (await getCollection('posts'))
@@ -67,7 +67,7 @@ const posts = (await getCollection('posts'))
               {posts.map(post => (
                 <div class="border-b pb-6" style="border-color: var(--border-primary)">
                   <h3 class="text-2xl sm:text-3xl font-semibold mb-3">
-                    <a href={`/cyberportfolio/blog/${post.slug}/`} class="hover:text-[var(--accent-color)] transition-colors text-[var(--text-primary)]">
+                    <a href={`/cyberportfolio/blog/${getSlug(post.id)}/`} class="hover:text-[var(--accent-color)] transition-colors text-[var(--text-primary)]">
                       {post.data.title}
                     </a>
                   </h3>

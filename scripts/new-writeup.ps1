@@ -11,8 +11,8 @@ param(
 
 $date = Get-Date -Format "yyyy-MM-dd"
 $slug = "$date-$($CtfName.ToLower().Replace(' ', '-'))-$($ChallengeName.ToLower().Replace(' ', '-'))"
-$filename = "$slug.md"
-$filepath = "src/content/writeups/$filename"
+$folderpath = "src/content/writeups/$slug"
+$filepath = "$folderpath/index.md"
 
 $template = @"
 ---
@@ -59,6 +59,9 @@ flag{...}
 - [Useful link]
 "@
 
+if (!(Test-Path $folderpath)) {
+    New-Item -ItemType Directory -Path $folderpath -Force | Out-Null
+}
 New-Item -Path $filepath -Value $template -Force
 Write-Host "Created writeup: $filepath" -ForegroundColor Green
 Write-Host "Edit it at: $filepath" -ForegroundColor Cyan

@@ -10,7 +10,7 @@ const posts = (await getCollection('posts')).filter(p => !p.data.draft);
 const writeups = (await getCollection('writeups')).filter(w => !w.data.draft);
 const reviews = (await getCollection('reviews')).filter(r => !r.data.draft);
 
-const getSlug = (id) => id.replace(/\.md$/, '');
+const getSlug = (id) => id.replace(/\/index$/, '').replace(/\.md$/, '');
 
 // Build searchable index
 const allItems = [

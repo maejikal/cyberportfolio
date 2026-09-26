@@ -15,7 +15,7 @@ import { siteConfig } from "../../config";
 export async function getStaticPaths() {
   const reviews = await getCollection('reviews');
   return reviews.map(review => ({
-    params: { slug: review.id.replace(/\.md$/, '') },
+    params: { slug: review.id.replace(/\/index$/, '').replace(/\.md$/, '') },
     props: { review },
   }));
 }
@@ -160,7 +160,7 @@ const { Content } = await render(review);
               <div id="rightSidebar" class="flex flex-col gap-6 w-80">
                 <Disclaimer type="review" customDisclaimer={review.data.disclaimer} />
                 <ArticleStats pubDate={review.data.pubDate} lastUpdated={review.data.lastUpdated} />
-                <RelatedPosts currentSlug={review.id.replace(/\.md$/, '')} tags={review.data.tags} type="review" />
+                <RelatedPosts currentSlug={review.id.replace(/\/index$/, '').replace(/\.md$/, '')} tags={review.data.tags} type="review" />
               </div>
             </div>
           </div>

@@ -7,7 +7,7 @@ import '../styles/global.css';
 import ThemeProvider from "../components/ThemeProvider.astro";
 import { siteConfig } from "../config";
 
-const getSlug = (id: string) => id.replace(/\.md$/, '');
+const getSlug = (id: string) => id.replace(/\/index$/, '').replace(/\.md$/, '');
 
 const allWriteups = (await getCollection('writeups'))
   .filter(writeup => !writeup.data.draft)
